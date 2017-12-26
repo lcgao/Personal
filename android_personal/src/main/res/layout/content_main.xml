@@ -14,8 +14,9 @@
         android:layout_height="8dp"/>
     <EditText
         android:id="@+id/et_response_content_main"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@color/white"
         android:gravity="top"
@@ -24,4 +25,28 @@
         android:padding="8dp"
         android:textSize="16sp"
         android:hint="写下此刻的想法..."/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <Button
+        android:id="@+id/btn_to_dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:minHeight="35dp"
+        android:background="@color/themecolor"
+        android:textColor="@color/white"
+        android:text="px to dp"/>
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:minHeight="35dp"
+            android:textSize="12sp"
+            android:background="@color/themecolor"
+            android:textColor="@color/white"
+            android:text="清除"/>
+    </LinearLayout>
 </LinearLayout>

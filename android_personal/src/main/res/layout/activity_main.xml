@@ -28,139 +28,172 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@android:color/white"
+        android:clickable="true"
         android:fitsSystemWindows="false"
         android:orientation="vertical">
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/themecolor"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="40dp"
+            android:paddingTop="40dp">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="205dp"
-                android:background="@drawable/bg_top"
-                android:scaleType="centerCrop" />
+            <de.hdodenhof.circleimageview.CircleImageView
 
-            <LinearLayout
+                android:id="@+id/circleImageView"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/head_image"
+                app:civ_border_color="@color/white"
+                app:civ_border_overlay="true"
+                app:civ_border_width="1dp" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="25dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_marginTop="5dp"
+                android:text="lcgao"
+                android:textColor="@color/white" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+        </LinearLayout>
 
-                    android:id="@+id/circleImageView"
-                    android:layout_width="85dp"
-                    android:layout_height="85dp"
-                    android:src="@drawable/head_image"
-                    app:civ_border_color="@color/white"
-                    app:civ_border_overlay="true"
-                    app:civ_border_width="1dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_note"
+                    android:tint="@color/theme_gray" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="lcgao"
-                    android:layout_marginTop="5dp"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black" />
-
+                    android:text="笔记"
+                    android:textColor="@color/theme_gray"
+                    android:textSize="15sp" />
             </LinearLayout>
-        </FrameLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/ic_note" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_diary"
+                    android:tint="@color/theme_gray" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="笔记"
-                android:textColor="@android:color/black"
-                android:textSize="15sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="日记"
+                    android:textColor="@color/theme_gray"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_essay"
+                    android:tint="@color/theme_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="好文"
+                    android:textColor="@color/theme_gray"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_entertainment"
+                    android:tint="@color/theme_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="小时光"
+                    android:textColor="@color/theme_gray"
+                    android:textSize="15sp" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="10dp">
+            android:padding="10dp">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/ic_diary" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_sunny"
+                android:tint="@color/theme_gray" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:text="5°"
+                android:textSize="40sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_location"
+                android:tint="@color/theme_gray" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="日记"
-                android:textColor="@android:color/black"
-                android:textSize="15sp" />
+                android:text="杭州"
+                android:textSize="18sp" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/ic_essay" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="好文"
-                android:textColor="@android:color/black"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp">
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/ic_entertainment" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="小时光"
-                android:textColor="@android:color/black"
-                android:textSize="15sp" />
-        </LinearLayout>
-
     </LinearLayout>
-
 </android.support.v4.widget.DrawerLayout>
