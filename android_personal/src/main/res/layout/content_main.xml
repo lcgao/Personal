@@ -45,6 +45,7 @@
             android:layout_margin="10dp"
             android:minHeight="35dp"
             android:textSize="12sp"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:background="@color/themecolor"
             android:textColor="@color/white"
             android:text="清除"/>
