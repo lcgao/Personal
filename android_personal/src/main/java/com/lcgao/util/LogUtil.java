@@ -1,4 +1,4 @@
-package com.lcgao;
+package com.lcgao.util;
 
 import android.util.Log;
 
@@ -7,7 +7,7 @@ import android.util.Log;
  */
 
 public class LogUtil {
-    public static final String TAG = "lcgao";
+    public static final String TAG = "log_personal";
 
     public static void d(String content) {
         Log.d(TAG, content);

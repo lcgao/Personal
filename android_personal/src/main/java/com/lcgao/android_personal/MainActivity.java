@@ -1,68 +1,53 @@
 package com.lcgao.android_personal;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
+import com.lcgao.favourite.FavouriteFragment;
+import com.lcgao.home.HomeFragment;
+import com.lcgao.profile.ProfileFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
-    @BindView(R.id.et_response_content_main)
-    EditText mResponseET;
-    @BindView(R.id.btn_clear)
-    Button btnClear;
-    @BindView(R.id.btn_to_dp)
-    Button btnToDp;
+    private static final int FRAGMENT_HOME = 0;
+    private static final int FRAGMENT_FAVOURITE = 1;
+    private static final int FRAGMENT_PROFILE = 2;
+    @BindView(R.id.navigation_content_main)
+    BottomNavigationView mNavigationView;
+    private Fragment mFragmentHome;
+    private Fragment mFragmentFavourite;
+    private Fragment mFragmentProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(MainActivity.this);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//5.0及以上
             View decorView = getWindow().getDecorView();
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -72,95 +57,124 @@ public class MainActivity extends AppCompatActivity {
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//4.4到5.0
             WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                drawer.setFitsSystemWindows(true);
-                drawer.setClipToPadding(false);
-            }
+//            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+//                drawer.setFitsSystemWindows(true);
+//                drawer.setClipToPadding(false);
+//            }
         }
+        mNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.navigation_home:
+                        showFragment(FRAGMENT_HOME);
+                        return true;
+                    case R.id.navigation_favourite:
+                        showFragment(FRAGMENT_FAVOURITE);
+                        return true;
+                    case R.id.navigation_profile:
+                        showFragment(FRAGMENT_PROFILE);
+                        return true;
+                }
+                return false;
+            }
+        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("笔记");
+        toolbar.setTitle("知乎日报");
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-                startActivity(new Intent(MainActivity.this,BaseActivity.class));
             }
         });
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(this);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-
+//
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.setDrawerListener(toggle);
+//        toggle.syncState();
+        showFragment(0);
     }
 
-    @OnClick(R.id.btn_clear)
-    public void onClick(View v) {
-        mResponseET.setText("");
-        Toast.makeText(MainActivity.this, "click.....", Toast.LENGTH_SHORT).show();
+    private void showFragment(int index){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        hideFragment(transaction);
+        switch (index){
+            case FRAGMENT_HOME:
+                if(mFragmentHome == null){
+                    mFragmentHome = new HomeFragment();
+                    transaction.add(R.id.fragments, mFragmentHome);
+                }else {
+                    transaction.show(mFragmentHome);
+                }
+                break;
+            case FRAGMENT_FAVOURITE:
+                if(mFragmentFavourite == null){
+                    mFragmentFavourite = new FavouriteFragment();
+                    transaction.add(R.id.fragments, mFragmentFavourite);
+                } else {
+                    transaction.show(mFragmentFavourite);
+                }
+                break;
+            case FRAGMENT_PROFILE:
+                if(mFragmentProfile == null){
+                    mFragmentProfile = new ProfileFragment();
+                    transaction.add(R.id.fragments, mFragmentProfile);
+                } else {
+                    transaction.show(mFragmentProfile);
 
-    }
-    @OnClick(R.id.btn_to_dp)
-    public void onClickToDp(View v) {
-        Toast.makeText(MainActivity.this, "click..", Toast.LENGTH_SHORT).show();
-        String content = mResponseET.getText().toString();
-        if(TextUtils.isEmpty(content)){
-            Toast.makeText(MainActivity.this, "请输入数字", Toast.LENGTH_SHORT).show();
-            return;
+                }
+                break;
         }
-        float px = 0;
-        try {
-            px = Float.parseFloat(content);
-        } catch (NumberFormatException e) {
-            Toast.makeText(MainActivity.this, "请输入数字", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-            return;
-        }
-        float dp = convertPixelsToDp(px, MainActivity.this);
-        mResponseET.append("\n" + mResponseET.getText().toString() + "px = " + dp + "dp");
+        transaction.commit();
+
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+    private void hideFragment(FragmentTransaction transaction){
+        if(mFragmentHome != null){
+            transaction.hide(mFragmentHome);
+        }
+        if(mFragmentFavourite != null){
+            transaction.hide(mFragmentFavourite);
+        }
+        if(mFragmentProfile != null){
+            transaction.hide(mFragmentProfile);
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+//    @Override
+//    public void onBackPressed() {
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -179,23 +193,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
     public void onStop() {
         super.onStop();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
     }
 
     public static float convertPixelsToDp(float px, Context context) {
