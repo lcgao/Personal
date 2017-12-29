@@ -1,1 +1,1 @@
-include ':android_personal'
+include ':app'
