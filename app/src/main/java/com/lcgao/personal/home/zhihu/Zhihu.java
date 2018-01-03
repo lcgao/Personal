@@ -5,7 +5,7 @@ package com.lcgao.personal.home.zhihu;
  */
 
 public interface Zhihu {
-    int getId();
+    long getId();
 
     int getType();
 

@@ -5,18 +5,18 @@ package com.lcgao.personal.home.zhihu;
  */
 
 public class TopStorie implements Zhihu{
-    private int id;
+    private long id;
     private int type;
     private String ga_prefix;
     private String title;
     private String image;
 
     @Override
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int FRAGMENT_PROFILE = 2;
     @BindView(R.id.navigation_content_main)
     BottomNavigationView mNavigationView;
+    FragmentManager fragmentManager;
+
     private Fragment mFragmentHome;
     private Fragment mFragmentFavourite;
     private Fragment mFragmentProfile;
@@ -94,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showFragment(int index){
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         hideFragment(transaction);
         switch (index){
@@ -210,7 +212,13 @@ public class MainActivity extends AppCompatActivity {
         return px;
     }
 
-//    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public void onBackPressed() {
+        fragmentManager.popBackStack();
+        super.onBackPressed();
+    }
+
+    //    @SuppressWarnings("StatementWithEmptyBody")
 //    @Override
 //    public boolean onNavigationItemSelected(MenuItem item) {
 //        // Handle navigation view item clicks here.

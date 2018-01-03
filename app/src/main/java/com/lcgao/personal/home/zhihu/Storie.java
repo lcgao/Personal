@@ -7,14 +7,14 @@ import java.util.List;
  */
 
 public class Storie implements Zhihu{
-    private int id;
+    private long id;
     private int type;
     private String ga_prefix;
     private String title;
     private List<String> images;
 
     @Override
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -43,7 +43,7 @@ public class Storie implements Zhihu{
         return images.get(0);
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
