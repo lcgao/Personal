@@ -28,7 +28,7 @@ import com.lcgao.personal.profile.ProfileFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private static final int FRAGMENT_HOME = 0;
     private static final int FRAGMENT_FAVOURITE = 1;
     private static final int FRAGMENT_PROFILE = 2;
@@ -93,6 +93,16 @@ public class MainActivity extends AppCompatActivity {
 //        drawer.setDrawerListener(toggle);
 //        toggle.syncState();
         showFragment(0);
+    }
+
+    @Override
+    public void initParas(Bundle paras) {
+
+    }
+
+    @Override
+    public void initView() {
+
     }
 
     private void showFragment(int index){

@@ -1,10 +1,10 @@
 package com.lcgao.personal.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,12 +17,12 @@ import android.widget.ImageView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lcgao.personal.R;
+import com.lcgao.personal.WebActivity;
 import com.lcgao.personal.adapter.CommonAdapter;
 import com.lcgao.personal.adapter.ViewHolder;
 import com.lcgao.personal.home.zhihu.ResultZhihu;
 import com.lcgao.personal.home.zhihu.Storie;
 import com.lcgao.personal.home.zhihu.TopStorie;
-import com.lcgao.personal.home.zhihu.WebViewFragment;
 import com.lcgao.personal.home.zhihu.Zhihu;
 import com.lcgao.personal.home.zhihu.ZhihuService;
 import com.lcgao.personal.util.LogUtil;
@@ -96,16 +96,19 @@ public class MainFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         LogUtil.l("id：" + zhihu.getId());
-                        FragmentTransaction ft = fragmentManager.beginTransaction();
-                        WebViewFragment webViewFragment = new WebViewFragment();
+//                        FragmentTransaction ft = fragmentManager.beginTransaction();
+//                        WebViewFragment webViewFragment = new WebViewFragment();
                         Bundle bundle = new Bundle();
                         bundle.putString("title", zhihu.getTitle());
                         bundle.putString("id", zhihu.getId() + "");
-                        webViewFragment.setArguments(bundle);
-                        ft.hide(MainFragment.this);
-                        ft.add(R.id.content, webViewFragment);
-                        ft.addToBackStack(null);
-                        ft.commit();
+                        Intent intent = new Intent(getActivity(), WebActivity.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+//                        webViewFragment.setArguments(bundle);
+//                        ft.hide(MainFragment.this);
+//                        ft.add(R.id.content, webViewFragment);
+//                        ft.addToBackStack("webview");
+//                        ft.commit();
                     }
                 });
 
