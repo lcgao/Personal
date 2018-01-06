@@ -29,7 +29,10 @@ import com.lcgao.personal.util.LogUtil;
 import com.lcgao.personal.util.ToastUtil;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,6 +66,9 @@ public class MainFragment extends Fragment {
 
     private FragmentManager fragmentManager;
 
+    private List<Zhihu> zhihus = new ArrayList<>();
+    private Map<Long, Zhihu> map = new HashMap<>();
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +80,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home_main, container, false);
         ButterKnife.bind(this, view);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvZhihu.setLayoutManager(layoutManager);
         rvZhihu.setHasFixedSize(true);
@@ -111,10 +117,30 @@ public class MainFragment extends Fragment {
 //                        ft.commit();
                     }
                 });
-
             }
         };
         rvZhihu.setAdapter(mAdapter);
+        rvZhihu.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                int totalItemCount = recyclerView.getAdapter().getItemCount();
+                int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
+                int visibleItemCount = recyclerView.getChildCount();
+
+                if (newState == RecyclerView.SCROLL_STATE_IDLE
+                        && lastVisibleItemPosition == totalItemCount - 1
+                        && visibleItemCount > 0) {
+                    //加载更多
+//                    ToastUtil.s("滑到底部啦..");
+                    loadBefore();
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
         srlRefresh.setRefreshing(true);
         srlRefresh.setColorSchemeColors(getResources().getColor(R.color.themecolor));
         srlRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -125,6 +151,41 @@ public class MainFragment extends Fragment {
         });
         getNews();
         return view;
+    }
+
+    private int count;
+    long time = new Date().getTime();
+    private void loadBefore() {
+        final long time_new = time - 1000 * 60 * 60 * 24 * count ++;
+        String date = new SimpleDateFormat("yyyyMMdd").format(time_new);
+        service.getBefore(date)
+                .clone()
+                .enqueue(new Callback<ResultZhihu>() {
+                    @Override
+                    public void onResponse(Call<ResultZhihu> call, Response<ResultZhihu> response) {
+                        ResultZhihu zhihu = response.body();
+                        if(zhihu == null){
+                            ToastUtil.s(response.body() + "为空");
+                            LogUtil.l(response.body() + "为空");
+                            return;
+                        }
+                        ToastUtil.s(new SimpleDateFormat("yyyy年M月d日").format(time_new));
+                        LogUtil.d("日期：" + new SimpleDateFormat("yyyy年M月d日").format(time_new));
+                        List<Storie> stories = zhihu.getStories();
+//                        if (stories != null) {
+//                            for (Storie s : stories) {
+//                                map.put(s.getId(), s);
+//                            }
+//                        }
+                        zhihus.addAll(stories);
+                        mAdapter.replaceData(zhihus);
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResultZhihu> call, Throwable t) {
+
+                    }
+                });
     }
 
     private void getNews() {
@@ -142,8 +203,6 @@ public class MainFragment extends Fragment {
                             LogUtil.l(zhihu.toString());
                             List<TopStorie> topStories = zhihu.getTop_stories();
                             List<Storie> stories = zhihu.getStories();
-                            List<Zhihu> zhihus = new ArrayList<>();
-                            Map<Long, Zhihu> map = new HashMap<>();
                             if (topStories != null) {
                                 for (TopStorie ts : topStories) {
                                     map.put(ts.getId(), ts);
@@ -167,4 +226,6 @@ public class MainFragment extends Fragment {
                     }
                 });
     }
+
+
 }

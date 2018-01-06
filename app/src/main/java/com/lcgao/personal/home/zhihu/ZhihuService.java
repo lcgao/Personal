@@ -12,6 +12,10 @@ public interface ZhihuService {
 
     @GET("api/4/news/latest")
     Call<ResultZhihu> getLatestZhihu();
+
     @GET("api/4/news/{id}")
     Call<NewsInfo> getNewsInfo(@Path("id") String id);
+
+    @GET("api/4/news/before/{date}")
+    Call<ResultZhihu> getBefore(@Path("date") String date);
 }

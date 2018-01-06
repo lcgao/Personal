@@ -33,6 +33,14 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<ViewHolder>{
         notifyDataSetChanged();
     }
 
+    public void addData(List<T> data) {
+        if(data == null || data.size() == 0){
+            return;
+        }
+        this.mData.addAll(data);
+        notifyDataSetChanged();
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return ViewHolder.get(mContext, parent, mLayoutId);
