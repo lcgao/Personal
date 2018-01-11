@@ -78,7 +78,7 @@ public class MainActivity extends BaseActivity {
             }
         });
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("知乎日报");
+        toolbar.setTitle("Time");
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

@@ -1,4 +1,4 @@
-package com.lcgao.personal.home;
+package com.lcgao.personal.home.zhihu;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -49,7 +49,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by lcgao on 2018/1/2.
  */
 
-public class MainFragment extends Fragment {
+public class ZhihuFragment extends Fragment {
     @BindView(R.id.rv_fragment_main)
     RecyclerView rvZhihu;
     @BindView(R.id.srl_fragment_main_refresh)
@@ -111,7 +111,7 @@ public class MainFragment extends Fragment {
                         intent.putExtras(bundle);
                         startActivity(intent);
 //                        webViewFragment.setArguments(bundle);
-//                        ft.hide(MainFragment.this);
+//                        ft.hide(ZhihuFragment.this);
 //                        ft.add(R.id.content, webViewFragment);
 //                        ft.addToBackStack("webview");
 //                        ft.commit();
