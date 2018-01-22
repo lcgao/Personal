@@ -5,6 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.lcgao.personal.R;
+import com.lcgao.personal.util.LogUtil;
+
 import java.util.List;
 
 /**
@@ -18,6 +21,8 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<ViewHolder>{
     private int mLayoutId;
 
     public CommonAdapter(Context context, int layoutId, List<T> data){
+        LogUtil.d("===CommonAdapter()===  ");
+
         this.mContext = context;
         this.mLayoutId = layoutId;
         this.mData = data;
@@ -43,16 +48,22 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<ViewHolder>{
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LogUtil.l("===onCreateViewHolder()===  ");
+
         return ViewHolder.get(mContext, parent, mLayoutId);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        LogUtil.l("===onBindViewHolder()===  ");
+
         convert(holder, mData.get(position));
     }
 
     @Override
     public int getItemCount() {
+        LogUtil.l("===getItemCount()===  ");
+
         return mData.size();
     }
 

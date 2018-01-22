@@ -8,11 +8,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,6 +56,8 @@ public class ZhihuFragment extends Fragment {
     RecyclerView rvZhihu;
     @BindView(R.id.srl_fragment_main_refresh)
     SwipeRefreshLayout srlRefresh;
+    @BindView(R.id.ll_nothing)
+    LinearLayout llNothing;
     private CommonAdapter<Zhihu> mAdapter;
     private Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd hh:mm:ss")
@@ -215,7 +219,8 @@ public class ZhihuFragment extends Fragment {
                             }
                             zhihus.addAll(map.values());
                             ToastUtil.s("更新" + zhihus.size() + "条");
-                            mAdapter.replaceData(zhihus);
+//                            mAdapter.replaceData(zhihus);
+                            setData(null);
                         }
                     }
 
@@ -225,6 +230,15 @@ public class ZhihuFragment extends Fragment {
                         LogUtil.l("请求失败，" + t.getMessage());
                     }
                 });
+    }
+
+    public void setData(List<Zhihu> zhihus){
+        if(zhihus == null || zhihus.size() == 0){
+            llNothing.setVisibility(View.VISIBLE);
+            return;
+        }
+        llNothing.setVisibility(View.GONE);
+        mAdapter.replaceData(zhihus);
     }
 
 
