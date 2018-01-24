@@ -220,7 +220,7 @@ public class ZhihuFragment extends Fragment {
                             zhihus.addAll(map.values());
                             ToastUtil.s("更新" + zhihus.size() + "条");
 //                            mAdapter.replaceData(zhihus);
-                            setData(null);
+                            setData(zhihus);
                         }
                     }
 
