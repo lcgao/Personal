@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lcgao.personal.R;
+import com.lcgao.personal.favourite.express.ExpressSearchActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -24,11 +25,15 @@ public class FavouriteFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_favorite, container, false);
         ButterKnife.bind(this, view);
+        initView();
         return view;
     }
 
-    @OnClick(R.id.btn_frag_favourite_search)
+    private void initView() {
+    }
+
+    @OnClick(R.id.layout_express)
     public void onClickSearch() {
-        startActivity(new Intent(getActivity(), ExpressesActivity.class));
+        startActivity(new Intent(getActivity(), ExpressSearchActivity.class));
     }
 }

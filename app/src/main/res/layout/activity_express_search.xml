@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/themecolor"
+            android:paddingTop="25dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/et_act_express_search_express_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:focusable="false"
+            android:hint="快递公司"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="选择快递公司"
+            android:textSize="15sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+
+        >
+
+        <EditText
+            android:id="@+id/et_act_express_search_express_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="快递单号"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColorHint="@color/LightGrey"
+            android:textSize="15sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_act_express_search"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_btn"
+        android:text="查  询"
+        android:textColor="@color/white" />
+
+    <com.github.qing.stepviewlib.StepView
+        android:id="@+id/stepView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="10dp"
+        android:background="@color/white"
+        app:dotPosition="top"
+        app:lineColor="#eee"
+        app:lineWidth="1dp"
+        app:radius="5dp" />
+    <!--</ScrollView>-->
+
+</LinearLayout>

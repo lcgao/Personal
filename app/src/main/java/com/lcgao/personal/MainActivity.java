@@ -34,6 +34,9 @@ public class MainActivity extends BaseActivity {
     private static final int FRAGMENT_PROFILE = 2;
     @BindView(R.id.navigation_content_main)
     BottomNavigationView mNavigationView;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     FragmentManager fragmentManager;
 
     private Fragment mFragmentHome;
@@ -63,7 +66,7 @@ public class MainActivity extends BaseActivity {
         mNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.navigation_home:
                         showFragment(FRAGMENT_HOME);
                         return true;
@@ -77,7 +80,7 @@ public class MainActivity extends BaseActivity {
                 return false;
             }
         });
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Time");
         setSupportActionBar(toolbar);
 
@@ -105,49 +108,56 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    private void showFragment(int index){
+    private void showFragment(int index) {
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         hideFragment(transaction);
-        switch (index){
+        switch (index) {
             case FRAGMENT_HOME:
-                if(mFragmentHome == null){
+                if (mFragmentHome == null) {
                     mFragmentHome = new HomeFragment();
                     transaction.add(R.id.fragments, mFragmentHome);
-                }else {
+                } else {
                     transaction.show(mFragmentHome);
                 }
+                toolbar.setTitle("Time");
+
                 break;
             case FRAGMENT_FAVOURITE:
-                if(mFragmentFavourite == null){
+                if (mFragmentFavourite == null) {
                     mFragmentFavourite = new FavouriteFragment();
                     transaction.add(R.id.fragments, mFragmentFavourite);
+
                 } else {
                     transaction.show(mFragmentFavourite);
                 }
+                toolbar.setTitle("Favourite");
+
                 break;
             case FRAGMENT_PROFILE:
-                if(mFragmentProfile == null){
+                if (mFragmentProfile == null) {
                     mFragmentProfile = new ProfileFragment();
                     transaction.add(R.id.fragments, mFragmentProfile);
+
                 } else {
                     transaction.show(mFragmentProfile);
-
                 }
+                toolbar.setTitle("Profile");
+
                 break;
         }
         transaction.commit();
 
     }
 
-    private void hideFragment(FragmentTransaction transaction){
-        if(mFragmentHome != null){
+    private void hideFragment(FragmentTransaction transaction) {
+        if (mFragmentHome != null) {
             transaction.hide(mFragmentHome);
         }
-        if(mFragmentFavourite != null){
+        if (mFragmentFavourite != null) {
             transaction.hide(mFragmentFavourite);
         }
-        if(mFragmentProfile != null){
+        if (mFragmentProfile != null) {
             transaction.hide(mFragmentProfile);
         }
     }
@@ -215,10 +225,10 @@ public class MainActivity extends BaseActivity {
         return dp;
     }
 
-    public static float convertDpToPixel(float dp, Context context){
+    public static float convertDpToPixel(float dp, Context context) {
         Resources resources = context.getResources();
         DisplayMetrics metrics = resources.getDisplayMetrics();
-        float px = dp * ((float)metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+        float px = dp * ((float) metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
         return px;
     }
 

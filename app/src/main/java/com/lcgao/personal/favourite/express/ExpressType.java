@@ -1,4 +1,4 @@
-package com.lcgao.personal.favourite;
+package com.lcgao.personal.favourite.express;
 
 import me.yokeyword.indexablerv.IndexableEntity;
 

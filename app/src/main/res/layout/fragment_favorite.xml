@@ -1,40 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <!--<android.support.v7.widget.SearchView.SearchAutoComplete-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="10dp"-->
-        <!--android:layout_marginRight="10dp"-->
-        <!--android:layout_marginLeft="10dp"-->
-        <!--android:text=""-->
-        <!--/>-->
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <android.support.design.widget.TextInputLayout
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="13sp"
+        android:text="生活"/>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="快递单号"
+        android:orientation="horizontal"
+        android:background="@color/white"
         >
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/et_frag_favourite_express_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text=""
+        <include layout="@layout/item_grid_view"
+            android:id="@+id/layout_express"
             />
-    </android.support.design.widget.TextInputLayout>
-    <Button
-        android:id="@+id/btn_frag_favourite_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="40dp"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:text="快递查询"
-        android:background="@drawable/shape_btn"
-        android:textColor="@color/white"
-        />
+        <!--<View-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/WhiteSmoke"-->
+            <!--/>-->
+        <!--<include layout="@layout/item_grid_view"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:layout_weight="1"-->
+            <!--/>-->
+        <!--<View-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/WhiteSmoke"-->
+
+            <!--/>-->
+        <!--<include layout="@layout/item_grid_view"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:layout_weight="1"-->
+            <!--/>-->
+        <!--<View-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/WhiteSmoke"-->
+
+            <!--/>-->
+        <!--<include layout="@layout/item_grid_view"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:layout_weight="1"-->
+            <!--/>-->
+    </LinearLayout>
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="2dp"-->
+        <!--android:background="@color/WhiteSmoke"-->
+
+        <!--/>-->
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:textSize="13sp"-->
+        <!--android:text="生活"/>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="80dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:background="@color/white"-->
+        <!--&gt;-->
+        <!--<include layout="@layout/item_grid_view"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:layout_weight="1"-->
+            <!--/>-->
+        <!--<View-->
+            <!--android:layout_width="2dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/WhiteSmoke"-->
+
+            <!--/>-->
+        <!--<include layout="@layout/item_grid_view"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:layout_weight="1"-->
+            <!--/>-->
+        <!--<View-->
+            <!--android:layout_width="2dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/WhiteSmoke"-->
+
+            <!--/>-->
+        <!--<include layout="@layout/item_grid_view"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:layout_weight="1"-->
+            <!--/>-->
+        <!--<View-->
+            <!--android:layout_width="2dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/WhiteSmoke"-->
+
+            <!--/>-->
+        <!--<include layout="@layout/item_grid_view"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:layout_weight="1"-->
+            <!--/>-->
+    <!--</LinearLayout>-->
 
 </LinearLayout>

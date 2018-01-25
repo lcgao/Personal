@@ -10,34 +10,50 @@
     android:fitsSystemWindows="false"
     android:orientation="vertical">
 
-    <LinearLayout
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="vertical"-->
+    <!--&gt;-->
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:background="@color/themecolor"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingBottom="40dp"
-        android:paddingTop="40dp">
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="83dp"
+            android:background="@color/themecolor"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-
-            android:id="@+id/circleImageView"
-            app:civ_border_color="@color/white"
-            app:civ_border_overlay="true"
-            app:civ_border_width="1dp"
-            android:layout_width="85dp"
-            android:layout_height="85dp"
-            android:src="@drawable/head_image" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="lcgao"
-            android:textColor="@color/white" />
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingTop="40dp">
 
-    </LinearLayout>
+            <de.hdodenhof.circleimageview.CircleImageView
+
+                android:id="@+id/circleImageView"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/head_image"
+                app:civ_border_color="@color/white"
+                app:civ_border_overlay="true"
+                app:civ_border_width="1dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="lcgao"
+                android:textColor="@color/black" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!--</LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,12 +70,12 @@
             android:paddingLeft="10dp">
 
             <ImageView
-                app:srcCompat="@drawable/ic_note"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="15dp"
-                android:tint="@color/theme_gray" />
+                android:tint="@color/theme_gray"
+                app:srcCompat="@drawable/ic_note" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -77,12 +93,12 @@
             android:paddingLeft="10dp">
 
             <ImageView
-                app:srcCompat="@drawable/ic_diary"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="15dp"
-                android:tint="@color/theme_gray" />
+                android:tint="@color/theme_gray"
+                app:srcCompat="@drawable/ic_diary" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -100,12 +116,12 @@
             android:paddingLeft="10dp">
 
             <ImageView
-                app:srcCompat="@drawable/ic_essay"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="15dp"
-                android:tint="@color/theme_gray" />
+                android:tint="@color/theme_gray"
+                app:srcCompat="@drawable/ic_essay" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -124,12 +140,12 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                app:srcCompat="@drawable/ic_entertainment"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="15dp"
-                android:tint="@color/theme_gray" />
+                android:tint="@color/theme_gray"
+                app:srcCompat="@drawable/ic_entertainment" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -150,8 +166,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_sunny"
-            android:tint="@color/theme_gray" />
+            android:tint="@color/theme_gray"
+            app:srcCompat="@drawable/ic_sunny" />
 
         <TextView
             android:layout_width="0dp"
@@ -165,8 +181,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_location"
-            android:tint="@color/theme_gray" />
+            android:tint="@color/theme_gray"
+            app:srcCompat="@drawable/ic_location" />
 
         <TextView
             android:layout_width="wrap_content"

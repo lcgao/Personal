@@ -1,6 +1,7 @@
-package com.lcgao.personal.favourite;
+package com.lcgao.personal.favourite.express;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +11,6 @@ import android.view.View;
 import com.lcgao.personal.BaseActivity;
 import com.lcgao.personal.R;
 import com.lcgao.personal.util.LogUtil;
-import com.lcgao.personal.util.ToastUtil;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 import me.yokeyword.indexablerv.IndexableAdapter;
 import me.yokeyword.indexablerv.IndexableLayout;
 
-public class ExpressesActivity extends BaseActivity {
+public class ExpressesTypeActivity extends BaseActivity {
     @BindView(R.id.il_act_express)
     IndexableLayout ilExpress;
     @BindView(R.id.toolbar)
@@ -44,7 +44,7 @@ public class ExpressesActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        ButterKnife.bind(ExpressesActivity.this);
+        ButterKnife.bind(ExpressesTypeActivity.this);
         toolbar.setTitle("快递公司");
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -55,16 +55,16 @@ public class ExpressesActivity extends BaseActivity {
         });
         toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
 
-        mAdapter = new ExpressTypeAdapter(ExpressesActivity.this);
+        mAdapter = new ExpressTypeAdapter(ExpressesTypeActivity.this);
 //        mAdapter.setDatas();
-        ilExpress.setLayoutManager(new LinearLayoutManager(ExpressesActivity.this));
+        ilExpress.setLayoutManager(new LinearLayoutManager(ExpressesTypeActivity.this));
         ilExpress.setOverlayStyle_MaterialDesign(getResources().getColor(R.color.themecolor));
         ilExpress.setCompareMode(IndexableLayout.MODE_ALL_LETTERS);
         ilExpress.setAdapter(mAdapter);
 //        new Thread(new Runnable() {
 //            @Override
 //            public void run() {
-        String json = getJson(ExpressesActivity.this, "express_type.json");
+        String json = getJson(ExpressesTypeActivity.this, "express_type.json");
 //                LogUtil.d(json);
         String[] datas = json.replace("{", "")
                 .replace("}", "")
@@ -82,7 +82,10 @@ public class ExpressesActivity extends BaseActivity {
         mAdapter.setOnItemContentClickListener(new IndexableAdapter.OnItemContentClickListener<ExpressType>() {
             @Override
             public void onItemClick(View v, int originalPosition, int currentPosition, ExpressType entity) {
-                ToastUtil.s(entity.getExpressType());
+                Intent intent = new Intent();
+                intent.putExtra("express_name", entity.getExpressName());
+                intent.putExtra("express_type", entity.getExpressType());
+                setResult(-1, intent);
                 finish();
             }
         });

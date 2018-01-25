@@ -1,4 +1,4 @@
-package com.lcgao.personal.favourite;
+package com.lcgao.personal.favourite.express;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
