@@ -1,11 +1,13 @@
 package com.lcgao.personal.favourite.express;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -38,8 +40,8 @@ public class ExpressSearchActivity extends BaseActivity {
     @BindView(R.id.stepView)
     StepView mStepView;
 
-
-    private String mExpressType;
+    private InputMethodManager inputMethodManager;
+    private String mExpressType = "jd";
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -68,6 +70,8 @@ public class ExpressSearchActivity extends BaseActivity {
     @Override
     public void initView() {
         ButterKnife.bind(ExpressSearchActivity.this);
+        inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
         toolbar.setTitle("快递查询");
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -96,6 +100,8 @@ public class ExpressSearchActivity extends BaseActivity {
             ToastUtil.s("请填写快递单号");
             return;
         }
+        inputMethodManager.hideSoftInputFromWindow(etExpressId.getWindowToken(), 0);
+
         etExpressId.setFocusable(false);
         etExpressId.setFocusableInTouchMode(true);
         Map<String, String> map = new HashMap<>();
@@ -155,7 +161,6 @@ public class ExpressSearchActivity extends BaseActivity {
             if (data != null) {
                 String expressName = data.getStringExtra("express_name");
                 mExpressType = data.getStringExtra("express_type");
-                ToastUtil.s(mExpressType);
                 etExpressName.setText(expressName);
             }
         }

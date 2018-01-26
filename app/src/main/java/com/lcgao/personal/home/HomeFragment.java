@@ -7,7 +7,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -17,6 +22,7 @@ import com.lcgao.personal.home.douban.DoubanFragment;
 import com.lcgao.personal.home.essay.EssayFragment;
 import com.lcgao.personal.home.one.OneFragment;
 import com.lcgao.personal.home.zhihu.ZhihuFragment;
+import com.lcgao.personal.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +40,13 @@ public class HomeFragment extends Fragment {
     TabLayout tlIndicator;
     @BindView(R.id.vp_fragment_home)
     ViewPager vpFragments;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setHasOptionsMenu(true);
     }
 
     @Nullable
@@ -51,6 +59,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void initView() {
+        toolbar.setTitle("Time");
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         List<String> titleList = new ArrayList<>();
         titleList.add("知乎日报");
         titleList.add("一个");
@@ -69,7 +79,36 @@ public class HomeFragment extends Fragment {
 
         vpFragments.setAdapter(fragmentAdapter);
 
-        tlIndicator.setupWithViewPager(vpFragments,false);
+        tlIndicator.setupWithViewPager(vpFragments, false);
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.my_navigation_items, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.navigation_home:
+                ToastUtil.s("Home");
+                break;
+            case R.id.navigation_favourite:
+                ToastUtil.s("Favourite");
+
+                break;
+            case R.id.navigation_profile:
+                ToastUtil.s("Profile");
+
+                break;
+            default:
+                ToastUtil.s("Default");
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

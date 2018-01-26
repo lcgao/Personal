@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
@@ -34,8 +35,8 @@ public class MainActivity extends BaseActivity {
     private static final int FRAGMENT_PROFILE = 2;
     @BindView(R.id.navigation_content_main)
     BottomNavigationView mNavigationView;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+//    @BindView(R.id.toolbar)
+//    Toolbar toolbar;
 
     FragmentManager fragmentManager;
 
@@ -81,8 +82,8 @@ public class MainActivity extends BaseActivity {
             }
         });
 //        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Time");
-        setSupportActionBar(toolbar);
+//        toolbar.setTitle("Time");
+//        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +121,7 @@ public class MainActivity extends BaseActivity {
                 } else {
                     transaction.show(mFragmentHome);
                 }
-                toolbar.setTitle("Time");
+//                toolbar.setTitle("Time");
 
                 break;
             case FRAGMENT_FAVOURITE:
@@ -131,7 +132,7 @@ public class MainActivity extends BaseActivity {
                 } else {
                     transaction.show(mFragmentFavourite);
                 }
-                toolbar.setTitle("Favourite");
+//                toolbar.setTitle("Favourite");
 
                 break;
             case FRAGMENT_PROFILE:
@@ -142,7 +143,7 @@ public class MainActivity extends BaseActivity {
                 } else {
                     transaction.show(mFragmentProfile);
                 }
-                toolbar.setTitle("Profile");
+//                toolbar.setTitle("Profile");
 
                 break;
         }
@@ -236,6 +237,11 @@ public class MainActivity extends BaseActivity {
     public void onBackPressed() {
         fragmentManager.popBackStack();
         super.onBackPressed();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+//        super.onSaveInstanceState(outState, outPersistentState);
     }
 
     //    @SuppressWarnings("StatementWithEmptyBody")
