@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.lcgao.personal.R;
 import com.lcgao.personal.favourite.express.ExpressSearchActivity;
 import com.lcgao.personal.favourite.music.MusicActivity;
+import com.lcgao.personal.favourite.news.NewsActivity;
 import com.lcgao.personal.util.ToastUtil;
 
 import butterknife.BindView;
@@ -53,6 +54,11 @@ public class FavouriteFragment extends Fragment{
     @OnClick(R.id.layout_music)
     public void onClickMusic(){
         startActivity(new Intent(getActivity(), MusicActivity.class));
+    }
+
+    @OnClick(R.id.layout_news)
+    public void onClickNews(){
+        startActivity(new Intent(getActivity(), NewsActivity.class));
     }
 
     @Override

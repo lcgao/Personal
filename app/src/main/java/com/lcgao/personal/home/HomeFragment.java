@@ -59,56 +59,68 @@ public class HomeFragment extends Fragment {
     }
 
     private void initView() {
-        toolbar.setTitle("Time");
+        toolbar.setTitle("阅读");
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         List<String> titleList = new ArrayList<>();
         titleList.add("知乎日报");
         titleList.add("一个");
         titleList.add("豆瓣电影");
         titleList.add("每日一文");
+//        titleList.add("每日一文");
+//        titleList.add("每日一文");
+//        titleList.add("每日一文");
+//        titleList.add("每日一文");
         List<Fragment> fragmentList = new ArrayList<>();
         ZhihuFragment zhihuFrag = new ZhihuFragment();
         OneFragment oneFrag = new OneFragment();
         DoubanFragment doubanFrag = new DoubanFragment();
         EssayFragment essayFrag = new EssayFragment();
+//        EssayFragment essayFrag1 = new EssayFragment();
+//        EssayFragment essayFrag2 = new EssayFragment();
+//        EssayFragment essayFrag3 = new EssayFragment();
+//        EssayFragment essayFrag4 = new EssayFragment();
         fragmentList.add(zhihuFrag);
         fragmentList.add(oneFrag);
         fragmentList.add(doubanFrag);
         fragmentList.add(essayFrag);
+//        fragmentList.add(essayFrag1);
+//        fragmentList.add(essayFrag2);
+//        fragmentList.add(essayFrag3);
+//        fragmentList.add(essayFrag4);
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getFragmentManager(), titleList, fragmentList);
 
         vpFragments.setAdapter(fragmentAdapter);
-
+//        tlIndicator.setTabMode(TabLayout.MODE_SCROLLABLE);
         tlIndicator.setupWithViewPager(vpFragments, false);
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.my_navigation_items, menu);
-        super.onCreateOptionsMenu(menu, inflater);
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        inflater.inflate(R.menu.my_navigation_items, menu);
+//        super.onCreateOptionsMenu(menu, inflater);
+//
+//    }
 
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.navigation_home:
-                ToastUtil.s("Home");
-                break;
-            case R.id.navigation_favourite:
-                ToastUtil.s("Favourite");
-
-                break;
-            case R.id.navigation_profile:
-                ToastUtil.s("Profile");
-
-                break;
-            default:
-                ToastUtil.s("Default");
-                break;
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//        switch (id) {
+//            case R.id.navigation_home:
+//                ToastUtil.s("Home");
+//                break;
+//            case R.id.navigation_favourite:
+//                ToastUtil.s("Favourite");
+//
+//                break;
+//            case R.id.navigation_profile:
+//                ToastUtil.s("Profile");
+//
+//                break;
+//            default:
+//                ToastUtil.s("Default");
+//                break;
+//
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }

@@ -5,8 +5,10 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -32,14 +34,7 @@ public class WebActivity extends BaseActivity {
     SwipeRefreshLayout srl_refresh;
     @BindView(R.id.tv_activity_web_title)
     TextView tvTitle;
-    private Gson gson = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd hh:mm:ss")
-            .create();
-    private Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://news-at.zhihu.com/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build();
-    private ZhihuService service = retrofit.create(ZhihuService.class);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +63,32 @@ public class WebActivity extends BaseActivity {
         Bundle bundle = intent.getExtras();
         String url = bundle.getString("url");
         String title = bundle.getString("title");
-        srl_refresh.setRefreshing(true);
         toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
-        service.getNewsInfo(bundle.getString("id"))
+        String id = bundle.getString("id");
+        if (TextUtils.isEmpty(id)) {
+            srl_refresh.setEnabled(false);
+            tvTitle.setText(title);
+            webView.loadUrl(url);
+            webView.getSettings().setJavaScriptEnabled(true);  //加上这一行网页为响应式的
+            webView.setWebViewClient(new WebViewClient(){
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                    view.loadUrl(url);
+                    return true;   //返回true， 立即跳转，返回false,打开网页有延时
+                }
+            });
+            return;
+        }
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd hh:mm:ss")
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://news-at.zhihu.com/")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        ZhihuService service = retrofit.create(ZhihuService.class);
+        srl_refresh.setRefreshing(true);
+        service.getNewsInfo(id)
                 .clone()
                 .enqueue(new Callback<NewsInfo>() {
                     @Override
@@ -79,7 +97,7 @@ public class WebActivity extends BaseActivity {
                         srl_refresh.setEnabled(false);
 
                         NewsInfo newsInfo = response.body();
-                        if(newsInfo == null){
+                        if (newsInfo == null) {
                             ToastUtil.s("response.body()为空");
                             return;
                         }

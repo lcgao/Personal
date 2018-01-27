@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,18 +21,12 @@ import com.lcgao.personal.R;
 import com.lcgao.personal.WebActivity;
 import com.lcgao.personal.adapter.CommonAdapter;
 import com.lcgao.personal.adapter.ViewHolder;
-import com.lcgao.personal.home.zhihu.ResultZhihu;
-import com.lcgao.personal.home.zhihu.Storie;
-import com.lcgao.personal.home.zhihu.TopStorie;
-import com.lcgao.personal.home.zhihu.Zhihu;
-import com.lcgao.personal.home.zhihu.ZhihuService;
 import com.lcgao.personal.util.LogUtil;
 import com.lcgao.personal.util.ToastUtil;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -82,7 +75,7 @@ public class ZhihuFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_default, container, false);
         ButterKnife.bind(this, view);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);

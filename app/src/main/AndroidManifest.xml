@@ -39,6 +39,10 @@
         <activity
             android:name=".favourite.music.MusicActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".favourite.news.NewsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>
