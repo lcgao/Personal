@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.webkit.DownloadListener;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lcgao.personal.home.zhihu.NewsInfo;
 import com.lcgao.personal.home.zhihu.ZhihuService;
+import com.lcgao.personal.profile.recent_read.RecentReadEntity;
 import com.lcgao.personal.util.ToastUtil;
 
 import butterknife.BindView;
@@ -34,7 +37,6 @@ public class WebActivity extends BaseActivity {
     SwipeRefreshLayout srl_refresh;
     @BindView(R.id.tv_activity_web_title)
     TextView tvTitle;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,24 +61,18 @@ public class WebActivity extends BaseActivity {
                 finish();
             }
         });
+        srl_refresh.setColorSchemeColors(getResources().getColor(R.color.themecolor)
+                , getResources().getColor(R.color.colorAccent));
+        srl_refresh.setRefreshing(true);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String url = bundle.getString("url");
-        String title = bundle.getString("title");
+        final String title = bundle.getString("title");
+        final String content = bundle.getString("content");
         toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
         String id = bundle.getString("id");
         if (TextUtils.isEmpty(id)) {
-            srl_refresh.setEnabled(false);
-            tvTitle.setText(title);
-            webView.loadUrl(url);
-            webView.getSettings().setJavaScriptEnabled(true);  //加上这一行网页为响应式的
-            webView.setWebViewClient(new WebViewClient(){
-                @Override
-                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                    view.loadUrl(url);
-                    return true;   //返回true， 立即跳转，返回false,打开网页有延时
-                }
-            });
+            load(url, title, content);
             return;
         }
         Gson gson = new GsonBuilder()
@@ -87,23 +83,20 @@ public class WebActivity extends BaseActivity {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         ZhihuService service = retrofit.create(ZhihuService.class);
-        srl_refresh.setRefreshing(true);
         service.getNewsInfo(id)
                 .clone()
                 .enqueue(new Callback<NewsInfo>() {
                     @Override
                     public void onResponse(Call<NewsInfo> call, Response<NewsInfo> response) {
-                        srl_refresh.setRefreshing(false);
-                        srl_refresh.setEnabled(false);
+//                        srl_refresh.setRefreshing(false);
+//                        srl_refresh.setEnabled(false);
 
                         NewsInfo newsInfo = response.body();
                         if (newsInfo == null) {
                             ToastUtil.s("response.body()为空");
                             return;
                         }
-
-                        tvTitle.setText(newsInfo.getTitle());
-                        webView.loadUrl(newsInfo.getShare_url());
+                        load(newsInfo.getShare_url(), newsInfo.getTitle(), "");
 
                     }
 
@@ -113,5 +106,29 @@ public class WebActivity extends BaseActivity {
                         srl_refresh.setEnabled(false);
                     }
                 });
+    }
+
+    private void load(String url, String title, String content) {
+
+        RecentReadEntity.addToReadHistory(new RecentReadEntity(url, title, content));
+        tvTitle.setText(title);
+        webView.loadUrl(url);
+        webView.getSettings().setJavaScriptEnabled(true);  //加上这一行网页为响应式的
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;   //返回true， 立即跳转，返回false,打开网页有延时
+            }
+        });
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                if (newProgress == 100) {
+                    srl_refresh.setRefreshing(false);
+                    srl_refresh.setEnabled(false);
+                }
+            }
+        });
     }
 }

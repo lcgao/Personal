@@ -59,7 +59,7 @@ public class NewsActivity extends BaseActivity {
         toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
         List<String> titles = new ArrayList<>();
         titles.add("热点");
-        titles.add("视频");
+//        titles.add("视频");
         titles.add("娱乐");
         titles.add("问答");
         titles.add("图片");
@@ -68,9 +68,8 @@ public class NewsActivity extends BaseActivity {
         titles.add("体育");
         titles.add("财经");
         titles.add("军事");
-        titles.add("国际");
-        titles.add("段子");
-        titles.add("趣图");
+//        titles.add("国际");
+//        titles.add("段子");
         List<Fragment> fragments = new ArrayList<>();
         for (int i = 0; i < titles.size(); i++) {
             NewsFragment newsFragment = new NewsFragment();

@@ -30,7 +30,7 @@ public class ExpressTypeAdapter extends IndexableAdapter<ExpressType> {
 
     @Override
     public RecyclerView.ViewHolder onCreateContentViewHolder(ViewGroup parent) {
-        View view = mInflater.inflate(R.layout.item_express_type, parent, false);
+        View view = mInflater.inflate(R.layout.item_text_only, parent, false);
         return new ContentVH(view);
     }
 
@@ -59,7 +59,8 @@ public class ExpressTypeAdapter extends IndexableAdapter<ExpressType> {
 
         public ContentVH(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.tv_item_express_type_name);
+            textView = (TextView) itemView.findViewById(R.id.tv_item_text_only_title);
+            itemView.findViewById(R.id.tv_item_text_only_content).setVisibility(View.GONE);
         }
     }
 

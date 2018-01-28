@@ -48,8 +48,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NewsFragment extends Fragment {
     private String mCategory;
 
-    @BindView(R.id.tv_nothing_tip)
-    TextView tv_content;
+//    @BindView(R.id.tv_nothing_tip)
+//    TextView tv_content;
     @BindView(R.id.rv_fragment_main)
     RecyclerView recyclerView;
     @BindView(R.id.ll_nothing)
@@ -186,6 +186,7 @@ public class NewsFragment extends Fragment {
                         Bundle bundle = new Bundle();
                         bundle.putString("title", newsContent.getTitle());
                         bundle.putString("url", newsContent.getArticle_url());
+                        bundle.putString("content", newsContent.get_abstract());
                         Intent intent = new Intent(getActivity(), WebActivity.class);
                         intent.putExtras(bundle);
                         startActivity(intent);

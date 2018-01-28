@@ -58,14 +58,17 @@
 
             <cn.gavinliu.android.lib.shapedimageview.ShapedImageView
                 android:id="@+id/iv_image_item_news"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxWidth="130dp"
+                android:maxHeight="75dp"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/bg_top"
-                android:visibility="gone"
-                app:round_radius="3dp"
+                android:visibility="visible"
+                app:round_radius="5dp"
                 app:shape_mode="round_rect" />
 
 
@@ -99,8 +102,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-
-                    android:text=""
                     android:textColor="@color/theme_gray"
                     android:textSize="11sp" />
 

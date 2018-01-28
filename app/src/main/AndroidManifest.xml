@@ -42,7 +42,9 @@
         <activity
             android:name=".favourite.news.NewsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity
+            android:name=".profile.recent_read.RecentReadActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
