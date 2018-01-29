@@ -134,7 +134,6 @@ public class NewsFragment extends Fragment {
                 .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
-        NewsService mService = retrofit.create(NewsService.class);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);

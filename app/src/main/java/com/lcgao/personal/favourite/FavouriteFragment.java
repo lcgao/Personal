@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lcgao.personal.R;
+import com.lcgao.personal.TextActivity;
 import com.lcgao.personal.favourite.express.ExpressSearchActivity;
 import com.lcgao.personal.favourite.music.MusicActivity;
 import com.lcgao.personal.favourite.news.NewsActivity;
@@ -53,7 +54,7 @@ public class FavouriteFragment extends Fragment{
 
     @OnClick(R.id.layout_music)
     public void onClickMusic(){
-        startActivity(new Intent(getActivity(), MusicActivity.class));
+        startActivity(new Intent(getActivity(), TextActivity.class));
     }
 
     @OnClick(R.id.layout_news)

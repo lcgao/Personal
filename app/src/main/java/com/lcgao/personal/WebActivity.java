@@ -61,6 +61,8 @@ public class WebActivity extends BaseActivity {
                 finish();
             }
         });
+        toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
+
         srl_refresh.setColorSchemeColors(getResources().getColor(R.color.themecolor)
                 , getResources().getColor(R.color.colorAccent));
         srl_refresh.setRefreshing(true);
@@ -69,7 +71,6 @@ public class WebActivity extends BaseActivity {
         String url = bundle.getString("url");
         final String title = bundle.getString("title");
         final String content = bundle.getString("content");
-        toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
         String id = bundle.getString("id");
         if (TextUtils.isEmpty(id)) {
             load(url, title, content);

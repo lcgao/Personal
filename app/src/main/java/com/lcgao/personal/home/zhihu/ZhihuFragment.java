@@ -160,13 +160,14 @@ public class ZhihuFragment extends Fragment {
                 .enqueue(new Callback<ResultZhihu>() {
                     @Override
                     public void onResponse(Call<ResultZhihu> call, Response<ResultZhihu> response) {
+
                         ResultZhihu zhihu = response.body();
                         if(zhihu == null){
                             ToastUtil.s(response.body() + "为空");
                             LogUtil.l(response.body() + "为空");
                             return;
                         }
-                        ToastUtil.s(new SimpleDateFormat("yyyy年M月d日").format(time_new));
+//                        ToastUtil.s(new SimpleDateFormat("yyyy年M月d日").format(time_new));
                         LogUtil.d("日期：" + new SimpleDateFormat("yyyy年M月d日").format(time_new));
                         List<Storie> stories = zhihu.getStories();
 //                        if (stories != null) {
@@ -191,13 +192,15 @@ public class ZhihuFragment extends Fragment {
                 .enqueue(new Callback<ResultZhihu>() {
                     @Override
                     public void onResponse(Call<ResultZhihu> call, Response<ResultZhihu> response) {
+                        LogUtil.d(call.request());
+                        LogUtil.d(call.request().headers());
                         srlRefresh.setRefreshing(false);
                         ResultZhihu zhihu = response.body();
                         if (zhihu == null) {
                             ToastUtil.s(response.body() + "为空");
                             LogUtil.l(response.body() + "为空");
                         } else {
-                            LogUtil.l(zhihu.toString());
+//                            LogUtil.l(zhihu.toString());
                             List<TopStorie> topStories = zhihu.getTop_stories();
                             List<Storie> stories = zhihu.getStories();
                             if (topStories != null) {

@@ -60,12 +60,12 @@ public class NewsActivity extends BaseActivity {
         List<String> titles = new ArrayList<>();
         titles.add("热点");
 //        titles.add("视频");
+        titles.add("体育");
         titles.add("娱乐");
         titles.add("问答");
         titles.add("图片");
         titles.add("科技");
         titles.add("汽车");
-        titles.add("体育");
         titles.add("财经");
         titles.add("军事");
 //        titles.add("国际");

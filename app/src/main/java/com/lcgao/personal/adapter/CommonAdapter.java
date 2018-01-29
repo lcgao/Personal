@@ -21,7 +21,7 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<ViewHolder>{
     private int mLayoutId;
 
     public CommonAdapter(Context context, int layoutId, List<T> data){
-        LogUtil.d("===CommonAdapter()===  ");
+//        LogUtil.d("===CommonAdapter()===  ");
 
         this.mContext = context;
         this.mLayoutId = layoutId;
@@ -48,21 +48,21 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<ViewHolder>{
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LogUtil.l("===onCreateViewHolder()===  ");
+//        LogUtil.l("===onCreateViewHolder()===  ");
 
         return ViewHolder.get(mContext, parent, mLayoutId);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        LogUtil.l("===onBindViewHolder()===  ");
+//        LogUtil.l("===onBindViewHolder()===  ");
 
         convert(holder, mData.get(position));
     }
 
     @Override
     public int getItemCount() {
-        LogUtil.l("===getItemCount()===  ");
+//        LogUtil.l("===getItemCount()===  ");
 
         return mData.size();
     }

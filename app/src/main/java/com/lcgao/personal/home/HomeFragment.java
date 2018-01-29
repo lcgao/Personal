@@ -63,9 +63,9 @@ public class HomeFragment extends Fragment {
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         List<String> titleList = new ArrayList<>();
         titleList.add("知乎日报");
+        titleList.add("每日一文");
         titleList.add("一个");
         titleList.add("豆瓣电影");
-        titleList.add("每日一文");
 //        titleList.add("每日一文");
 //        titleList.add("每日一文");
 //        titleList.add("每日一文");
@@ -80,9 +80,9 @@ public class HomeFragment extends Fragment {
 //        EssayFragment essayFrag3 = new EssayFragment();
 //        EssayFragment essayFrag4 = new EssayFragment();
         fragmentList.add(zhihuFrag);
+        fragmentList.add(essayFrag);
         fragmentList.add(oneFrag);
         fragmentList.add(doubanFrag);
-        fragmentList.add(essayFrag);
 //        fragmentList.add(essayFrag1);
 //        fragmentList.add(essayFrag2);
 //        fragmentList.add(essayFrag3);

@@ -45,6 +45,8 @@
         <activity
             android:name=".profile.recent_read.RecentReadActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".TextActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

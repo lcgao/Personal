@@ -67,7 +67,7 @@
                 android:layout_marginLeft="10dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/bg_top"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:round_radius="5dp"
                 app:shape_mode="round_rect" />
 
