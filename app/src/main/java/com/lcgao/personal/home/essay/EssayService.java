@@ -13,6 +13,6 @@ import retrofit2.http.Url;
  */
 
 public interface EssayService {
-    @GET("random")
-    Call<ResponseBody> getEssay(@QueryMap Map<String, String> map);
+    @GET("day")
+    Call<EssayData> getEssay(@QueryMap Map<String, String> map);
 }

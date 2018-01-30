@@ -14,6 +14,8 @@ public class TextActivity extends BaseActivity {
     Toolbar toolbar;
     @BindView(R.id.tv_act_text)
     TextView textView;
+    @BindView(R.id.tv_activity_text_title)
+    TextView mTitle;
 
     String title;
     String content;
@@ -29,7 +31,7 @@ public class TextActivity extends BaseActivity {
 
     @Override
     public void initParas(Bundle paras) {
-        if(paras == null){
+        if (paras == null) {
             return;
         }
         title = paras.getString("title");
@@ -40,7 +42,7 @@ public class TextActivity extends BaseActivity {
     @Override
     public void initView() {
         ButterKnife.bind(TextActivity.this);
-        toolbar.setTitle(title);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,9 +51,10 @@ public class TextActivity extends BaseActivity {
             }
         });
         toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
-        if(isHtml){
+        mTitle.setText(title);
+        if (isHtml) {
             textView.setText(Html.fromHtml(content));
-        }else {
+        } else {
             textView.setText(content);
         }
     }

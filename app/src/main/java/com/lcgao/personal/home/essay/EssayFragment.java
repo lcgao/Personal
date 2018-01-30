@@ -1,5 +1,8 @@
 package com.lcgao.personal.home.essay;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,20 +18,26 @@ import android.widget.LinearLayout;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lcgao.personal.R;
+import com.lcgao.personal.TextActivity;
 import com.lcgao.personal.adapter.CommonAdapter;
 import com.lcgao.personal.adapter.ViewHolder;
 import com.lcgao.personal.util.LogUtil;
 import com.lcgao.personal.util.ToastUtil;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,6 +65,7 @@ public class EssayFragment extends Fragment {
             .create();
     private Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://interface.meiriyiwen.com/article/")
+            .client(initClient())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build();
     private EssayService mService = retrofit.create(EssayService.class);
@@ -76,82 +86,86 @@ public class EssayFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.getItemAnimator().setChangeDuration(0);
-        mAdapter = new CommonAdapter<EssayEntity>(getActivity(), R.layout.item_news, new ArrayList<EssayEntity>()){
+        mAdapter = new CommonAdapter<EssayEntity>(getActivity(), R.layout.item_news, new ArrayList<EssayEntity>()) {
 
             @Override
-            public void convert(ViewHolder holder, EssayEntity essayEntity) {
-                holder.setText(R.id.tv_title_item_news, essayEntity.getTitle() + " -- " +essayEntity.getAuthor());
+            public void convert(ViewHolder holder, final EssayEntity essayEntity) {
+                holder.setText(R.id.tv_title_item_news, "《 " + essayEntity.getTitle() + " 》· " + essayEntity.getAuthor());
                 holder.setText(R.id.tv_content_item_news, essayEntity.getDigest());
                 holder.setVisibility(R.id.iv_image_item_news, View.GONE);
+                holder.setOnClickListener(R.id.ll_item_news, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("title", "《 " + essayEntity.getTitle() + " 》· " + essayEntity.getAuthor());
+                        bundle.putString("content", essayEntity.getContent());
+                        bundle.putBoolean("is_html", true);
+                        Intent intent = new Intent(getActivity(), TextActivity.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                });
             }
         };
         recyclerView.setAdapter(mAdapter);
-//        getEssays(new SimpleDateFormat("yyyyMMdd").format(new Date()));
+        srlRefresh.setRefreshing(true);
+        srlRefresh.setColorSchemeColors(getResources().getColor(R.color.themecolor));
+        srlRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mCount = 10;
+                mEssayEntities.clear();
+                getEssays(new SimpleDateFormat("yyyyMMdd").format(new Date()));
+            }
+        });
+        getEssays(new SimpleDateFormat("yyyyMMdd").format(new Date()));
     }
 
-    private void getEssays(String date){
-        if(TextUtils.isEmpty(date) || mCount == 0){
-            if(mAdapter != null){
+    private void getEssays(String date) {
+        if (TextUtils.isEmpty(date) || mCount == 0) {
+            if (mAdapter != null) {
                 setData(mEssayEntities);
             }
             return;
         }
         Map<String, String> map = new HashMap<>();
-//        map.put("date", date);
+        map.put("date", date);
         map.put("dev", "1");
         mService.getEssay(map)
                 .clone()
-                .enqueue(new Callback<ResponseBody>() {
+                .enqueue(new Callback<EssayData>() {
                     @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        LogUtil.d(call.request());
+                    public void onResponse(Call<EssayData> call, Response<EssayData> response) {
                         LogUtil.d(response.toString());
-                        ResponseBody data = response.body();
-                        if(data == null){
+                        EssayData data = response.body();
+                        if (data == null) {
                             ToastUtil.s("Essay response.body()为空");
                             LogUtil.l("Essay response.body()为空");
                             return;
                         }
+                        EssayEntity essayEntity = data.getData();
+                        if (essayEntity == null) {
+                            ToastUtil.s("Essay data为空");
+                            LogUtil.l("Essay data为空");
+                            return;
+                        }
+                        mEssayEntities.add(essayEntity);
+                        mCount--;
+                        getEssays(essayEntity.getDate().getPrev());
                     }
 
                     @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-
+                    public void onFailure(Call<EssayData> call, Throwable t) {
+                        srlRefresh.setRefreshing(false);
+                        ToastUtil.s(t.getMessage());
+                        LogUtil.l("请求失败，" + t.getMessage());
                     }
                 });
-//        mService.getEssay(map)
-//                .clone()
-//                .enqueue(new Callback<EssayData>() {
-//                    @Override
-//                    public void onResponse(Call<EssayData> call, Response<EssayData> response) {
-//                        LogUtil.d(response.toString());
-//                        EssayData data = response.body();
-//                        if(data == null){
-//                            ToastUtil.s("Essay response.body()为空");
-//                            LogUtil.l("Essay response.body()为空");
-//                            return;
-//                        }
-//                        EssayEntity essayEntity = data.getData();
-//                        if(essayEntity == null){
-//                            ToastUtil.s("Essay data为空");
-//                            LogUtil.l("Essay data为空");
-//                            return;
-//                        }
-//                        mEssayEntities.add(essayEntity);
-//                        mCount --;
-//                        getEssays(essayEntity.getDate().getPrev());
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<EssayData> call, Throwable t) {
-//                        ToastUtil.s(t.getMessage());
-//                        LogUtil.l("请求失败，" + t.getMessage());
-//                    }
-//                });
     }
 
-    public void setData(List<EssayEntity> essayEntities){
-        if(essayEntities == null || essayEntities.size() == 0){
+    public void setData(List<EssayEntity> essayEntities) {
+        srlRefresh.setRefreshing(false);
+        if (essayEntities == null || essayEntities.size() == 0) {
             llNothing.setVisibility(View.VISIBLE);
             return;
         }
@@ -159,16 +173,35 @@ public class EssayFragment extends Fragment {
         mAdapter.replaceData(essayEntities);
     }
 
-    private List<String> getLastWeekDate(){
+    private List<String> getLastWeekDate() {
         List<String> week = new ArrayList<>();
         Date date = new Date();
         long now = date.getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         long oneDay = 1000 * 60 * 60 * 24;
-        for(int i = 0; i < 7; i ++){
+        for (int i = 0; i < 7; i++) {
             week.add(sdf.format(now));
             now -= oneDay;
         }
         return week;
     }
+
+    private OkHttpClient initClient() {
+        return new OkHttpClient.Builder()
+                .connectTimeout(5000, TimeUnit.MILLISECONDS)
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public okhttp3.Response intercept(Chain chain) throws IOException {
+                        Request request = chain.request();
+
+                        request = request.newBuilder()
+                                .addHeader("User-Agent", "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36")
+                                .build();
+                        return chain.proceed(request);
+                    }
+                })
+                .build();
+    }
+
+    ;
 }
