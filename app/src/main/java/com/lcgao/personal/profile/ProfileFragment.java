@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.lcgao.personal.R;
 import com.lcgao.personal.profile.recent_read.RecentReadActivity;
+import com.lcgao.personal.profile.setting.SettingActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -33,6 +34,10 @@ public class ProfileFragment extends Fragment{
         startActivity(new Intent(getActivity(), RecentReadActivity.class));
     }
 
+    @OnClick(R.id.layout_setting)
+    public void onClickSetting(){
+        startActivity(new Intent(getActivity(), SettingActivity.class));
+    }
     private void initView() {
 
     }

@@ -63,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:text="快递查询"
+                android:textSize="15sp"
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -101,7 +102,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:text="音乐"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                />
 
         </LinearLayout>
         <View
@@ -135,7 +138,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:text="微博"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                />
 
         </LinearLayout>
         <TextView
@@ -172,7 +177,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:text="头条新闻"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                />
 
         </LinearLayout>
 

@@ -6,16 +6,10 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:clickable="true"
+    android:background="@color/WhiteSmoke"
     android:fitsSystemWindows="false"
     android:orientation="vertical">
 
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="center_vertical"-->
-    <!--android:gravity="center"-->
-    <!--android:orientation="vertical"-->
-    <!--&gt;-->
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,9 +51,9 @@
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:src="@drawable/head_image"
-                app:civ_border_color="@color/white"
+                app:civ_border_color="@color/WhiteSmoke"
                 app:civ_border_overlay="true"
-                app:civ_border_width="1dp" />
+                app:civ_border_width="3dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -108,7 +102,7 @@
                 android:layout_marginLeft="16dp"
                 android:text="我的创作"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -145,7 +139,7 @@
                 android:layout_marginLeft="16dp"
                 android:text="我的收藏"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -174,7 +168,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingBottom="12dp"
-            android:paddingLeft="16dp"
+            android:paddingLeft="15dp"
             android:paddingRight="20dp"
             android:paddingTop="12dp"
             >
@@ -190,7 +184,7 @@
                 android:layout_marginLeft="16dp"
                 android:text="最近浏览"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
         </LinearLayout>
         <View
             android:layout_width="match_parent"
@@ -222,7 +216,7 @@
                 android:layout_marginLeft="40dp"
                 android:text="夜间模式"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -259,7 +253,7 @@
                 android:layout_marginLeft="16dp"
                 android:text="设置"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
 
