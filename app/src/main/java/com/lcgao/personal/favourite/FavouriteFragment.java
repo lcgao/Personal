@@ -54,7 +54,7 @@ public class FavouriteFragment extends Fragment{
 
     @OnClick(R.id.layout_music)
     public void onClickMusic(){
-        startActivity(new Intent(getActivity(), TextActivity.class));
+        startActivity(new Intent(getActivity(), MusicActivity.class));
     }
 
     @OnClick(R.id.layout_news)

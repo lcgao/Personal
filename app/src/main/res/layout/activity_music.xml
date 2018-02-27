@@ -22,9 +22,12 @@
 
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        app:srcCompat="@drawable/ic_music_box"/>
+    <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="center"-->
+        <!--app:srcCompat="@drawable/ic_music_box"/>-->
+    <com.lcgao.personal.widget.DrawCircleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

@@ -66,27 +66,15 @@ public class HomeFragment extends Fragment {
         titleList.add("每日一文");
         titleList.add("一个");
         titleList.add("豆瓣电影");
-//        titleList.add("每日一文");
-//        titleList.add("每日一文");
-//        titleList.add("每日一文");
-//        titleList.add("每日一文");
         List<Fragment> fragmentList = new ArrayList<>();
         ZhihuFragment zhihuFrag = new ZhihuFragment();
         OneFragment oneFrag = new OneFragment();
         DoubanFragment doubanFrag = new DoubanFragment();
         EssayFragment essayFrag = new EssayFragment();
-//        EssayFragment essayFrag1 = new EssayFragment();
-//        EssayFragment essayFrag2 = new EssayFragment();
-//        EssayFragment essayFrag3 = new EssayFragment();
-//        EssayFragment essayFrag4 = new EssayFragment();
         fragmentList.add(zhihuFrag);
         fragmentList.add(essayFrag);
         fragmentList.add(oneFrag);
         fragmentList.add(doubanFrag);
-//        fragmentList.add(essayFrag1);
-//        fragmentList.add(essayFrag2);
-//        fragmentList.add(essayFrag3);
-//        fragmentList.add(essayFrag4);
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getFragmentManager(), titleList, fragmentList);
 
         vpFragments.setAdapter(fragmentAdapter);
@@ -123,4 +111,10 @@ public class HomeFragment extends Fragment {
 //        }
 //        return super.onOptionsItemSelected(item);
 //    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+    }
 }
