@@ -136,7 +136,7 @@ public class EssayFragment extends Fragment {
                 .enqueue(new Callback<EssayData>() {
                     @Override
                     public void onResponse(Call<EssayData> call, Response<EssayData> response) {
-                        LogUtil.d(response.toString());
+//                        LogUtil.d(response.toString());
                         EssayData data = response.body();
                         if (data == null) {
                             ToastUtil.s("Essay response.body()为空");

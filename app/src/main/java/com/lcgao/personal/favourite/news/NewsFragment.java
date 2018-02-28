@@ -9,12 +9,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,7 +24,6 @@ import com.lcgao.personal.util.LogUtil;
 import com.lcgao.personal.util.ToastUtil;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,7 +31,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

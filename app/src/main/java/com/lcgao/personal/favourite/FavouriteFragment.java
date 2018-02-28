@@ -18,6 +18,7 @@ import com.lcgao.personal.TextActivity;
 import com.lcgao.personal.favourite.express.ExpressSearchActivity;
 import com.lcgao.personal.favourite.music.MusicActivity;
 import com.lcgao.personal.favourite.news.NewsActivity;
+import com.lcgao.personal.favourite.practice_custom_view.PracticeActivity;
 import com.lcgao.personal.util.ToastUtil;
 
 import butterknife.BindView;
@@ -60,6 +61,11 @@ public class FavouriteFragment extends Fragment{
     @OnClick(R.id.layout_news)
     public void onClickNews(){
         startActivity(new Intent(getActivity(), NewsActivity.class));
+    }
+
+    @OnClick(R.id.layout_practice)
+    public void onClickPractice() {
+        startActivity(new Intent(getActivity(), PracticeActivity.class));
     }
 
     @Override

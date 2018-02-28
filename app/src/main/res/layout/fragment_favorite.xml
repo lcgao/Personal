@@ -182,6 +182,45 @@
                 />
 
         </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="练习"
+            android:background="@color/WhiteSmoke"
+            android:textSize="12sp" />
+        <LinearLayout
+            android:id="@+id/layout_practice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tint="@color/themecolor"
+                app:srcCompat="@drawable/ic_eye_open" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="HenCoder自定义View系列"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
 

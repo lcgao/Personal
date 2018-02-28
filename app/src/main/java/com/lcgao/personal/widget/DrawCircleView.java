@@ -66,9 +66,9 @@ public class DrawCircleView extends View {
 
         paint4 = new Paint();
         paint4.setColor(Color.BLACK);
-        paint4.setStyle(Paint.Style.STROKE);
+        paint4.setStyle(Paint.Style.FILL);
         paint4.setAntiAlias(true);
-        paint4.setStrokeWidth(80);
+//        paint4.setStrokeWidth(80);
         path = new Path();
     }
 
@@ -81,12 +81,12 @@ public class DrawCircleView extends View {
 
         canvas.drawCircle(300, 800, 200, paint3);
 
-        canvas.drawCircle(800, 800, 200, paint4);
-//        path.addCircle(800, 800, 200, Path.Direction.CCW); // CW为顺时针
-//        path.addCircle(800, 800, 120, Path.Direction.CW); // CCW为逆时针
-////        path.setFillType(Path.FillType.EVEN_ODD);
-////        path.setFillType(Path.FillType.EVEN_ODD);
-//        canvas.drawPath(path, paint4);
+//        canvas.drawCircle(800, 800, 200, paint4);
+        path.addCircle(800, 800, 200, Path.Direction.CW); // CW为顺时针
+        path.addCircle(800, 800, 120, Path.Direction.CW); // CCW为逆时针
+//        path.setFillType(Path.FillType.EVEN_ODD);
+        path.setFillType(Path.FillType.EVEN_ODD);
+        canvas.drawPath(path, paint4);
 
     }
 

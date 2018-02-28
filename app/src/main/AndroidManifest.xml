@@ -27,21 +27,17 @@
     ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
         -->
-        <activity
-            android:name=".WebActivity" />
-        <activity
-            android:name=".favourite.express.ExpressesTypeActivity" />
-        <activity
-            android:name=".favourite.express.ExpressSearchActivity" />
-        <activity
-            android:name=".favourite.music.MusicActivity" />
-        <activity
-            android:name=".favourite.news.NewsActivity" />
-        <activity
-            android:name=".profile.recent_read.RecentReadActivity" />
-        <activity
-            android:name=".TextActivity"/>
+        <activity android:name=".WebActivity" />
+        <activity android:name=".favourite.express.ExpressesTypeActivity" />
+        <activity android:name=".favourite.express.ExpressSearchActivity" />
+        <activity android:name=".favourite.music.MusicActivity" />
+        <activity android:name=".favourite.news.NewsActivity" />
+        <activity android:name=".profile.recent_read.RecentReadActivity" />
+        <activity android:name=".TextActivity" />
         <activity android:name=".profile.setting.SettingActivity" />
+        <activity
+            android:name=".favourite.practice_custom_view.PracticeActivity"
+            android:hardwareAccelerated="false" />
     </application>
 
 </manifest>
