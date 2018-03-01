@@ -28,4 +28,10 @@
     <string name="title_mask_filter">setMaskFilter()</string>
     <string name="title_fill_path">setFillPath()</string>
     <string name="title_text_path">setTextPath()</string>
+    <string name="title_pie_chart">饼状图</string>
+    <string name="title_clip">clipXX()</string>
+
+    <string name="about_hencoder">HenCoder 是\n针对高级 Android 工程师\n的进阶手册\n旨在突破高手们最基础的技能瓶颈\n结束止步不前的状态，继续快速提升\n内容难度上也许对新手不够友好\n只能说句得罪了\n我个人水平有限\n照顾不到所有人</string>
+    <string name="image_size">尺寸：%1$d x %2$d</string>
+    <string name="title_draw">onDraw()-xx</string>
 </resources>

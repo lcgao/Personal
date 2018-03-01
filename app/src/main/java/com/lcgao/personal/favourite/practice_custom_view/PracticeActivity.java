@@ -6,15 +6,12 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.lcgao.personal.BaseActivity;
 import com.lcgao.personal.R;
-import com.lcgao.personal.adapter.FragmentAdapter;
-import com.lcgao.personal.favourite.news.NewsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +30,12 @@ public class PracticeActivity extends BaseActivity {
     final List<PageModel> pageModels = new ArrayList<>();
 
     {
+        pageModels.add(new PageModel(R.string.title_draw, R.layout.practice_dispatch_draw));
+        pageModels.add(new PageModel(R.string.title_draw, R.layout.practice_draw_view));
+        pageModels.add(new PageModel(R.string.title_clip, R.layout.practice_clip));
         pageModels.add(new PageModel(R.string.title_linear_gradient, R.layout.practice_linear_gradient));
         pageModels.add(new PageModel(R.string.title_mask_filter, R.layout.practice_mask_filter));
+        pageModels.add(new PageModel(R.string.title_pie_chart, R.layout.practice_pie_chart));
     }
 
     @Override

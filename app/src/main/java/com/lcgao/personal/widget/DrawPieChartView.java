@@ -58,7 +58,7 @@ public class DrawPieChartView extends View {
         paint3 = new Paint();
         paint3.setTextSize(28);
         paint3.setColor(Color.BLACK);
-        paint3.setStyle(Paint.Style.STROKE);
+        paint3.setStyle(Paint.Style.FILL);
         paint3.setAntiAlias(true);
     }
 
@@ -74,8 +74,10 @@ public class DrawPieChartView extends View {
 
         float stopX2 = stopX1 - 50;
         float stopY2 = stopY1;
-
+        paint2.setStrokeCap(Paint.Cap.ROUND);
         canvas.drawLine(startX1, startY1, stopX1, stopY1, paint2);
+//        paint2.setStrokeCap(Paint.Cap.ROUND);
+
         canvas.drawLine(stopX1, stopY1, stopX2, stopY2, paint2);
         canvas.drawText("Lollipop", stopX2 - 120, stopY2, paint3);
         canvas.drawArc(rectF1, 180, 135, true, paint1); // 绘制扇形
