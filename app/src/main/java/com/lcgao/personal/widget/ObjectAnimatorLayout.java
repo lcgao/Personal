@@ -1,6 +1,8 @@
 package com.lcgao.personal.widget;
 
+import android.animation.Keyframe;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
@@ -38,8 +40,13 @@ public class ObjectAnimatorLayout extends RelativeLayout {
         btnAnimate.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ObjectAnimator animator = ObjectAnimator.ofFloat(view, "progress", 0, 100);
-                animator.setDuration(1500);
+                Keyframe keframe1 = Keyframe.ofFloat(0f, 0);
+                Keyframe keyframe2 = Keyframe.ofFloat(0.5f, 100);
+                Keyframe keyframe3 = Keyframe.ofFloat(1, 80);
+                PropertyValuesHolder holder = PropertyValuesHolder.ofKeyframe("progress", keframe1, keyframe2, keyframe3);
+//                ObjectAnimator animator = ObjectAnimator.ofFloat(view, "progress", 0, 100);
+                ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(view, holder);
+                animator.setDuration(2000);
                 animator.setInterpolator(new FastOutSlowInInterpolator());
                 animator.start();
             }

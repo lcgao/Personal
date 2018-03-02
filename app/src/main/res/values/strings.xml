@@ -35,4 +35,7 @@
     <string name="image_size">尺寸：%1$d x %2$d</string>
     <string name="title_draw">onDraw()-xx</string>
     <string name="title_object_animate">ObjectAnimator</string>
+    <string name="title_argb_evaluator">ArgbEvaluator</string>
+    <string name="title_of_object">OfObject()</string>
+    <string name="title_property_values">PropertyValues()</string>
 </resources>
