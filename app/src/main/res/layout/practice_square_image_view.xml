@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lcgao.personal.widget.AdjustablePanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dddddd">
+
+    <FrameLayout
+        android:id="@+id/parentLayout"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:background="#2B2B2B">
+
+        <com.lcgao.personal.widget.SquareImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/batman" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="外框调节"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/widthBar"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:text="高度"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/heightBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/heightBar"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:text="宽度"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.lcgao.personal.widget.AdjustablePanelLayout>

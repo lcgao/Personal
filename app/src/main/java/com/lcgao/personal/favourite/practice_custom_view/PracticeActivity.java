@@ -30,6 +30,8 @@ public class PracticeActivity extends BaseActivity {
     final List<PageModel> pageModels = new ArrayList<>();
 
     {
+        pageModels.add(new PageModel(R.string.title_square_image_view, R.layout.practice_square_image_view));
+
         pageModels.add(new PageModel(R.string.title_property_values, R.layout.practice_property_values_holder));
 
         pageModels.add(new PageModel(R.string.title_of_object, R.layout.practice_of_object));
