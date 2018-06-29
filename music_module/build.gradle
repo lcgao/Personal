@@ -19,7 +19,7 @@ android {
     }
 
     defaultConfig {
-//        applicationId "com.lcgao.musicmodule"
+//        applicationId "com.lcgao.music_module"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
@@ -32,7 +32,6 @@ android {
             }
         }
 
-        resourcePrefix "music_"
     }
 
     buildTypes {
@@ -54,4 +53,5 @@ dependencies {
     })
     implementation "com.alibaba:arouter-api:1.3.1"
     annotationProcessor "com.alibaba:arouter-compiler:1.1.4"
+    implementation project(':common_library')
 }

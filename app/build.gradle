@@ -35,8 +35,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     if(isNeedMusicModule.toBoolean()){
-        implementation project(':musicmodule')
+        implementation project(':music_module')
     }
+    implementation project(':common_library')
     implementation 'com.android.support:appcompat-v7:25.3.1'
     implementation 'com.android.support:design:25.3.1'
     implementation 'com.google.android.gms:play-services-appindexing:8.4.0'

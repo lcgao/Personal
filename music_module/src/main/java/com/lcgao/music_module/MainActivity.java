@@ -1,11 +1,12 @@
-package com.lcgao.musicmodule;
+package com.lcgao.music_module;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.lcgao.common_library.util.RouterUtil;
 
-@Route(path = "/music/main_activity")
+@Route(path = RouterUtil.MODULE_MUSIC_MAIN_ACTIVITY_URL)
 public class MainActivity extends AppCompatActivity {
 
     @Override

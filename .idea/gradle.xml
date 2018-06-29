@@ -10,8 +10,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/musicmodule" />
-            <option value="$PROJECT_DIR$/mylibrary" />
+            <option value="$PROJECT_DIR$/common_library" />
+            <option value="$PROJECT_DIR$/music_module" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
