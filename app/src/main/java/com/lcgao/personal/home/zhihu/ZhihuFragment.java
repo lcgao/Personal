@@ -15,8 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.lcgao.common_library.util.NetworkUtil;
 import com.lcgao.personal.MyApplication;
 import com.lcgao.personal.R;
@@ -40,7 +38,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by lcgao on 2018/1/2.
@@ -54,9 +51,6 @@ public class ZhihuFragment extends Fragment {
     @BindView(R.id.ll_nothing)
     LinearLayout llNothing;
     private CommonAdapter<Zhihu> mAdapter;
-    private Gson gson = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd hh:mm:ss")
-            .create();
     private Retrofit retrofit = NetworkUtil.buildRetrofit(MyApplication.getInstance(), null, "https://news-at.zhihu.com/");
     private ZhihuService service = retrofit.create(ZhihuService.class);
 
