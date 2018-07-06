@@ -17,6 +17,8 @@ import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.lcgao.common_library.util.NetworkUtil;
+import com.lcgao.personal.MyApplication;
 import com.lcgao.personal.R;
 import com.lcgao.personal.WebActivity;
 import com.lcgao.personal.adapter.CommonAdapter;
@@ -55,10 +57,7 @@ public class ZhihuFragment extends Fragment {
     private Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd hh:mm:ss")
             .create();
-    private Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://news-at.zhihu.com/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build();
+    private Retrofit retrofit = NetworkUtil.buildRetrofit(MyApplication.getInstance(), null, "https://news-at.zhihu.com/");
     private ZhihuService service = retrofit.create(ZhihuService.class);
 
     private FragmentManager fragmentManager;

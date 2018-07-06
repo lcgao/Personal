@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.lcgao.common_library.util.NetworkUtil;
+import com.lcgao.personal.MyApplication;
 import com.lcgao.personal.R;
 import com.lcgao.personal.WebActivity;
 import com.lcgao.personal.adapter.CommonAdapter;
@@ -44,7 +46,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NewsFragment extends Fragment {
     private String mCategory;
 
-//    @BindView(R.id.tv_nothing_tip)
+    //    @BindView(R.id.tv_nothing_tip)
 //    TextView tv_content;
     @BindView(R.id.rv_fragment_main)
     RecyclerView recyclerView;
@@ -53,10 +55,6 @@ public class NewsFragment extends Fragment {
     @BindView(R.id.srl_fragment_main_refresh)
     SwipeRefreshLayout srlRefresh;
     CommonAdapter<NewsContent> mAdapter;
-    //    List<NewsContent> mNewsContent = new ArrayList<>();
-    private Gson gson = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd hh:mm:ss")
-            .create();
     private Retrofit retrofit;
 
 
@@ -125,11 +123,7 @@ public class NewsFragment extends Fragment {
                 break;
         }
         String url = "http://is.snssdk.com/api/news/feed/v51/?category=" + category + "&refer=1&count=20&min_behot_time=1491981025&last_refresh_sub_entrance_interval=1491981165&loc_mode=&loc_time=1491981000&latitude=&longitude=&city=&tt_from=pull&lac=&cid=&cp=&iid=0123456789&device_id=12345678952&ac=wifi&channel=&aid=&app_name=&version_code=&version_name=&device_platform=&ab_version=&ab_client=&ab_group=&ab_feature=&abflag=3&ssmix=a&device_type=&device_brand=&language=zh&os_api=&os_version=&openudid=1b8d5bf69dc4a561&manifest_version_code=&resolution=&dpi=&update_version_code=&_rticket=";
-
-        retrofit = new Retrofit.Builder()
-                .baseUrl(url)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
+        retrofit = NetworkUtil.buildRetrofit(MyApplication.getInstance(), null, url);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
@@ -149,10 +143,10 @@ public class NewsFragment extends Fragment {
                     String[] keys = keyWords.split(",");
                     if (!TextUtils.isEmpty(keyWords) && keys.length > 0) {
                         holder.setText(R.id.tv_item_news_tag, keys[0]);
-                    }else {
+                    } else {
                         holder.setVisibility(R.id.tv_item_news_tag, View.GONE);
                     }
-                }else {
+                } else {
                     holder.setVisibility(R.id.tv_item_news_tag, View.GONE);
                 }
                 holder.setText(R.id.tv_item_news_read_count, newsContent.getRead_count());

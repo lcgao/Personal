@@ -12,9 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.github.qing.stepviewlib.StepView;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.lcgao.common_library.util.NetworkUtil;
 import com.lcgao.personal.BaseActivity;
+import com.lcgao.personal.MyApplication;
 import com.lcgao.personal.R;
 import com.lcgao.personal.util.LogUtil;
 import com.lcgao.personal.util.ToastUtil;
@@ -30,7 +30,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ExpressSearchActivity extends BaseActivity {
     @BindView(R.id.et_act_express_search_express_type)
@@ -45,14 +44,7 @@ public class ExpressSearchActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-
-    private Gson gson = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd hh:mm:ss")
-            .create();
-    private Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://www.kuaidi100.com/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build();
+    private Retrofit retrofit = NetworkUtil.buildRetrofit(MyApplication.getInstance(), null, "https://www.kuaidi100.com/");
     private ExpressService mService = retrofit.create(ExpressService.class);
 
     @Override
