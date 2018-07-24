@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '27.0.3'
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
 
     defaultConfig {
         applicationId "com.lcgao.personal"
-        minSdkVersion 15
-        targetSdkVersion 25
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -31,34 +31,35 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+
     if(isNeedMusicModule.toBoolean()){
         implementation project(':music_module')
     }
     implementation project(':common_library')
-    implementation 'com.android.support:appcompat-v7:25.3.1'
-    implementation 'com.android.support:design:25.3.1'
-    implementation 'com.google.android.gms:play-services-appindexing:8.4.0'
-    implementation 'de.hdodenhof:circleimageview:2.1.0'
-    implementation 'org.jsoup:jsoup:1.10.2'
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    implementation 'com.android.support:support-vector-drawable:25.3.1'
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
-    implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
-    implementation 'io.reactivex:rxandroid:1.2.1'
-    implementation 'io.reactivex:rxjava:1.1.8'
-    implementation 'com.google.code.gson:gson:2.8.2'
-    implementation 'com.squareup.picasso:picasso:2.5.2'
-    implementation 'cn.gavinliu.android.lib:ShapedImageView:0.8.4'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-    androidTestImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:0.2'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    implementation 'me.yokeyword:indexablerecyclerview:1.3.0'
-    implementation 'com.github.dcq123:StepView:v0.0.2'
-    implementation "com.alibaba:arouter-api:1.3.1"
-    annotationProcessor "com.alibaba:arouter-compiler:1.1.4"
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation "com.google.firebase:firebase-appindexing:$rootProject.firebaseAppindexingVersion"
+    implementation "de.hdodenhof:circleimageview:$rootProject.circleimageviewVersion"
+    implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
+    implementation "com.android.support:support-vector-drawable:$rootProject.supportLibraryVersion"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitConverterGsonVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$rootProject.retrofitAdapterRxjavaVersion"
+    implementation "io.reactivex:rxandroid:$rootProject.rxandroidVersion"
+    implementation "io.reactivex:rxjava:$rootProject.rxjavaVersion"
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+    implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
+    implementation "cn.gavinliu.android.lib:ShapedImageView:$rootProject.shapedImageViewVersion"
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
+    androidTestImplementation "junit:junit:$rootProject.junitVersion"
+    androidTestImplementation "com.android.support.test:runner:$rootProject.supportTestVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+    implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+    implementation "me.yokeyword:indexablerecyclerview:$rootProject.indexablerecyclerviewVersion"
+    implementation "com.github.dcq123:StepView:$rootProject.stepViewVersion"
+    implementation "com.alibaba:arouter-api:$rootProject.arouterApiVersion"
+    annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompileVersion"
+    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
 }
