@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.lcgao.common_library.util.NetworkUtil;
+import com.lcgao.personal.MyApplication;
 import com.lcgao.personal.R;
 import com.lcgao.personal.WebActivity;
 import com.lcgao.personal.adapter.CommonAdapter;
@@ -38,7 +38,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by lcgao on 2018/1/2.
@@ -52,26 +51,20 @@ public class ZhihuFragment extends Fragment {
     @BindView(R.id.ll_nothing)
     LinearLayout llNothing;
     private CommonAdapter<Zhihu> mAdapter;
-    private Gson gson = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd hh:mm:ss")
-            .create();
-    private Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://news-at.zhihu.com/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build();
+    private Retrofit retrofit = NetworkUtil.buildRetrofit(MyApplication.getInstance(), null, "https://news-at.zhihu.com/");
     private ZhihuService service = retrofit.create(ZhihuService.class);
-
+    
     private FragmentManager fragmentManager;
-
+    
     private List<Zhihu> zhihus = new ArrayList<>();
     private Map<Long, Zhihu> map = new HashMap<>();
-
+    
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fragmentManager = getFragmentManager();
     }
-
+    
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -123,7 +116,7 @@ public class ZhihuFragment extends Fragment {
                 int totalItemCount = recyclerView.getAdapter().getItemCount();
                 int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
                 int visibleItemCount = recyclerView.getChildCount();
-
+                
                 if (newState == RecyclerView.SCROLL_STATE_IDLE
                         && lastVisibleItemPosition == totalItemCount - 1
                         && visibleItemCount > 0) {
@@ -132,7 +125,7 @@ public class ZhihuFragment extends Fragment {
                     loadBefore();
                 }
             }
-
+            
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
@@ -149,20 +142,21 @@ public class ZhihuFragment extends Fragment {
         getNews();
         return view;
     }
-
+    
     private int count;
     long time = new Date().getTime();
+    
     private void loadBefore() {
-        final long time_new = time - 1000 * 60 * 60 * 24 * count ++;
+        final long time_new = time - 1000 * 60 * 60 * 24 * count++;
         String date = new SimpleDateFormat("yyyyMMdd").format(time_new);
         service.getBefore(date)
                 .clone()
                 .enqueue(new Callback<ResultZhihu>() {
                     @Override
                     public void onResponse(Call<ResultZhihu> call, Response<ResultZhihu> response) {
-
+                        
                         ResultZhihu zhihu = response.body();
-                        if(zhihu == null){
+                        if (zhihu == null) {
                             ToastUtil.s(response.body() + "为空");
                             LogUtil.l(response.body() + "为空");
                             return;
@@ -178,14 +172,14 @@ public class ZhihuFragment extends Fragment {
                         zhihus.addAll(stories);
                         mAdapter.replaceData(zhihus);
                     }
-
+                    
                     @Override
                     public void onFailure(Call<ResultZhihu> call, Throwable t) {
-
+                    
                     }
                 });
     }
-
+    
     private void getNews() {
         service.getLatestZhihu()
                 .clone()
@@ -219,7 +213,7 @@ public class ZhihuFragment extends Fragment {
                             setData(zhihus);
                         }
                     }
-
+                    
                     @Override
                     public void onFailure(Call<ResultZhihu> call, Throwable t) {
                         srlRefresh.setRefreshing(false);
@@ -227,15 +221,13 @@ public class ZhihuFragment extends Fragment {
                     }
                 });
     }
-
-    public void setData(List<Zhihu> zhihus){
-        if(zhihus == null || zhihus.size() == 0){
+    
+    public void setData(List<Zhihu> zhihus) {
+        if (zhihus == null || zhihus.size() == 0) {
             llNothing.setVisibility(View.VISIBLE);
             return;
         }
         llNothing.setVisibility(View.GONE);
         mAdapter.replaceData(zhihus);
     }
-
-
 }

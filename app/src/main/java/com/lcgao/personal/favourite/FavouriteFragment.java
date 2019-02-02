@@ -13,10 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.lcgao.common_library.util.RouterUtil;
 import com.lcgao.personal.R;
-import com.lcgao.personal.TextActivity;
 import com.lcgao.personal.favourite.express.ExpressSearchActivity;
-import com.lcgao.personal.favourite.music.MusicActivity;
 import com.lcgao.personal.favourite.news.NewsActivity;
 import com.lcgao.personal.favourite.practice_custom_view.PracticeActivity;
 import com.lcgao.personal.util.ToastUtil;
@@ -55,7 +55,8 @@ public class FavouriteFragment extends Fragment{
 
     @OnClick(R.id.layout_music)
     public void onClickMusic(){
-        startActivity(new Intent(getActivity(), MusicActivity.class));
+//        startActivity(new Intent(getActivity(), MusicActivity.class));
+        ARouter.getInstance().build(RouterUtil.MODULE_MUSIC_MAIN_ACTIVITY_URL).navigation();
     }
 
     @OnClick(R.id.layout_news)

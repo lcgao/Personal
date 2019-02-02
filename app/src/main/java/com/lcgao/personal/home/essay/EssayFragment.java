@@ -17,6 +17,8 @@ import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.lcgao.common_library.util.NetworkUtil;
+import com.lcgao.personal.MyApplication;
 import com.lcgao.personal.R;
 import com.lcgao.personal.TextActivity;
 import com.lcgao.personal.adapter.CommonAdapter;
@@ -60,14 +62,7 @@ public class EssayFragment extends Fragment {
     private int mCount = 10;
     private List<EssayEntity> mEssayEntities = new ArrayList<>();
     private CommonAdapter<EssayEntity> mAdapter;
-    private Gson gson = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd hh:mm:ss")
-            .create();
-    private Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://interface.meiriyiwen.com/article/")
-            .client(initClient())
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build();
+    private Retrofit retrofit = NetworkUtil.buildRetrofit(MyApplication.getInstance(), initClient(), "https://interface.meiriyiwen.com/article/");
     private EssayService mService = retrofit.create(EssayService.class);
 
     @Nullable
@@ -193,7 +188,6 @@ public class EssayFragment extends Fragment {
                     @Override
                     public okhttp3.Response intercept(Chain chain) throws IOException {
                         Request request = chain.request();
-
                         request = request.newBuilder()
                                 .addHeader("User-Agent", "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36")
                                 .build();
