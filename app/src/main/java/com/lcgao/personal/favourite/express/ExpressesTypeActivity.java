@@ -8,7 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.lcgao.personal.BaseActivity;
+import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.personal.R;
 import com.lcgao.personal.util.LogUtil;
 

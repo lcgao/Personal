@@ -6,6 +6,8 @@ import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
+import com.lcgao.common_library.base.BaseActivity;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

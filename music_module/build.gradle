@@ -5,8 +5,8 @@ if (!isNeedMusicModule.toBoolean()) {
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '27.0.3'
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
 
     sourceSets {
         main {
@@ -20,8 +20,8 @@ android {
 
     defaultConfig {
 //        applicationId "com.lcgao.music_module"
-        minSdkVersion 15
-        targetSdkVersion 25
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -54,4 +54,12 @@ dependencies {
     implementation "com.alibaba:arouter-api:$rootProject.arouterApiVersion"
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompileVersion"
     implementation project(':common_library')
+    implementation "com.android.support:support-v4:supportLibraryVersion"
+    implementation "cn.bingoogolapple:bga-banner:$rootProject.bgaBannerVersion@aar"
+    implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+    implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation "com.github.pinguo-zhouwei:MZBannerView:$rootProject.MZBannerViewVersion"
+    implementation "cn.gavinliu.android.lib:ShapedImageView:$rootProject.shapedImageViewVersion"
 }

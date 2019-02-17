@@ -1,4 +1,4 @@
-package com.lcgao.personal;
+package com.lcgao.common_library.base;
 
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;

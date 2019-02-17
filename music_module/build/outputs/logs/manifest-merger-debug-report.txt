@@ -1,0 +1,169 @@
+-- Merging decision tree log ---
+manifest
+ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:2:1-30:12
+INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:2:1-30:12
+INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:2:1-30:12
+MERGED from [:common_library] E:\AndroidStudioProjects\Personal\common_library\build\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:design:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\design-27.1.1.aar\1b41504ac4806ec43a5cea9a4df1b36b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.pinguo-zhouwei:MZBannerView:v2.0.2] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\MZBannerView-v2.0.2.aar\8398a1c2971df677725aad95c18bcd8d\AndroidManifest.xml:2:1-17:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\04bc4ff16328ff035541adb736e245b9\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\cff1a9de6dcce36409bb80e2518d7572\AndroidManifest.xml:2:1-11:12
+MERGED from [com.alibaba:arouter-api:1.3.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\arouter-api-1.3.1.aar\99a554e8c9ed717e813e565e059465a7\AndroidManifest.xml:2:1-10:12
+MERGED from [com.android.support:support-v4:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\d26f9767a8675a9a5b1224b25b0af950\AndroidManifest.xml:17:1-22:12
+MERGED from [cn.bingoogolapple:bga-banner:2.2.5] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\bga-banner-2.2.5.aar\83f8bf3a3783010956ee315733b782d0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.jakewharton:butterknife:8.8.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\butterknife-8.8.1.aar\f3a1fe54d6e7e26dfa63859a934e1ac2\AndroidManifest.xml:2:1-7:12
+MERGED from [cn.gavinliu.android.lib:ShapedImageView:0.8.4] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\ShapedImageView-0.8.4.aar\f59ea85c1666de977d62738651423afd\AndroidManifest.xml:2:1-17:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\356d61e65f6407c4b71df3e52ba4b4e1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\transition-27.1.1.aar\3395ed552ffe4f60d9569c87ea4192a7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\a37bdba0f4d7a1866deef8cb74d51713\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\e854d12ba26bdbf6fda41d7740424a22\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\bbbc2cea53ada98af40a10b350f16a50\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\87f29c9270c9105887257c94e67d2fd7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\c908776a14059a799dfe919deb46d5ac\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\c7267d74e53368df05455c8de2641646\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\13a1d4faceb3c0d253621264ebd9b58c\AndroidManifest.xml:17:1-22:12
+MERGED from [io.reactivex:rxandroid:1.2.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\rxandroid-1.2.1.aar\bbd30fbc9dd87ad679c8df8dd0a1ad7e\AndroidManifest.xml:15:1-21:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\c0530c5e8a9edce8e6a765defdfaa4ad\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\587373a4a43e98fc82eefd4dd40f2dc1\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\runtime-1.1.0.aar\7998ffa5267c4bf3de0ac6546b53a3a8\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\runtime-1.1.0.aar\df68f047ce57a7f77cd329b95354134d\AndroidManifest.xml:17:1-22:12
+INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:2:1-30:12
+INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:2:1-30:12
+	package
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:4:5-37
+	android:versionName
+		INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:2:1-30:12
+		INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml
+	xmlns:tools
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:2:1-30:12
+		INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml
+	xmlns:android
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:5:22-64
+application
+ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:6:5-28:19
+MERGED from [com.github.pinguo-zhouwei:MZBannerView:v2.0.2] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\MZBannerView-v2.0.2.aar\8398a1c2971df677725aad95c18bcd8d\AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.pinguo-zhouwei:MZBannerView:v2.0.2] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\MZBannerView-v2.0.2.aar\8398a1c2971df677725aad95c18bcd8d\AndroidManifest.xml:11:5-15:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\cff1a9de6dcce36409bb80e2518d7572\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\cff1a9de6dcce36409bb80e2518d7572\AndroidManifest.xml:9:5-20
+MERGED from [cn.gavinliu.android.lib:ShapedImageView:0.8.4] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\ShapedImageView-0.8.4.aar\f59ea85c1666de977d62738651423afd\AndroidManifest.xml:11:5-15:19
+MERGED from [cn.gavinliu.android.lib:ShapedImageView:0.8.4] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\ShapedImageView-0.8.4.aar\f59ea85c1666de977d62738651423afd\AndroidManifest.xml:11:5-15:19
+	android:supportsRtl
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:11:9-35
+	android:label
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:9:9-41
+		REJECTED from [com.github.pinguo-zhouwei:MZBannerView:v2.0.2] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\MZBannerView-v2.0.2.aar\8398a1c2971df677725aad95c18bcd8d\AndroidManifest.xml:13:9-41
+		REJECTED from [cn.gavinliu.android.lib:ShapedImageView:0.8.4] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\ShapedImageView-0.8.4.aar\f59ea85c1666de977d62738651423afd\AndroidManifest.xml:13:9-41
+	android:roundIcon
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:10:9-54
+	android:icon
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:8:9-43
+	android:allowBackup
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:7:9-35
+		REJECTED from [com.github.pinguo-zhouwei:MZBannerView:v2.0.2] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\MZBannerView-v2.0.2.aar\8398a1c2971df677725aad95c18bcd8d\AndroidManifest.xml:12:9-35
+		REJECTED from [cn.gavinliu.android.lib:ShapedImageView:0.8.4] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\ShapedImageView-0.8.4.aar\f59ea85c1666de977d62738651423afd\AndroidManifest.xml:12:9-36
+	android:theme
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:12:9-52
+	tools:replace
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:13:9-74
+activity#com.lcgao.music_module.MainActivity
+ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:14:9-27:20
+	android:name
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:14:19-69
+intent-filter#action:name:android.intent.action.MAIN+action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+category:name:android.intent.category.LAUNCHER+data:host:com.lcgao.music_module+data:scheme:router
+ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:15:13-26:29
+action#android.intent.action.MAIN
+ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:16:17-69
+	android:name
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:16:25-66
+category#android.intent.category.LAUNCHER
+ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:18:17-77
+	android:name
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:18:27-74
+category#android.intent.category.DEFAULT
+ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:19:17-76
+	android:name
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:19:27-73
+category#android.intent.category.BROWSABLE
+ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:20:17-78
+	android:name
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:20:27-75
+action#android.intent.action.VIEW
+ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:22:17-69
+	android:name
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:22:25-66
+data
+ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:23:17-25:47
+	android:host
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:24:21-58
+	android:scheme
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml:25:21-44
+uses-sdk
+INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml
+INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml
+MERGED from [:common_library] E:\AndroidStudioProjects\Personal\common_library\build\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:7:5-9:41
+MERGED from [:common_library] E:\AndroidStudioProjects\Personal\common_library\build\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\design-27.1.1.aar\1b41504ac4806ec43a5cea9a4df1b36b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\design-27.1.1.aar\1b41504ac4806ec43a5cea9a4df1b36b\AndroidManifest.xml:20:5-44
+MERGED from [com.github.pinguo-zhouwei:MZBannerView:v2.0.2] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\MZBannerView-v2.0.2.aar\8398a1c2971df677725aad95c18bcd8d\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.pinguo-zhouwei:MZBannerView:v2.0.2] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\MZBannerView-v2.0.2.aar\8398a1c2971df677725aad95c18bcd8d\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\04bc4ff16328ff035541adb736e245b9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\04bc4ff16328ff035541adb736e245b9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\cff1a9de6dcce36409bb80e2518d7572\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\cff1a9de6dcce36409bb80e2518d7572\AndroidManifest.xml:5:5-7:41
+MERGED from [com.alibaba:arouter-api:1.3.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\arouter-api-1.3.1.aar\99a554e8c9ed717e813e565e059465a7\AndroidManifest.xml:6:5-8:41
+MERGED from [com.alibaba:arouter-api:1.3.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\arouter-api-1.3.1.aar\99a554e8c9ed717e813e565e059465a7\AndroidManifest.xml:6:5-8:41
+MERGED from [com.android.support:support-v4:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\d26f9767a8675a9a5b1224b25b0af950\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\d26f9767a8675a9a5b1224b25b0af950\AndroidManifest.xml:20:5-44
+MERGED from [cn.bingoogolapple:bga-banner:2.2.5] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\bga-banner-2.2.5.aar\83f8bf3a3783010956ee315733b782d0\AndroidManifest.xml:5:5-7:41
+MERGED from [cn.bingoogolapple:bga-banner:2.2.5] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\bga-banner-2.2.5.aar\83f8bf3a3783010956ee315733b782d0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.jakewharton:butterknife:8.8.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\butterknife-8.8.1.aar\f3a1fe54d6e7e26dfa63859a934e1ac2\AndroidManifest.xml:5:5-43
+MERGED from [com.jakewharton:butterknife:8.8.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\butterknife-8.8.1.aar\f3a1fe54d6e7e26dfa63859a934e1ac2\AndroidManifest.xml:5:5-43
+MERGED from [cn.gavinliu.android.lib:ShapedImageView:0.8.4] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\ShapedImageView-0.8.4.aar\f59ea85c1666de977d62738651423afd\AndroidManifest.xml:7:5-9:41
+MERGED from [cn.gavinliu.android.lib:ShapedImageView:0.8.4] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\ShapedImageView-0.8.4.aar\f59ea85c1666de977d62738651423afd\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:recyclerview-v7:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\356d61e65f6407c4b71df3e52ba4b4e1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\356d61e65f6407c4b71df3e52ba4b4e1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\transition-27.1.1.aar\3395ed552ffe4f60d9569c87ea4192a7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\transition-27.1.1.aar\3395ed552ffe4f60d9569c87ea4192a7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\a37bdba0f4d7a1866deef8cb74d51713\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\a37bdba0f4d7a1866deef8cb74d51713\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\e854d12ba26bdbf6fda41d7740424a22\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\e854d12ba26bdbf6fda41d7740424a22\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\bbbc2cea53ada98af40a10b350f16a50\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\bbbc2cea53ada98af40a10b350f16a50\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\87f29c9270c9105887257c94e67d2fd7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\87f29c9270c9105887257c94e67d2fd7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\c908776a14059a799dfe919deb46d5ac\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\c908776a14059a799dfe919deb46d5ac\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\c7267d74e53368df05455c8de2641646\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\c7267d74e53368df05455c8de2641646\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\13a1d4faceb3c0d253621264ebd9b58c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\13a1d4faceb3c0d253621264ebd9b58c\AndroidManifest.xml:20:5-44
+MERGED from [io.reactivex:rxandroid:1.2.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\rxandroid-1.2.1.aar\bbd30fbc9dd87ad679c8df8dd0a1ad7e\AndroidManifest.xml:19:5-43
+MERGED from [io.reactivex:rxandroid:1.2.1] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\rxandroid-1.2.1.aar\bbd30fbc9dd87ad679c8df8dd0a1ad7e\AndroidManifest.xml:19:5-43
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\c0530c5e8a9edce8e6a765defdfaa4ad\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\c0530c5e8a9edce8e6a765defdfaa4ad\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\587373a4a43e98fc82eefd4dd40f2dc1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\587373a4a43e98fc82eefd4dd40f2dc1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\runtime-1.1.0.aar\7998ffa5267c4bf3de0ac6546b53a3a8\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\runtime-1.1.0.aar\7998ffa5267c4bf3de0ac6546b53a3a8\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\runtime-1.1.0.aar\df68f047ce57a7f77cd329b95354134d\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] E:\Android\Gradle\gradle-5.1.1-all\gradle-5.1.1\caches\transforms-1\files-1.1\runtime-1.1.0.aar\df68f047ce57a7f77cd329b95354134d\AndroidManifest.xml:20:5-44
+INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml
+INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml
+		INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml
+		ADDED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml
+		INJECTED from E:\AndroidStudioProjects\Personal\music_module\src\main\debug\AndroidManifest.xml

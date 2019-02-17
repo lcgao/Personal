@@ -1,16 +1,16 @@
 package com.lcgao.personal.favourite.practice_custom_view;
 
+import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.lcgao.personal.BaseActivity;
+import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.personal.R;
 
 import java.util.ArrayList;

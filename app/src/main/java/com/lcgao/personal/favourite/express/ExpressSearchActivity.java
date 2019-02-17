@@ -12,8 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.github.qing.stepviewlib.StepView;
+import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.common_library.util.NetworkUtil;
-import com.lcgao.personal.BaseActivity;
 import com.lcgao.personal.MyApplication;
 import com.lcgao.personal.R;
 import com.lcgao.personal.util.LogUtil;

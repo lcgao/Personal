@@ -1,3 +1,42 @@
 <resources>
-    <string name="music_app_name">MusicModule模块</string>
+    <string name="app_name">Personal</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_activity_bottom">BottomActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+
+    <string name="title_linear_gradient">LinearGradient</string>
+    <string name="title_radial_gradient">RadialGradient</string>
+    <string name="title_sweep_gradient">SweepGradient</string>
+    <string name="title_bitmap_shader">BitmapShader</string>
+    <string name="title_compose_shader">ComposeShader</string>
+    <string name="title_lighting_color_filter">LightingColorFilter</string>
+    <string name="title_color_matrix_color_filter">ColorMatrixColorFilter</string>
+    <string name="title_xfermode">setXfermode()</string>
+    <string name="title_stroke_cap">setStrokeCap()</string>
+    <string name="title_stroke_join">setStrokeJoin()</string>
+    <string name="title_stroke_miter">setStrokeMiter()</string>
+    <string name="title_path_effect">setPathEffect()</string>
+    <string name="title_shader_layer">setShadowLayer()</string>
+    <string name="title_mask_filter">setMaskFilter()</string>
+    <string name="title_fill_path">setFillPath()</string>
+    <string name="title_text_path">setTextPath()</string>
+    <string name="title_pie_chart">饼状图</string>
+    <string name="title_clip">clipXX()</string>
+
+    <string name="about_hencoder">HenCoder 是\n针对高级 Android 工程师\n的进阶手册\n旨在突破高手们最基础的技能瓶颈\n结束止步不前的状态，继续快速提升\n内容难度上也许对新手不够友好\n只能说句得罪了\n我个人水平有限\n照顾不到所有人</string>
+    <string name="image_size">尺寸：%1$d x %2$d</string>
+    <string name="title_draw">onDraw()-xx</string>
+    <string name="title_object_animate">ObjectAnimator</string>
+    <string name="title_argb_evaluator">ArgbEvaluator</string>
+    <string name="title_of_object">OfObject()</string>
+    <string name="title_property_values">PropertyValues()</string>
+    <string name="title_square_image_view">SquareImageView</string>
 </resources>

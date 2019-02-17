@@ -1,27 +1,21 @@
 package com.lcgao.personal.favourite.news;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.lcgao.personal.BaseActivity;
+import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.personal.R;
 import com.lcgao.personal.adapter.FragmentAdapter;
-import com.lcgao.personal.home.one.OneFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NewsActivity extends BaseActivity {
     @BindView(R.id.tl_act_news)

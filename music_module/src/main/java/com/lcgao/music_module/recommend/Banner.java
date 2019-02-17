@@ -1,4 +1,4 @@
-package com.lcgao.music_module;
+package com.lcgao.music_module.recommend;
 
 public class Banner {
     private String imageUrl;

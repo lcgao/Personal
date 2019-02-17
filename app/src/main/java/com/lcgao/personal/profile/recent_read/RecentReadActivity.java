@@ -1,12 +1,9 @@
 package com.lcgao.personal.profile.recent_read;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -17,7 +14,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.lcgao.personal.BaseActivity;
+import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.personal.R;
 import com.lcgao.personal.WebActivity;
 import com.lcgao.personal.adapter.CommonAdapter;
@@ -26,7 +23,6 @@ import com.lcgao.personal.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

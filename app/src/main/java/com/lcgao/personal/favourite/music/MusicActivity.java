@@ -1,11 +1,10 @@
 package com.lcgao.personal.favourite.music;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.lcgao.personal.BaseActivity;
+import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.personal.R;
 
 import butterknife.BindView;

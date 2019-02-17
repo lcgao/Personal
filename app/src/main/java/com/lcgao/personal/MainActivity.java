@@ -20,6 +20,7 @@ import android.view.WindowManager;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.Thing;
+import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.personal.favourite.FavouriteFragment;
 import com.lcgao.personal.home.HomeFragment;
 import com.lcgao.personal.profile.ProfileFragment;

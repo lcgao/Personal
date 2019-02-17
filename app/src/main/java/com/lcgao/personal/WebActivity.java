@@ -1,13 +1,11 @@
 package com.lcgao.personal;
 
 import android.content.Intent;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
-import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -15,6 +13,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.personal.home.zhihu.NewsInfo;
 import com.lcgao.personal.home.zhihu.ZhihuService;
 import com.lcgao.personal.profile.recent_read.RecentReadEntity;
