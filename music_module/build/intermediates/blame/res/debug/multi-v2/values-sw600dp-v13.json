@@ -4,7 +4,7 @@
             "outputFile": "E:\\AndroidStudioProjects\\Personal\\music_module\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "E:\\Android\\Gradle\\gradle-5.1.1-all\\gradle-5.1.1\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\1b41504ac4806ec43a5cea9a4df1b36b\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "E:\\Android\\Gradle\\gradle-5.1.1-all\\gradle-5.1.1\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\9b5b3f9a290302f57a7921475e76a87e\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "E:\\Android\\Gradle\\gradle-5.1.1-all\\gradle-5.1.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\04bc4ff16328ff035541adb736e245b9\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "E:\\Android\\Gradle\\gradle-5.1.1-all\\gradle-5.1.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\bd16d4e32d8eb85efdde6dcb028780dc\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
