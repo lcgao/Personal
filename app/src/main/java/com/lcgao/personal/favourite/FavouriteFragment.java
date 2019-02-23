@@ -21,6 +21,8 @@ import com.lcgao.personal.favourite.news.NewsActivity;
 import com.lcgao.personal.favourite.practice_custom_view.PracticeActivity;
 import com.lcgao.personal.ipc.aidl.BookManagerActivity;
 import com.lcgao.personal.ipc.messenger.MessengerActivity;
+import com.lcgao.personal.ipc.provider.ProviderActivity;
+import com.lcgao.personal.ipc.socket.TCPClientActivity;
 import com.lcgao.personal.util.ToastUtil;
 
 import butterknife.BindView;
@@ -68,7 +70,7 @@ public class FavouriteFragment extends Fragment{
 
     @OnClick(R.id.layout_practice)
     public void onClickPractice() {
-        startActivity(new Intent(getActivity(), BookManagerActivity.class));
+        startActivity(new Intent(getActivity(), TCPClientActivity.class));
     }
 
     @Override

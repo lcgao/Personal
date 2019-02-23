@@ -13,10 +13,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:allowBackup, android:theme, android:label">
+        <service
+            android:name=".ipc.socket.TCPServerService"
+            android:enabled="true"
+            android:exported="true"/>
+
+        <activity
+            android:name=".ipc.provider.ProviderActivity"
+            android:label="@string/title_activity_provider"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
+
+        <provider
+            android:name=".ipc.provider.BookProvider"
+            android:authorities="com.lcgao.personal.ipc.provider"
+            android:permission="com.lcgao.PROVIDER"
+            android:process=":provider" />
+
         <activity
             android:name=".ipc.aidl.BookManagerActivity"
             android:label="@string/title_activity_book_manager"
-            android:theme="@style/AppTheme.NoActionBar.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
 
         <service
             android:name=".ipc.aidl.BookManagerService"
@@ -26,6 +42,9 @@
 
         <activity
             android:name=".ipc.messenger.MessengerActivity"
+            android:label="Messenger测试" />
+        <activity
+            android:name=".ipc.socket.TCPClientActivity"
             android:label="Messenger测试" />
 
         <service
