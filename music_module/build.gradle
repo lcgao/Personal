@@ -24,7 +24,7 @@ android {
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
-
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
@@ -46,6 +46,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     androidTestImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "com.android.support.test:runner:$rootProject.supportTestVersion"
     androidTestImplementation("com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion", {
@@ -62,4 +63,7 @@ dependencies {
     implementation "com.android.support:design:$rootProject.supportLibraryVersion"
     implementation "com.github.pinguo-zhouwei:MZBannerView:$rootProject.MZBannerViewVersion"
     implementation "cn.gavinliu.android.lib:ShapedImageView:$rootProject.shapedImageViewVersion"
+    implementation "com.flyco.tablayout:FlycoTabLayout_Lib:$rootProject.FlycoTabLayout_LibVersion"
+    implementation "android.arch.lifecycle:extensions:$rootProject.lifecycleVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifecycleVersion"
 }

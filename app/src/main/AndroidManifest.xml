@@ -16,7 +16,7 @@
         <service
             android:name=".ipc.socket.TCPServerService"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="false" />
 
         <activity
             android:name=".ipc.provider.ProviderActivity"
@@ -40,12 +40,9 @@
             android:exported="true"
             android:process=":remote" />
 
-        <activity
-            android:name=".ipc.messenger.MessengerActivity"
-            android:label="Messenger测试" />
-        <activity
-            android:name=".ipc.socket.TCPClientActivity"
-            android:label="Messenger测试" />
+        <activity android:name=".ipc.messenger.MessengerActivity" />
+
+        <activity android:name=".ipc.socket.TCPClientActivity" />
 
         <service
             android:name=".ipc.messenger.MessengerService"

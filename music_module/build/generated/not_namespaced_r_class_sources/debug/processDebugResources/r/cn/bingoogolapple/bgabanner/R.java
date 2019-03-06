@@ -44,25 +44,25 @@ public final class R {
     public static final class id {
         private id() {}
 
-        public static final int accordion = 0x7f080006;
-        public static final int alpha = 0x7f08001e;
-        public static final int banner_indicatorId = 0x7f080024;
-        public static final int cube = 0x7f080039;
-        public static final int defaultEffect = 0x7f08003d;
-        public static final int depth = 0x7f08003f;
-        public static final int fade = 0x7f080050;
-        public static final int flip = 0x7f080055;
-        public static final int rotate = 0x7f080085;
-        public static final int stack = 0x7f0800aa;
-        public static final int zoom = 0x7f0800ce;
-        public static final int zoomCenter = 0x7f0800cf;
-        public static final int zoomFade = 0x7f0800d0;
-        public static final int zoomStack = 0x7f0800d1;
+        public static final int accordion = 0x7f080010;
+        public static final int alpha = 0x7f080029;
+        public static final int banner_indicatorId = 0x7f08002f;
+        public static final int cube = 0x7f080045;
+        public static final int defaultEffect = 0x7f080049;
+        public static final int depth = 0x7f08004b;
+        public static final int fade = 0x7f08005e;
+        public static final int flip = 0x7f080063;
+        public static final int rotate = 0x7f0800a6;
+        public static final int stack = 0x7f0800d0;
+        public static final int zoom = 0x7f0800fa;
+        public static final int zoomCenter = 0x7f0800fb;
+        public static final int zoomFade = 0x7f0800fc;
+        public static final int zoomStack = 0x7f0800fd;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int bga_banner_item_image = 0x7f0a001d;
+        public static final int bga_banner_item_image = 0x7f0a0021;
     }
     public static final class styleable {
         private styleable() {}

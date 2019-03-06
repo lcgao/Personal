@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/themecolor</item>
         <item name="colorPrimaryDark">@color/themecolor</item>
         <item name="colorAccent">@color/themecolor</item>
+        <item name="android:listDivider">@drawable/shape_divider</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="AppTheme">
@@ -17,4 +18,17 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="AppTheme.NoActionBar.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ToolbarTitle">
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>

@@ -60,4 +60,5 @@ public class TextActivity extends BaseActivity {
             textView.setText(content);
         }
     }
+
 }

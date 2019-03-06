@@ -12,26 +12,26 @@ public final class R {
     public static final class attr {
         private attr() {}
 
-        public static final int round_radius = 0x7f030148;
-        public static final int shape_mode = 0x7f030151;
-        public static final int stroke_color = 0x7f030163;
-        public static final int stroke_width = 0x7f030164;
+        public static final int round_radius = 0x7f03014e;
+        public static final int shape_mode = 0x7f030157;
+        public static final int stroke_color = 0x7f030169;
+        public static final int stroke_width = 0x7f03016a;
     }
     public static final class id {
         private id() {}
 
-        public static final int circle = 0x7f080032;
-        public static final int round_rect = 0x7f080086;
+        public static final int circle = 0x7f08003e;
+        public static final int round_rect = 0x7f0800a7;
     }
     public static final class string {
         private string() {}
 
-        public static final int app_name = 0x7f0c001f;
+        public static final int app_name = 0x7f0d001f;
     }
     public static final class styleable {
         private styleable() {}
 
-        public static final int[] ShapedImageView = { 0x7f030148, 0x7f030151, 0x7f030163, 0x7f030164 };
+        public static final int[] ShapedImageView = { 0x7f03014e, 0x7f030157, 0x7f030169, 0x7f03016a };
         public static final int ShapedImageView_round_radius = 0;
         public static final int ShapedImageView_shape_mode = 1;
         public static final int ShapedImageView_stroke_color = 2;

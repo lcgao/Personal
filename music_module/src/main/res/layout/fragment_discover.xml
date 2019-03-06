@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:orientation="vertical"
+    tools:showIn="@layout/app_bar_main"
+    >
+    <!--<com.flyco.tablayout.SlidingTabLayout-->
+        <!--android:id="@+id/s_tab_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:tl_indicator_color="@color/white"-->
+        <!--app:tl_textSelectColor="@color/white"-->
+
+        <!--/>-->
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/s_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/themecolor"
+        android:paddingBottom="15dp"
+        app:tl_indicator_gravity="BOTTOM"
+        app:tl_textsize="15sp"
+        app:tl_tab_space_equal="true"
+        app:tl_indicator_width_equal_title="true"
+        app:tl_indicator_corner_radius="2dp"
+        app:tl_indicator_margin_bottom="5dp"
+        app:tl_textBold="SELECT"
+        />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

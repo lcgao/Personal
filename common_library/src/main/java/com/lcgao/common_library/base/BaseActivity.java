@@ -22,7 +22,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     //是否允许全屏
     private boolean mAllowFullScreen = false;
     //是否允许旋转屏幕
-    private boolean isAllowScreenRoate = false;
+    private boolean isAllowScreenRotate = false;
     //当前activity渲染的视图View
     private View mContextView = null;
     //是否输出日志信息
@@ -42,11 +42,11 @@ public abstract class BaseActivity extends AppCompatActivity {
             if(isSetStatusBar){
                 steepStatusBar();
             }
-            if(isAllowScreenRoate){
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-            }else {
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-            }
+//            if(isAllowScreenRotate){
+//                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//            }else {
+//                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//            }
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -88,10 +88,15 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 是否允许旋转屏幕
-     * @param allowScreenRoate
+     * @param allowScreenRotate
      */
-    public void setAllowScreenRoate(boolean allowScreenRoate) {
-        isAllowScreenRoate = allowScreenRoate;
+    public void setAllowScreenRotate(boolean allowScreenRotate) {
+        isAllowScreenRotate = allowScreenRotate;
+        if(isAllowScreenRotate){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
     }
 
     /**

@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
-import com.zhouwei.mzbanner.MZBannerView;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
@@ -23,7 +22,6 @@ public class MainActivity_ViewBinding implements Unbinder {
   public MainActivity_ViewBinding(MainActivity target, View source) {
     this.target = target;
 
-    target.mMZBannerView = Utils.findRequiredViewAsType(source, R.id.banner, "field 'mMZBannerView'", MZBannerView.class);
     target.toolbar = Utils.findRequiredViewAsType(source, R.id.toolbar, "field 'toolbar'", Toolbar.class);
   }
 
@@ -34,7 +32,6 @@ public class MainActivity_ViewBinding implements Unbinder {
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
     this.target = null;
 
-    target.mMZBannerView = null;
     target.toolbar = null;
   }
 }

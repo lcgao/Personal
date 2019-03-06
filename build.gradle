@@ -62,4 +62,6 @@ ext {
     daggerVersion = '2.16'
     bgaBannerVersion = '2.2.5'
     MZBannerViewVersion = 'v2.0.2'
+    FlycoTabLayout_LibVersion = '2.1.2@aar'
+    lifecycleVersion = '1.1.1'
 }
