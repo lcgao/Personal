@@ -37,6 +37,11 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:tint="@color/white"
+        android:visibility="gone"
         app:srcCompat="@drawable/ic_music" />
+    <include layout="@layout/layout_play_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"/>
 
 </android.support.design.widget.CoordinatorLayout>

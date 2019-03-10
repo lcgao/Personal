@@ -1,35 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/linear_layout"
-    tools:context=".music.view.MusicActivity">
+    tools:context=".music.view.PlayMusicActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:elevation="0dp"
-        android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_play"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/themecolor"
+            android:background="@android:color/transparent"
             android:paddingTop="25dp"
             app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
+        <!--android:theme="@style/AppTheme.NoActionBar.AppBarOverlay"-->
 
-    </android.support.design.widget.AppBarLayout>
+        <!--<android.support.v4.view.ViewPager-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"/>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View事件分发测试"
-        android:textAllCaps="false"
-        />
+            <cn.gavinliu.android.lib.shapedimageview.ShapedImageView
+                android:id="@+id/siv_act_music_album"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                android:elevation="2dp"
+                android:src="@mipmap/wfzd"
+                app:stroke_color="@color/theme_divider"
+                android:alpha="22"
+                app:stroke_width="10dp"
+                app:shape_mode="circle" />
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="阿刁(Diao)"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <include layout="@layout/layout_play_panel" />
+    </LinearLayout>
+</FrameLayout>

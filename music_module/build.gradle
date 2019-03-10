@@ -4,6 +4,9 @@ if (!isNeedMusicModule.toBoolean()) {
     apply plugin: 'com.android.library'
 }
 
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
 android {
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolsVersion
@@ -66,4 +69,8 @@ dependencies {
     implementation "com.flyco.tablayout:FlycoTabLayout_Lib:$rootProject.FlycoTabLayout_LibVersion"
     implementation "android.arch.lifecycle:extensions:$rootProject.lifecycleVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifecycleVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+    implementation "com.google.guava:guava:$rootProject.guavaVersion"
+    implementation "org.greenrobot:greendao:$rootProject.greendaoVersion"
 }

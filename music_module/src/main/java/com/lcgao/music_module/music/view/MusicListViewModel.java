@@ -4,8 +4,8 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.lcgao.music_module.music.model.MusicListRepository;
-import com.lcgao.music_module.music.model.SongInfo;
+import com.lcgao.music_module.music.data.model.MusicListRepository;
+import com.lcgao.music_module.music.data.model.SongInfo;
 
 public class MusicListViewModel extends ViewModel {
     private final MusicListRepository mMusicListRespository;

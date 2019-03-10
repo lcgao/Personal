@@ -4,7 +4,7 @@
             "outputFile": "E:\\AndroidStudioProjects\\Personal\\music_module\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-kk\\values-kk.xml",
             "map": [
                 {
-                    "source": "E:\\Android\\Gradle\\gradle-5.1.1-all\\gradle-5.1.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\bd16d4e32d8eb85efdde6dcb028780dc\\res\\values-kk\\values-kk.xml",
+                    "source": "E:\\Android\\Gradle\\gradle-5.1.1-all\\gradle-5.1.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\bf94a20af090c7b71910d126cf819b94\\res\\values-kk\\values-kk.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "E:\\Android\\Gradle\\gradle-5.1.1-all\\gradle-5.1.1\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\41c043b356074cba76493f1be62382c4\\res\\values-kk\\values-kk.xml",
+                    "source": "E:\\Android\\Gradle\\gradle-5.1.1-all\\gradle-5.1.1\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\686399e3116d8ccd20c76915aa00208f\\res\\values-kk\\values-kk.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

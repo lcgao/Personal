@@ -5,16 +5,18 @@ import android.database.Cursor;
 import android.provider.BaseColumns;
 import android.provider.MediaStore;
 
-import com.lcgao.music_module.music.model.Music;
+import com.lcgao.music_module.music.data.model.Music;
 
 import java.util.List;
 
 public class LocalMusicHelper {
-    public static void scanLocalMusic(Context context, List<Music> musicList){
-        if(context == null){
+    private static final String TAG = "===LocalMusicHelper=== ";
+
+    public static void scanLocalMusic(Context context, List<Music> musicList) {
+        if (context == null) {
             throw new IllegalArgumentException("context is null");
         }
-        if(musicList == null){
+        if (musicList == null) {
             throw new IllegalArgumentException("musicList is null");
         }
         Cursor cursor = context.getContentResolver().query(
@@ -34,12 +36,17 @@ public class LocalMusicHelper {
                 null,
                 null,
                 MediaStore.Audio.Media.DEFAULT_SORT_ORDER);
-        if(cursor == null){
+        if (cursor == null) {
             return;
         }
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             int isMusic = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.IS_MUSIC));
-            if(isMusic == 0){
+            if (isMusic == 0) {
+                LogUtil.d(TAG + cursor.getString(cursor.getColumnIndex(MediaStore.Audio.AudioColumns.TITLE)));
+                continue;
+            }
+            String fileName = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.AudioColumns.DISPLAY_NAME));
+            if (fileName == null || !fileName.endsWith(".mp3")) {
                 continue;
             }
             long id = cursor.getLong(cursor.getColumnIndex(BaseColumns._ID));
@@ -49,7 +56,6 @@ public class LocalMusicHelper {
             long albumId = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.AudioColumns.ALBUM_ID));
             long duration = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION));
             String path = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA));
-            String fileName = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.AudioColumns.DISPLAY_NAME));
             long fileSize = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.SIZE));
             Music music = new Music(id, title, artist, album, albumId, duration, path, fileName, fileSize);
             musicList.add(music);

@@ -1,10 +1,15 @@
 package com.lcgao.music_module.music.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -12,7 +17,12 @@ import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.music_module.R;
 import com.lcgao.music_module.adapter.CommonAdapter;
 import com.lcgao.music_module.adapter.ViewHolder;
-import com.lcgao.music_module.music.model.SongInfo;
+import com.lcgao.music_module.music.MusicsContract;
+import com.lcgao.music_module.music.MusicsPresenter;
+import com.lcgao.music_module.music.data.MusicsRepository;
+import com.lcgao.music_module.music.data.model.Music;
+import com.lcgao.music_module.music.data.source.local.MusicsLocalDataSource;
+import com.lcgao.music_module.music.data.source.remote.MusicsRemoteDataSource;
 import com.lcgao.music_module.widget.RecyclerViewDecoration;
 
 import java.util.ArrayList;
@@ -21,22 +31,47 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LocalMusicActivity extends BaseActivity {
+public class LocalMusicActivity extends BaseActivity implements MusicsContract.View {
+    private static final String TAG = "LocalMusicActivity: ";
+
+    private MusicsContract.Presenter mPresenter;
+
     @BindView(R.id.rv_layout_music_list)
     RecyclerView mRvMusicList;
     @BindView(R.id.ll_nothing)
-    LinearLayout llNothing;
+    LinearLayout mLlNothing;
     @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    private CommonAdapter<SongInfo> mAdapter;
+    Toolbar mToolbar;
+    @BindView(R.id.srl_refresh)
+    SwipeRefreshLayout mSrlRefresh;
+    private CommonAdapter<Music> mAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_local_music);
         ButterKnife.bind(this);
+        mPresenter = new MusicsPresenter(
+                MusicsRepository.getInstance(MusicsLocalDataSource.getInstance(),
+                        MusicsRemoteDataSource.getInstance()), this);
         initView();
 //        initParas();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(mPresenter != null){
+            mPresenter.subscribe();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(mPresenter != null){
+            mPresenter.unsubscribe();
+        }
     }
 
     @Override
@@ -46,10 +81,10 @@ public class LocalMusicActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        toolbar.setTitle("本地音乐");
-        toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        mToolbar.setTitle("本地音乐");
+        mToolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
+        setSupportActionBar(mToolbar);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -61,37 +96,84 @@ public class LocalMusicActivity extends BaseActivity {
         mRvMusicList.setHasFixedSize(true);
         mRvMusicList.getItemAnimator().setChangeDuration(0);
 //        mRvMusicList.addItemDecoration(new RecyclerViewDiv);
-        mAdapter = new CommonAdapter<SongInfo>(this, R.layout.item_music_list, new ArrayList<SongInfo>()) {
+        mAdapter = new CommonAdapter<Music>(this, R.layout.item_music_list, new ArrayList<Music>()) {
             @Override
-            public void convert(ViewHolder holder, SongInfo songInfo) {
-                holder.setText(R.id.tv_item_music_list_name, songInfo.getName());
-                holder.setText(R.id.tv_item_music_list_singer, songInfo.getSinger() + "-" + songInfo.getAlbum());
+            public void convert(ViewHolder holder, final Music music) {
+                holder.setText(R.id.tv_item_music_list_name, music.getTitle());
+                holder.setText(R.id.tv_item_music_list_singer, music.getArtist() + " - " + music.getAlbum());
+                holder.setOnClickListener(R.id.ll_item_music_list, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(LocalMusicActivity.this, PlayMusicActivity.class);
+                        intent.putExtra("music", music);
+                        startActivity(intent);
+                    }
+                });
             }
         };
         mRvMusicList.setAdapter(mAdapter);
         mRvMusicList.addItemDecoration(new RecyclerViewDecoration(this, RecyclerViewDecoration.VERTICAL_LIST, 20, 10));
-        List<SongInfo> songInfos = new ArrayList<>();
-        SongInfo songInfo1 = new SongInfo("春风十里", "鹿先森乐队", "xxx", (6 * 60 + 15) * 1000, 10 * 1024 * 1024, "xxx", "所有的酒，都不如你");
-        SongInfo songInfo2 = new SongInfo("成都", "赵雷", "xxx", (6 * 60 + 15) * 1000, 10 * 1024 * 1024, "xxx", "无法长大");
-        SongInfo songInfo3 = new SongInfo("See You Again", "Wiz Khalifa", "xxx", (6 * 60 + 15) * 1000, 10 * 1024 * 1024, "xxx", "Furious7");
-        SongInfo songInfo4 = new SongInfo("夜空中最亮的星", "逃跑计划", "xxx", (6 * 60 + 15) * 1000, 10 * 1024 * 1024, "xxx", "世界");
-        SongInfo songInfo5 = new SongInfo("Always With Me", "木村弓/奥户巴寿", "xxx", (6 * 60 + 15) * 1000, 10 * 1024 * 1024, "xxx", "幸福的味道");
-        songInfos.add(songInfo1);
-        songInfos.add(songInfo2);
-        songInfos.add(songInfo3);
-        songInfos.add(songInfo4);
-        songInfos.add(songInfo5);
-        setData(songInfos);
+        mSrlRefresh.setColorSchemeColors(getResources().getColor(R.color.themecolor));
+        mSrlRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPresenter.loadMusics(true);
+            }
+        });
     }
 
-    public void setData(List<SongInfo> newsContents) {
-        if (newsContents == null || newsContents.size() == 0) {
-            llNothing.setVisibility(View.VISIBLE);
-            return;
+    public void setData(List<Music> musicList) {
+        mLlNothing.setVisibility(View.GONE);
+        mAdapter.replaceData(musicList);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_local_music, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.item_menu_local_music_scan) {
+            startActivity(new Intent(LocalMusicActivity.this, ScanLocalMusicActivity.class));
+            return true;
         }
-        llNothing.setVisibility(View.GONE);
-//        mNewsContent.clear();
-//        mNewsContent.addAll(newsContents);
-        mAdapter.replaceData(newsContents);
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void showMusics(List<Music> musics) {
+        setData(musics);
+    }
+
+    @Override
+    public void setLoadingIndicator(boolean active) {
+        mSrlRefresh.setRefreshing(active);
+    }
+
+    @Override
+    public void showNoMusics() {
+        mLlNothing.setVisibility(View.VISIBLE);
+        return;
+    }
+
+    @Override
+    public void setPresenter(MusicsContract.Presenter presenter) {
+        mPresenter = presenter;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            if(mSrlRefresh.isRefreshing()){
+                mSrlRefresh.setRefreshing(false);
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

@@ -18,29 +18,27 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
+import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lcgao.common_library.util.RouterUtil;
-import com.lcgao.music_module.music.view.MusicActivity;
-import com.lcgao.music_module.music.view.MusicListFragment;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.lcgao.music_module.music.view.PlayMusicActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 @Route(path = RouterUtil.MODULE_MUSIC_MAIN_ACTIVITY_URL)
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-
-
     private static final int FRAGMENT_MY_MUSIC = 0;
     private static final int FRAGMENT_DISCOVER = 1;
     private static final int FRAGMENT_VIDEO = 2;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    @BindView(R.id.ll_layout_play_bar)
+    LinearLayout mLlPlayBar;
 
     FragmentManager fragmentManager;
 
@@ -64,24 +62,25 @@ public class MainActivity extends AppCompatActivity
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
                 rotate(fab);
-                Intent intent = new Intent(MainActivity.this, MusicActivity.class);
+                Intent intent = new Intent(MainActivity.this, PlayMusicActivity.class);
                 startActivity(intent);
             }
         });
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setCheckedItem(R.id.nav_discover);
-        showFragment(FRAGMENT_DISCOVER);
+        navigationView.setCheckedItem(R.id.nav_my_music);
+        showFragment(FRAGMENT_MY_MUSIC);
     }
 
     /**
      * 不停顿地旋转
+     *
      * @param view
      */
     private void rotate(View view) {
@@ -205,5 +204,11 @@ public class MainActivity extends AppCompatActivity
         if (mFragmentVideo != null) {
             transaction.hide(mFragmentVideo);
         }
+    }
+
+    @OnClick(R.id.ll_layout_play_bar)
+    public void onClickPlayBar(){
+        Intent intent = new Intent(MainActivity.this, PlayMusicActivity.class);
+        startActivity(intent);
     }
 }

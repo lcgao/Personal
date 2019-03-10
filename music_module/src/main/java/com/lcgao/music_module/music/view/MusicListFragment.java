@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import com.lcgao.music_module.R;
 import com.lcgao.music_module.adapter.CommonAdapter;
 import com.lcgao.music_module.adapter.ViewHolder;
-import com.lcgao.music_module.music.model.SongInfo;
+import com.lcgao.music_module.music.data.model.SongInfo;
 import com.lcgao.music_module.widget.RecyclerViewDecoration;
 
 import java.util.ArrayList;

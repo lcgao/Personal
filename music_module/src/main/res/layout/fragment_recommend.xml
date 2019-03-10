@@ -11,13 +11,14 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="@color/themecolor"/>
-        <include layout="@layout/home"/>
+                android:background="@color/themecolor" />
+
+            <include layout="@layout/home" />
         </FrameLayout>
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

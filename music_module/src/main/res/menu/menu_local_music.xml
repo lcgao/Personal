@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/item_menu_local_music_scan"
+        android:title="扫描本地音乐"/>
+    <item android:id="@+id/item_menu_local_music_sort"
+        android:title="选择排序方式"/>
+    <item android:id="@+id/item_menu_local_music_get_cover"
+        android:title="获取封面歌词"/>
+    <item android:id="@+id/item_menu_local_music_update"
+        android:title="升级音质"/>
+    <item android:id="@+id/item_menu_local_music_search"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_search"
+        android:title="搜索"
+        android:iconTint="@color/white"/>
+
+
+</menu>

@@ -4,7 +4,17 @@
             "outputFile": "E:\\AndroidStudioProjects\\Personal\\music_module\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-eu\\values-eu.xml",
             "map": [
                 {
-                    "source": "E:\\Android\\Gradle\\gradle-5.1.1-all\\gradle-5.1.1\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\41c043b356074cba76493f1be62382c4\\res\\values-eu\\values-eu.xml",
+                    "source": "E:\\Android\\Gradle\\gradle-5.1.1-all\\gradle-5.1.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\bf94a20af090c7b71910d126cf819b94\\res\\values-eu\\values-eu.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,214,312,422,508,614,738,825,909,991,1100,1210,1309,1418,1524,1635,1806,1905",
+                        "endColumns": "108,97,109,85,105,123,86,83,81,108,109,98,108,105,110,170,98,81",
+                        "endOffsets": "209,307,417,503,609,733,820,904,986,1095,1205,1304,1413,1519,1630,1801,1900,1982"
+                    }
+                },
+                {
+                    "source": "E:\\Android\\Gradle\\gradle-5.1.1-all\\gradle-5.1.1\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\686399e3116d8ccd20c76915aa00208f\\res\\values-eu\\values-eu.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -18,16 +28,6 @@
                         "startOffsets": "1987",
                         "endColumns": "100",
                         "endOffsets": "2083"
-                    }
-                },
-                {
-                    "source": "E:\\Android\\Gradle\\gradle-5.1.1-all\\gradle-5.1.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\bd16d4e32d8eb85efdde6dcb028780dc\\res\\values-eu\\values-eu.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,214,312,422,508,614,738,825,909,991,1100,1210,1309,1418,1524,1635,1806,1905",
-                        "endColumns": "108,97,109,85,105,123,86,83,81,108,109,98,108,105,110,170,98,81",
-                        "endOffsets": "209,307,417,503,609,733,820,904,986,1095,1205,1304,1413,1519,1630,1801,1900,1982"
                     }
                 }
             ]

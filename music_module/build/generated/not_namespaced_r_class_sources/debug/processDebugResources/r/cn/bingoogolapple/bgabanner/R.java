@@ -36,10 +36,10 @@ public final class R {
     public static final class drawable {
         private drawable() {}
 
-        public static final int bga_banner_point_disabled = 0x7f07005c;
-        public static final int bga_banner_point_enabled = 0x7f07005d;
-        public static final int bga_banner_selector_point_hollow = 0x7f07005e;
-        public static final int bga_banner_selector_point_solid = 0x7f07005f;
+        public static final int bga_banner_point_disabled = 0x7f07005d;
+        public static final int bga_banner_point_enabled = 0x7f07005e;
+        public static final int bga_banner_selector_point_hollow = 0x7f07005f;
+        public static final int bga_banner_selector_point_solid = 0x7f070060;
     }
     public static final class id {
         private id() {}
@@ -52,17 +52,17 @@ public final class R {
         public static final int depth = 0x7f08004b;
         public static final int fade = 0x7f08005e;
         public static final int flip = 0x7f080063;
-        public static final int rotate = 0x7f0800a6;
-        public static final int stack = 0x7f0800d0;
-        public static final int zoom = 0x7f0800fa;
-        public static final int zoomCenter = 0x7f0800fb;
-        public static final int zoomFade = 0x7f0800fc;
-        public static final int zoomStack = 0x7f0800fd;
+        public static final int rotate = 0x7f0800b1;
+        public static final int stack = 0x7f0800de;
+        public static final int zoom = 0x7f08010b;
+        public static final int zoomCenter = 0x7f08010c;
+        public static final int zoomFade = 0x7f08010d;
+        public static final int zoomStack = 0x7f08010e;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int bga_banner_item_image = 0x7f0a0021;
+        public static final int bga_banner_item_image = 0x7f0a0022;
     }
     public static final class styleable {
         private styleable() {}
