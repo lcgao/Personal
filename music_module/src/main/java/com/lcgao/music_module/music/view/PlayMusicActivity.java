@@ -2,11 +2,15 @@ package com.lcgao.music_module.music.view;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -17,12 +21,16 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.music_module.R;
+import com.lcgao.music_module.event.RxBus;
 import com.lcgao.music_module.music.PlayMusicContract;
+import com.lcgao.music_module.music.PlayMusicService;
 import com.lcgao.music_module.music.data.model.Music;
+import com.lcgao.music_module.music.data.model.PlayMusicInfo;
 import com.lcgao.music_module.music.view_model.MusicViewModel;
 import com.lcgao.music_module.util.LogUtil;
 
@@ -34,9 +42,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.gavinliu.android.lib.shapedimageview.ShapedImageView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class PlayMusicActivity extends BaseActivity implements PlayMusicContract.View {
     private static final String TAG = "PlayMusicActivity: ";
+
+    public static final String EXTRA_PLAY_MUSIC_INFO = "play_music_info";
 
     @BindView(R.id.toolbar_play)
     Toolbar mToolbar;
@@ -47,22 +62,33 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
     @BindView(R.id.iv_play)
     ImageView mIvPlay;
 
-    private Music mMusic;
+    @BindView(R.id.tv_act_music_title)
+    TextView mTvTitle;
+
+    private PlayMusicInfo mPlayMusicInfo;
+
+    private PlayMusicService mPlayMusicService;
+
+    private CompositeDisposable mCompositionDis;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
-        getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         ButterKnife.bind(this);
 //        subscribe();
+        mCompositionDis = new CompositeDisposable();
+        registerRxBus();
         Intent intent = getIntent();
-        mMusic = (Music) intent.getParcelableExtra("music");
-        if(mMusic == null){
+        mPlayMusicInfo = intent.getParcelableExtra(EXTRA_PLAY_MUSIC_INFO);
+        if (mPlayMusicInfo == null) {
             finish();
         }
-        mToolbar.setTitle(mMusic.getTitle());
-        mToolbar.setSubtitle(mMusic.getArtist());
+        initView();
+        mToolbar.setTitle(mPlayMusicInfo.getMusic().getTitle());
+        mToolbar.setSubtitle(mPlayMusicInfo.getMusic().getArtist());
 
 //        mToolbar.getBackground().setAlpha(0);
         mToolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
@@ -76,15 +102,25 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
             }
         });
 
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             String test = savedInstanceState.getString("extra_test");
             LogUtil.d(TAG + "[onCreate] restore extra_test:" + test);
         }
 
-        mediaPlayer = MediaPlayer.create(this, Uri.fromFile(new File(mMusic.getPath())));
-        mediaPlayer.start();
-    }
+        Intent intentToService = new Intent(PlayMusicActivity.this, PlayMusicService.class);
+        intentToService.putExtra(PlayMusicService.EXTRA_PLAY_MUSIC_INFO, mPlayMusicInfo);
+        bindService(intentToService, new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                mPlayMusicService = ((PlayMusicService.MyBinder) service).getService();
+            }
 
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+            }
+        }, Context.BIND_AUTO_CREATE);
+    }
 
     @Override
     public void initParas(Bundle paras) {
@@ -93,17 +129,16 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
 
     @Override
     public void initView() {
-
+        mTvTitle.setText(mPlayMusicInfo.getMusic().getTitle());
+        mIvPlay.setImageResource(mPlayMusicInfo.isPause() ? R.drawable.ic_play_btn_play : R.drawable.ic_play_btn_pause);
+        if (!mPlayMusicInfo.isPause()) {
+            rotate(mSivAlbum);
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mediaPlayer!=null){
-            mediaPlayer.stop();
-            mediaPlayer.release();
-            mediaPlayer = null;
-        }
     }
 
     @Override
@@ -119,6 +154,7 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
         String test = savedInstanceState.getString("extra_test");
         LogUtil.d(TAG + "[onRestoreInstanceState] restore extra_test:" + test);
     }
+
     /**
      * 不停顿地旋转
      *
@@ -139,38 +175,31 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
     String path = "/storage/emulated/0/netease/cloudmusic/Music/赵雷 - 彩虹下面.mp3";
     /**
      * /storage/emulated/0/netease/cloudmusic/Music/逃跑计划 - 夜空中最亮的星.mp3
-     *
+     * <p>
      * /storage/emulated/0/netease/cloudmusic/Music/薛之谦 - 演员.mp3
-     *
+     * <p>
      * /storage/emulated/0/netease/cloudmusic/Music/李荣浩 - 老街.mp3
-     *
+     * <p>
      * /storage/emulated/0/netease/cloudmusic/Music/赵雷 - 鼓楼.mp3
-     *
+     * <p>
      * /storage/emulated/0/netease/cloudmusic/Music/薛之谦 - 意外.mp3
-     *
+     * <p>
      * /storage/emulated/0/netease/cloudmusic/Music/刘惜君 - 我很快乐.mp3
-     *
+     * <p>
      * /storage/emulated/0/netease/cloudmusic/Music/金玟岐 - 岁月神偷.mp3
-     *
+     * <p>
      * /storage/emulated/0/netease/cloudmusic/Music/杨宗纬 叶蓓 - 我们好像在哪见过.mp3
-     *
+     * <p>
      * /storage/emulated/0/netease/cloudmusic/Music/Pianoboy高至豪 - The truth that you leave.mp3
-     *
+     * <p>
      * /storage/emulated/0/netease/cloudmusic/Music/薛之谦 - 方圆几里.mp3
      */
     MediaPlayer mediaPlayer;
 
     @OnClick(R.id.iv_play)
-    public void onClickPlay(){
+    public void onClickPlay() {
         rotate(mSivAlbum);
-        if(mediaPlayer == null) {
-            mediaPlayer = MediaPlayer.create(this, Uri.fromFile(new File(mMusic.getPath())));
-        }
-        if(mediaPlayer.isPlaying()){
-            mediaPlayer.pause();
-        }else {
-            mediaPlayer.start();
-        }
+        mPlayMusicService.playOrPause();
     }
 
     @Override
@@ -186,5 +215,20 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
     @Override
     public void setPresenter(PlayMusicContract.Presenter presenter) {
 
+    }
+
+    private void registerRxBus() {
+        Disposable disposableMusicPlayInfo = RxBus.getDefault().toObservable(PlayMusicInfo.class)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<PlayMusicInfo>() {
+                    @Override
+                    public void accept(PlayMusicInfo playMusicInfo) throws Exception {
+                        mPlayMusicInfo = playMusicInfo;
+                        mTvTitle.setText(playMusicInfo.getMusic().getTitle());
+                        mIvPlay.setImageResource(playMusicInfo.isPause() ? R.drawable.ic_play_btn_pause : R.drawable.ic_play_btn_play);
+                    }
+                });
+        mCompositionDis.add(disposableMusicPlayInfo);
     }
 }

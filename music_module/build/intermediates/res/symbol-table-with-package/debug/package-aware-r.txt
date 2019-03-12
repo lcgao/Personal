@@ -1064,6 +1064,7 @@ drawable ic_play_btn_prev_pressed
 drawable ic_play_btn_shuffle
 drawable ic_play_btn_shuffle_pressed
 drawable ic_play_list
+drawable ic_play_thin
 drawable ic_radio
 drawable ic_ranking_list
 drawable ic_recently_play
@@ -1216,6 +1217,8 @@ id groups
 id home
 id homeAsUp
 id ib_item_music_list_handler
+id ib_layout_play_bar_play_or_pause
+id ib_layout_play_bar_playlist
 id icon
 id icon_group
 id ifRoom
@@ -1360,9 +1363,12 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tv_act_music_title
 id tv_current_time
 id tv_item_music_list_name
 id tv_item_music_list_singer
+id tv_layout_play_bar_artist
+id tv_layout_play_bar_title
 id tv_nothing_tip
 id tv_tab_title
 id tv_total_time

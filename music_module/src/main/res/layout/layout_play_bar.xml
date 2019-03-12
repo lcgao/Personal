@@ -28,6 +28,7 @@
         android:gravity="center_vertical"
         >
         <TextView
+            android:id="@+id/tv_layout_play_bar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="阿刁(Diao)"
@@ -35,6 +36,7 @@
             android:maxLines="1"
             />
         <TextView
+            android:id="@+id/tv_layout_play_bar_artist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13sp"
@@ -44,6 +46,7 @@
 
     </LinearLayout>
     <ImageButton
+        android:id="@+id/ib_layout_play_bar_play_or_pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
@@ -52,6 +55,7 @@
         android:layout_marginLeft="10dp"
         />
     <ImageButton
+        android:id="@+id/ib_layout_play_bar_playlist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"

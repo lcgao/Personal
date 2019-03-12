@@ -19,8 +19,10 @@ import com.lcgao.music_module.adapter.CommonAdapter;
 import com.lcgao.music_module.adapter.ViewHolder;
 import com.lcgao.music_module.music.MusicsContract;
 import com.lcgao.music_module.music.MusicsPresenter;
+import com.lcgao.music_module.music.PlayMusicService;
 import com.lcgao.music_module.music.data.MusicsRepository;
 import com.lcgao.music_module.music.data.model.Music;
+import com.lcgao.music_module.music.data.model.PlayMusicInfo;
 import com.lcgao.music_module.music.data.source.local.MusicsLocalDataSource;
 import com.lcgao.music_module.music.data.source.remote.MusicsRemoteDataSource;
 import com.lcgao.music_module.widget.RecyclerViewDecoration;
@@ -45,6 +47,8 @@ public class LocalMusicActivity extends BaseActivity implements MusicsContract.V
     @BindView(R.id.srl_refresh)
     SwipeRefreshLayout mSrlRefresh;
     private CommonAdapter<Music> mAdapter;
+
+    private List<Music> mMusicList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -96,7 +100,7 @@ public class LocalMusicActivity extends BaseActivity implements MusicsContract.V
         mRvMusicList.setHasFixedSize(true);
         mRvMusicList.getItemAnimator().setChangeDuration(0);
 //        mRvMusicList.addItemDecoration(new RecyclerViewDiv);
-        mAdapter = new CommonAdapter<Music>(this, R.layout.item_music_list, new ArrayList<Music>()) {
+        mAdapter = new CommonAdapter<Music>(this, R.layout.item_music_list, mMusicList) {
             @Override
             public void convert(ViewHolder holder, final Music music) {
                 holder.setText(R.id.tv_item_music_list_name, music.getTitle());
@@ -104,8 +108,12 @@ public class LocalMusicActivity extends BaseActivity implements MusicsContract.V
                 holder.setOnClickListener(R.id.ll_item_music_list, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        PlayMusicInfo playMusicInfo = new PlayMusicInfo(music, mMusicList, false);
+                        Intent intentToService = new Intent(LocalMusicActivity.this, PlayMusicService.class);
+                        intentToService.putExtra(PlayMusicService.EXTRA_PLAY_MUSIC_INFO, playMusicInfo);
+                        startService(intentToService);
                         Intent intent = new Intent(LocalMusicActivity.this, PlayMusicActivity.class);
-                        intent.putExtra("music", music);
+                        intent.putExtra(PlayMusicActivity.EXTRA_PLAY_MUSIC_INFO, playMusicInfo);
                         startActivity(intent);
                     }
                 });
@@ -123,6 +131,8 @@ public class LocalMusicActivity extends BaseActivity implements MusicsContract.V
     }
 
     public void setData(List<Music> musicList) {
+        mMusicList.clear();
+        mMusicList.addAll(musicList);
         mLlNothing.setVisibility(View.GONE);
         mAdapter.replaceData(musicList);
     }

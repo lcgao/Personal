@@ -2116,6 +2116,10 @@
         "source": "E:\\AndroidStudioProjects\\Personal\\music_module\\src\\main\\res\\drawable-xxhdpi\\ic_play_bar_btn_pause.png"
     },
     {
+        "merged": "E:\\AndroidStudioProjects\\Personal\\music_module\\build\\intermediates\\res\\merged\\debug\\drawable_ic_play_thin.xml.flat",
+        "source": "E:\\AndroidStudioProjects\\Personal\\music_module\\src\\main\\res\\drawable\\ic_play_thin.xml"
+    },
+    {
         "merged": "E:\\AndroidStudioProjects\\Personal\\music_module\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_half_black_16dp.png.flat",
         "source": "E:\\Android\\Gradle\\gradle-5.1.1-all\\gradle-5.1.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\bf94a20af090c7b71910d126cf819b94\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_16dp.png"
     },

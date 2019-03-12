@@ -52,12 +52,12 @@ public final class R {
         public static final int depth = 0x7f08004b;
         public static final int fade = 0x7f08005e;
         public static final int flip = 0x7f080063;
-        public static final int rotate = 0x7f0800b1;
-        public static final int stack = 0x7f0800de;
-        public static final int zoom = 0x7f08010b;
-        public static final int zoomCenter = 0x7f08010c;
-        public static final int zoomFade = 0x7f08010d;
-        public static final int zoomStack = 0x7f08010e;
+        public static final int rotate = 0x7f0800b3;
+        public static final int stack = 0x7f0800e0;
+        public static final int zoom = 0x7f080110;
+        public static final int zoomCenter = 0x7f080111;
+        public static final int zoomFade = 0x7f080112;
+        public static final int zoomStack = 0x7f080113;
     }
     public static final class layout {
         private layout() {}

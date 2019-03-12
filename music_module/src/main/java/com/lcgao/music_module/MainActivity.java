@@ -1,7 +1,11 @@
 package com.lcgao.music_module;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -18,15 +22,25 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lcgao.common_library.util.RouterUtil;
+import com.lcgao.music_module.event.RxBus;
+import com.lcgao.music_module.music.PlayMusicService;
+import com.lcgao.music_module.music.data.model.PlayMusicInfo;
 import com.lcgao.music_module.music.view.PlayMusicActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 @Route(path = RouterUtil.MODULE_MUSIC_MAIN_ACTIVITY_URL)
 public class MainActivity extends AppCompatActivity
@@ -40,17 +54,34 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.ll_layout_play_bar)
     LinearLayout mLlPlayBar;
 
+    @BindView(R.id.tv_layout_play_bar_title)
+    TextView mTvTitle;
+    @BindView(R.id.tv_layout_play_bar_artist)
+    TextView mTvArtist;
+    @BindView(R.id.ib_layout_play_bar_play_or_pause)
+    ImageButton mIbPlayOrPause;
+    @BindView(R.id.ib_layout_play_bar_playlist)
+    ImageButton mIbPlayList;
+
     FragmentManager fragmentManager;
 
     private Fragment mFragmentMyMusic;
     private Fragment mFragmentDiscover;
     private Fragment mFragmentVideo;
 
+    private PlayMusicService mPlayMusicService;
+
+    private CompositeDisposable mCompositionDis;
+
+    private PlayMusicInfo mPlayMusicInfo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mCompositionDis = new CompositeDisposable();
+        registerRxBus();
         toolbar.setTitle("发现");
 
         setSupportActionBar(toolbar);
@@ -76,6 +107,18 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_my_music);
         showFragment(FRAGMENT_MY_MUSIC);
+        Intent service = new Intent(MainActivity.this, PlayMusicService.class);
+        bindService(service, new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                mPlayMusicService = ((PlayMusicService.MyBinder) service).getService();
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+            }
+        }, Context.BIND_AUTO_CREATE);
     }
 
     /**
@@ -97,7 +140,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -107,19 +150,14 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -207,8 +245,45 @@ public class MainActivity extends AppCompatActivity
     }
 
     @OnClick(R.id.ll_layout_play_bar)
-    public void onClickPlayBar(){
+    public void onClickPlayBar() {
+        if(mPlayMusicInfo == null){
+            return;
+        }
+        if(mPlayMusicInfo.getMusic() == null){
+            return;
+        }
+
         Intent intent = new Intent(MainActivity.this, PlayMusicActivity.class);
+        intent.putExtra(PlayMusicActivity.EXTRA_PLAY_MUSIC_INFO, mPlayMusicInfo);
         startActivity(intent);
+    }
+
+    @OnClick(R.id.ib_layout_play_bar_play_or_pause)
+    public void onClickPlayOrPause(){
+        mPlayMusicService.playOrPause();
+    }
+
+    private void registerRxBus() {
+        Disposable disposableMusicPlayInfo = RxBus.getDefault().toObservable(PlayMusicInfo.class)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<PlayMusicInfo>() {
+                    @Override
+                    public void accept(PlayMusicInfo playMusicInfo) throws Exception {
+                        mPlayMusicInfo = playMusicInfo;
+                        mTvTitle.setText(playMusicInfo.getMusic().getTitle());
+                        mTvArtist.setText(playMusicInfo.getMusic().getArtist());
+                        mIbPlayOrPause.setImageResource(playMusicInfo.isPause()?R.drawable.ic_pause_thin:R.drawable.ic_play_thin);
+                    }
+                });
+        mCompositionDis.add(disposableMusicPlayInfo);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mCompositionDis!=null) {
+            mCompositionDis.clear();
+        }
     }
 }

@@ -45,6 +45,7 @@
                 app:shape_mode="circle" />
 
             <TextView
+                android:id="@+id/tv_act_music_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
