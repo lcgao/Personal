@@ -108,7 +108,7 @@ public class LocalMusicActivity extends BaseActivity implements MusicsContract.V
                 holder.setOnClickListener(R.id.ll_item_music_list, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        PlayMusicInfo playMusicInfo = new PlayMusicInfo(music, mMusicList, false);
+                        PlayMusicInfo playMusicInfo = new PlayMusicInfo(music, mMusicList, false, 0);
                         Intent intentToService = new Intent(LocalMusicActivity.this, PlayMusicService.class);
                         intentToService.putExtra(PlayMusicService.EXTRA_PLAY_MUSIC_INFO, playMusicInfo);
                         startService(intentToService);

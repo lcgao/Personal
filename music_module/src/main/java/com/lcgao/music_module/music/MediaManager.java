@@ -31,17 +31,9 @@ public class MediaManager {
         }
 
         try {
-//            Context context = MyApplication.getInstance().getApplicationContext();
-//            AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-//            audioManager.setSpeakerphoneOn(false);
-//            audioManager.setMode(AudioManager.MODE_IN_CALL);
-//            int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL);
-//            audioManager.setStreamVolume(AudioManager.STREAM_VOICE_CALL,
-//                    maxVolume, AudioManager.STREAM_VOICE_CALL);
             mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mMediaPlayer.setOnCompletionListener(onCompletionListener);
             mMediaPlayer.setDataSource(filePath);
-//            mMediaPlayer.prepare();
             mMediaPlayer.prepareAsync();
             mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
@@ -90,5 +82,23 @@ public class MediaManager {
 
     public static void setIsPause(boolean isPause) {
         MediaManager.isPause = isPause;
+    }
+
+    /**
+     * 指定播放的位置
+     * @param msec 播放位置时间
+     */
+    public static void seekTo(int msec){
+        if(mMediaPlayer != null) {
+            mMediaPlayer.seekTo(msec);
+        }
+    }
+
+    public static long getCurrentTime(){
+        if(mMediaPlayer != null){
+            LogUtil.d(TAG + "getCurrentPosition=" + mMediaPlayer.getCurrentPosition());
+            return mMediaPlayer.getCurrentPosition();
+        }
+        return 0;
     }
 }

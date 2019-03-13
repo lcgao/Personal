@@ -21,12 +21,16 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.music_module.R;
+import com.lcgao.music_module.event.PlayMusicEvent;
 import com.lcgao.music_module.event.RxBus;
+import com.lcgao.music_module.event.UpdateProgressEvent;
+import com.lcgao.music_module.music.MediaManager;
 import com.lcgao.music_module.music.PlayMusicContract;
 import com.lcgao.music_module.music.PlayMusicService;
 import com.lcgao.music_module.music.data.model.Music;
@@ -59,11 +63,20 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
     @BindView(R.id.siv_act_music_album)
     ShapedImageView mSivAlbum;
 
-    @BindView(R.id.iv_play)
+    @BindView(R.id.iv_layout_play_panel_play)
     ImageView mIvPlay;
 
     @BindView(R.id.tv_act_music_title)
     TextView mTvTitle;
+
+    @BindView(R.id.tv_layout_play_panel_current_time)
+    TextView mTvCurrentTime;
+
+    @BindView(R.id.tv_layout_play_panel_total_time)
+    TextView mTvTotalTime;
+
+    @BindView(R.id.sb_layout_play_panel_progress)
+    SeekBar mSbProgress;
 
     private PlayMusicInfo mPlayMusicInfo;
 
@@ -87,21 +100,6 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
             finish();
         }
         initView();
-        mToolbar.setTitle(mPlayMusicInfo.getMusic().getTitle());
-        mToolbar.setSubtitle(mPlayMusicInfo.getMusic().getArtist());
-
-//        mToolbar.getBackground().setAlpha(0);
-        mToolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
-        mToolbar.setTitleTextAppearance(this, R.style.ToolbarTitle);
-        mToolbar.setSubtitleTextAppearance(this, R.style.SubToolbarTitle);
-        setSupportActionBar(mToolbar);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
         if (savedInstanceState != null) {
             String test = savedInstanceState.getString("extra_test");
             LogUtil.d(TAG + "[onCreate] restore extra_test:" + test);
@@ -131,9 +129,23 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
     public void initView() {
         mTvTitle.setText(mPlayMusicInfo.getMusic().getTitle());
         mIvPlay.setImageResource(mPlayMusicInfo.isPause() ? R.drawable.ic_play_btn_play : R.drawable.ic_play_btn_pause);
+        mTvTotalTime.setText(new SimpleDateFormat("mm:ss").format(mPlayMusicInfo.getMusic().getDuration()));
+        mSbProgress.setMax(Integer.parseInt(mPlayMusicInfo.getMusic().getDuration() + ""));
         if (!mPlayMusicInfo.isPause()) {
             rotate(mSivAlbum);
         }
+        mToolbar.setTitle(mPlayMusicInfo.getMusic().getTitle());
+        mToolbar.setSubtitle(mPlayMusicInfo.getMusic().getArtist());
+        mToolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
+        mToolbar.setTitleTextAppearance(this, R.style.ToolbarTitle);
+        mToolbar.setSubtitleTextAppearance(this, R.style.SubToolbarTitle);
+        setSupportActionBar(mToolbar);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -172,31 +184,7 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
         view.startAnimation(rotateAnimation);
     }
 
-    String path = "/storage/emulated/0/netease/cloudmusic/Music/赵雷 - 彩虹下面.mp3";
-    /**
-     * /storage/emulated/0/netease/cloudmusic/Music/逃跑计划 - 夜空中最亮的星.mp3
-     * <p>
-     * /storage/emulated/0/netease/cloudmusic/Music/薛之谦 - 演员.mp3
-     * <p>
-     * /storage/emulated/0/netease/cloudmusic/Music/李荣浩 - 老街.mp3
-     * <p>
-     * /storage/emulated/0/netease/cloudmusic/Music/赵雷 - 鼓楼.mp3
-     * <p>
-     * /storage/emulated/0/netease/cloudmusic/Music/薛之谦 - 意外.mp3
-     * <p>
-     * /storage/emulated/0/netease/cloudmusic/Music/刘惜君 - 我很快乐.mp3
-     * <p>
-     * /storage/emulated/0/netease/cloudmusic/Music/金玟岐 - 岁月神偷.mp3
-     * <p>
-     * /storage/emulated/0/netease/cloudmusic/Music/杨宗纬 叶蓓 - 我们好像在哪见过.mp3
-     * <p>
-     * /storage/emulated/0/netease/cloudmusic/Music/Pianoboy高至豪 - The truth that you leave.mp3
-     * <p>
-     * /storage/emulated/0/netease/cloudmusic/Music/薛之谦 - 方圆几里.mp3
-     */
-    MediaPlayer mediaPlayer;
-
-    @OnClick(R.id.iv_play)
+    @OnClick(R.id.iv_layout_play_panel_play)
     public void onClickPlay() {
         rotate(mSivAlbum);
         mPlayMusicService.playOrPause();
@@ -218,17 +206,31 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
     }
 
     private void registerRxBus() {
-        Disposable disposableMusicPlayInfo = RxBus.getDefault().toObservable(PlayMusicInfo.class)
+        Disposable disposableMusicPlayInfo = RxBus.getDefault().toObservable(PlayMusicEvent.class)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<PlayMusicInfo>() {
+                .subscribe(new Consumer<PlayMusicEvent>() {
                     @Override
-                    public void accept(PlayMusicInfo playMusicInfo) throws Exception {
-                        mPlayMusicInfo = playMusicInfo;
-                        mTvTitle.setText(playMusicInfo.getMusic().getTitle());
-                        mIvPlay.setImageResource(playMusicInfo.isPause() ? R.drawable.ic_play_btn_pause : R.drawable.ic_play_btn_play);
+                    public void accept(PlayMusicEvent playMusicEvent) throws Exception {
+                        mPlayMusicInfo = playMusicEvent.mPlayMusicInfo;
+                        mTvTitle.setText(mPlayMusicInfo.getMusic().getTitle());
+                        mIvPlay.setImageResource(mPlayMusicInfo.isPause() ? R.drawable.ic_play_btn_play : R.drawable.ic_play_btn_pause);
+                    }
+                });
+        Disposable disposableUpdateProgress = RxBus.getDefault().toObservable(UpdateProgressEvent.class)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<UpdateProgressEvent>() {
+                    @Override
+                    public void accept(UpdateProgressEvent updateProgressEvent) throws Exception {
+                        LogUtil.d(TAG + "registerRxBus() --> " + updateProgressEvent.mCurrentTime);
+                        mPlayMusicInfo.setCurrentTime(updateProgressEvent.mCurrentTime);
+                        mTvCurrentTime.setText(new SimpleDateFormat("mm:ss").format(mPlayMusicInfo.getCurrentTime()));
+                        LogUtil.d(TAG + (updateProgressEvent.mCurrentTime * 1.0 / mPlayMusicInfo.getMusic().getDuration())*100 + "");
+                        mSbProgress.setProgress(Integer.parseInt(updateProgressEvent.mCurrentTime + ""));
                     }
                 });
         mCompositionDis.add(disposableMusicPlayInfo);
+        mCompositionDis.add(disposableUpdateProgress);
     }
 }

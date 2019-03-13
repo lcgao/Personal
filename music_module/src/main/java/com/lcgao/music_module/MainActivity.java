@@ -28,6 +28,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lcgao.common_library.util.RouterUtil;
+import com.lcgao.music_module.event.PlayMusicEvent;
 import com.lcgao.music_module.event.RxBus;
 import com.lcgao.music_module.music.PlayMusicService;
 import com.lcgao.music_module.music.data.model.PlayMusicInfo;
@@ -185,7 +186,7 @@ public class MainActivity extends AppCompatActivity
             //TODO send
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -264,16 +265,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void registerRxBus() {
-        Disposable disposableMusicPlayInfo = RxBus.getDefault().toObservable(PlayMusicInfo.class)
+        Disposable disposableMusicPlayInfo = RxBus.getDefault().toObservable(PlayMusicEvent.class)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<PlayMusicInfo>() {
+                .subscribe(new Consumer<PlayMusicEvent>() {
                     @Override
-                    public void accept(PlayMusicInfo playMusicInfo) throws Exception {
-                        mPlayMusicInfo = playMusicInfo;
-                        mTvTitle.setText(playMusicInfo.getMusic().getTitle());
-                        mTvArtist.setText(playMusicInfo.getMusic().getArtist());
-                        mIbPlayOrPause.setImageResource(playMusicInfo.isPause()?R.drawable.ic_pause_thin:R.drawable.ic_play_thin);
+                    public void accept(PlayMusicEvent playMusicEvent) throws Exception {
+                        mPlayMusicInfo = playMusicEvent.mPlayMusicInfo;
+                        mTvTitle.setText(mPlayMusicInfo.getMusic().getTitle());
+                        mTvArtist.setText(mPlayMusicInfo.getMusic().getArtist());
+                        mIbPlayOrPause.setImageResource(mPlayMusicInfo.isPause()?R.drawable.ic_pause_thin:R.drawable.ic_play_thin);
                     }
                 });
         mCompositionDis.add(disposableMusicPlayInfo);

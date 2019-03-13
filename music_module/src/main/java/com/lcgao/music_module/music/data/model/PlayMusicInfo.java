@@ -10,14 +10,16 @@ public class PlayMusicInfo implements Parcelable {
     private Music music;
     private List<Music> playList;
     private boolean isPause;
+    private long currentTime;
 
     public PlayMusicInfo() {
     }
 
-    public PlayMusicInfo(Music music, List<Music> playList, boolean isPause) {
+    public PlayMusicInfo(Music music, List<Music> playList, boolean isPause, long currentTime) {
         this.music = music;
         this.playList = playList;
         this.isPause = isPause;
+        this.currentTime = currentTime;
     }
 
     public Music getMusic() {
@@ -44,12 +46,21 @@ public class PlayMusicInfo implements Parcelable {
         isPause = pause;
     }
 
+    public long getCurrentTime() {
+        return currentTime;
+    }
+
+    public void setCurrentTime(long currentTime) {
+        this.currentTime = currentTime;
+    }
+
     @Override
     public String toString() {
         return "PlayMusicInfo{" +
                 "music=" + music +
                 ", playList=" + playList +
                 ", isPause=" + isPause +
+                ", currentTime=" + currentTime +
                 '}';
     }
 
@@ -63,6 +74,7 @@ public class PlayMusicInfo implements Parcelable {
         dest.writeParcelable(music, 0);
         dest.writeTypedList(playList);
         dest.writeInt(isPause ? 1 : 0);
+        dest.writeLong(currentTime);
     }
 
     public static final Parcelable.Creator<PlayMusicInfo> CREATOR = new Parcelable.Creator<PlayMusicInfo>(){
@@ -85,5 +97,6 @@ public class PlayMusicInfo implements Parcelable {
         }
         in.readTypedList(playList, Music.CREATOR);
         isPause = in.readInt() == 1;
+        currentTime = in.readLong();
     }
 }
