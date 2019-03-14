@@ -2,9 +2,13 @@ package com.lcgao.music_module.util;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.provider.BaseColumns;
 import android.provider.MediaStore;
 
+import com.lcgao.music_module.R;
 import com.lcgao.music_module.music.data.model.Music;
 
 import java.util.List;
@@ -61,5 +65,24 @@ public class LocalMusicHelper {
             musicList.add(music);
         }
         cursor.close();
+    }
+
+    public static Bitmap getAlbumCover(Context context, long albumId) {
+        String mUriAlbums = "content://media/external/audio/albums";
+        String[] projection = new String[]{"album_art"};
+        Cursor cur = context.getContentResolver().query(Uri.parse(mUriAlbums + "/" + Long.toString(albumId)), projection, null, null, null);
+        String album_art = null;
+        if (cur.getCount() > 0 && cur.getColumnCount() > 0) {
+            cur.moveToNext();
+            album_art = cur.getString(0);
+        }
+        cur.close();
+        Bitmap bm = null;
+        if (album_art != null) {
+            bm = BitmapFactory.decodeFile(album_art);
+        } else {
+            bm = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_default_album_cover);
+        }
+        return bm;
     }
 }

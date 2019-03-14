@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.design.widget.FloatingActionButton;
@@ -31,12 +32,16 @@ import com.lcgao.common_library.util.RouterUtil;
 import com.lcgao.music_module.event.PlayMusicEvent;
 import com.lcgao.music_module.event.RxBus;
 import com.lcgao.music_module.music.PlayMusicService;
+import com.lcgao.music_module.music.data.model.Music;
 import com.lcgao.music_module.music.data.model.PlayMusicInfo;
 import com.lcgao.music_module.music.view.PlayMusicActivity;
+import com.lcgao.music_module.util.LocalMusicHelper;
+import com.lcgao.music_module.util.LogUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.gavinliu.android.lib.shapedimageview.ShapedImageView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -46,6 +51,7 @@ import io.reactivex.schedulers.Schedulers;
 @Route(path = RouterUtil.MODULE_MUSIC_MAIN_ACTIVITY_URL)
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = "MainActivity: ";
     private static final int FRAGMENT_MY_MUSIC = 0;
     private static final int FRAGMENT_DISCOVER = 1;
     private static final int FRAGMENT_VIDEO = 2;
@@ -63,6 +69,8 @@ public class MainActivity extends AppCompatActivity
     ImageButton mIbPlayOrPause;
     @BindView(R.id.ib_layout_play_bar_playlist)
     ImageButton mIbPlayList;
+    @BindView(R.id.siv_layout_play_bar_album_cover)
+    ShapedImageView mSivAlbumCover;
 
     FragmentManager fragmentManager;
 
@@ -79,6 +87,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogUtil.d(TAG + "--> onCreate()");
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mCompositionDis = new CompositeDisposable();
@@ -250,7 +259,7 @@ public class MainActivity extends AppCompatActivity
         if(mPlayMusicInfo == null){
             return;
         }
-        if(mPlayMusicInfo.getMusic() == null){
+        if(mPlayMusicInfo.getPlayList().get(mPlayMusicInfo.getCurrentPosition()) == null){
             return;
         }
 
@@ -272,8 +281,11 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void accept(PlayMusicEvent playMusicEvent) throws Exception {
                         mPlayMusicInfo = playMusicEvent.mPlayMusicInfo;
-                        mTvTitle.setText(mPlayMusicInfo.getMusic().getTitle());
-                        mTvArtist.setText(mPlayMusicInfo.getMusic().getArtist());
+                        Music music = mPlayMusicInfo.getPlayList().get(mPlayMusicInfo.getCurrentPosition());
+                        mTvTitle.setText(music.getTitle());
+                        mTvArtist.setText(music.getArtist());
+                        Bitmap bitmap = LocalMusicHelper.getAlbumCover(getApplicationContext(), music.getAlbumId());
+                        mSivAlbumCover.setImageBitmap(bitmap);
                         mIbPlayOrPause.setImageResource(mPlayMusicInfo.isPause()?R.drawable.ic_pause_thin:R.drawable.ic_play_thin);
                     }
                 });
@@ -283,6 +295,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        LogUtil.d(TAG + "--> onDestroy()");
         if(mCompositionDis!=null) {
             mCompositionDis.clear();
         }

@@ -18,6 +18,7 @@ import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -38,7 +39,9 @@ public class PlayMusicService extends Service {
 
     private PlayMusicInfo mPlayMusicInfo;
 
-    private List<Music> mMusics;
+    private List<Music> mMusics = new ArrayList<>();
+
+    private int mCurrentPosition;
 
     private boolean mIsPause = false;
 
@@ -63,51 +66,54 @@ public class PlayMusicService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if(mCompositeDisposable == null) {
-            mCompositeDisposable = new CompositeDisposable();
-        }
-
         LogUtil.d(TAG + " --> onStartCommand()");
-        if (intent == null) {
-            return super.onStartCommand(intent, flags, startId);
-        }
-        mPlayMusicInfo = intent.getParcelableExtra(EXTRA_PLAY_MUSIC_INFO);
-        MediaManager.playMusic(mPlayMusicInfo.getMusic().getPath(), new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                LogUtil.d(TAG + "MediaManager play completely.");
-                mIsPause = true;
-                mPlayMusicInfo.setPause(true);
-                RxBus.getDefault().post(new PlayMusicEvent(mPlayMusicInfo));
-                mCompositeDisposable.clear();
-            }
-        });
-        registerInterval(0, 1000);
 
-        RxBus.getDefault().post(new PlayMusicEvent(mPlayMusicInfo));
+        initService(intent);
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public IBinder onBind(Intent intent) {
         LogUtil.d(TAG + " --> onBind()");
-        if(mCompositeDisposable == null) {
-            mCompositeDisposable = new CompositeDisposable();
-        }
+        initService(intent);
+        return new MyBinder();
+    }
+
+    private void initService(Intent intent) {
         if (intent == null) {
-            return new MyBinder();
+            return;
         }
         mPlayMusicInfo = intent.getParcelableExtra(EXTRA_PLAY_MUSIC_INFO);
         if (mPlayMusicInfo == null) {
-            return new MyBinder();
+            return;
         }
-        MediaManager.playMusic(mPlayMusicInfo.getMusic().getPath(), new MediaPlayer.OnCompletionListener() {
+        Music music = mPlayMusicInfo.getPlayList().get(mPlayMusicInfo.getCurrentPosition());
+        mCurrentPosition = mPlayMusicInfo.getCurrentPosition();
+        if (mPlayMusicInfo.getPlayList() != null && !mPlayMusicInfo.getPlayList().isEmpty()) {
+            mMusics.clear();
+            mMusics.addAll(mPlayMusicInfo.getPlayList());
+        }
+        startPlayMusic(music);
+    }
+
+    /**
+     * 开始播放音乐
+     *
+     * @param music 音乐对象
+     */
+    private void startPlayMusic(Music music) {
+        MediaManager.playMusic(music.getPath(), new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                LogUtil.d(TAG + "MediaManager play completion.");
+                LogUtil.d(TAG + "MediaManager play completely.");
+                mIsPause = true;
+                mPlayMusicInfo.setPause(true);
+                RxBus.getDefault().post(new PlayMusicEvent(mPlayMusicInfo));
+                next();
             }
         });
-        return new MyBinder();
+        registerInterval(0, 1000);
+        RxBus.getDefault().post(new PlayMusicEvent(mPlayMusicInfo));
     }
 
     @Override
@@ -122,11 +128,11 @@ public class PlayMusicService extends Service {
         super.onDestroy();
         LogUtil.d(TAG + " --> onDestroy()");
         MediaManager.release();
-        if (mCompositeDisposable != null) {
-            mCompositeDisposable.clear();
-        }
     }
 
+    /**
+     * 播放或暂停
+     */
     public void playOrPause() {
         if (MediaManager.isPause()) {
             MediaManager.resume();
@@ -156,14 +162,59 @@ public class PlayMusicService extends Service {
         return mIsPause;
     }
 
-    public void setIsPause(boolean mIsPause) {
-        this.mIsPause = mIsPause;
-        mPlayMusicInfo.setPause(mIsPause);
+    /**
+     * 播放跳转至指定位置
+     *
+     * @param position 时间位置
+     */
+    public void seekTo(long position) {
+        MediaManager.seekTo(Integer.parseInt(position + ""));
     }
 
+    /**
+     * 下一曲
+     */
+    public void next() {
+        if (++mCurrentPosition >= mMusics.size()) {
+            mCurrentPosition = 0;
+        }
+        mPlayMusicInfo.setCurrentTime(0);
+        mPlayMusicInfo.setPause(false);
+        mPlayMusicInfo.setCurrentPosition(mCurrentPosition);
+        startPlayMusic(mPlayMusicInfo.getPlayList().get(mCurrentPosition));
+//        RxBus.getDefault().post(new PlayMusicEvent(mPlayMusicInfo));
+//        MediaManager.playMusic(mMusics.get(mCurrentPosition).getPath(), new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mp) {
+//
+//            }
+//        });
+    }
+
+    /**
+     * 上一曲
+     */
+    public void pre() {
+        if (--mCurrentPosition < 0) {
+            mCurrentPosition = mMusics.size() - 1;
+        }
+        mPlayMusicInfo.setCurrentTime(0);
+        mPlayMusicInfo.setPause(false);
+        mPlayMusicInfo.setCurrentPosition(mCurrentPosition);
+        startPlayMusic(mPlayMusicInfo.getPlayList().get(mCurrentPosition));
+
+//        RxBus.getDefault().post(new PlayMusicEvent(mPlayMusicInfo));
+//        MediaManager.playMusic(mMusics.get(mCurrentPosition).getPath(), new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mp) {
+//
+//            }
+//        });
+    }
+
+
     private void registerInterval(long delay, long period) {
-//        DisposableObserver<Long> disposableObserver = getIntervalObserver();
-        mDisposableInterval = Flowable.interval(0, period,TimeUnit.MILLISECONDS)
+        mDisposableInterval = Flowable.interval(0, period, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .flatMap(new Function<Long, Publisher<?>>() {
@@ -177,31 +228,9 @@ public class PlayMusicService extends Service {
                     }
                 })
                 .subscribe();
-        mCompositeDisposable.add(mDisposableInterval);
-    }
-
-    private DisposableObserver<Long> getIntervalObserver() {
-        return new DisposableObserver<Long>() {
-            @Override
-            public void onNext(Long aLong) {
-                LogUtil.d(TAG + "registerInterval() --> " + aLong);
-                long currentTime = MediaManager.getCurrentTime();
-                RxBus.getDefault().post(new UpdateProgressEvent(currentTime));
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        };
     }
 
     private void cancelInterval() {
-        mCompositeDisposable.remove(mDisposableInterval);
+        mDisposableInterval.dispose();
     }
 }

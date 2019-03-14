@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -36,6 +37,7 @@ import com.lcgao.music_module.music.PlayMusicService;
 import com.lcgao.music_module.music.data.model.Music;
 import com.lcgao.music_module.music.data.model.PlayMusicInfo;
 import com.lcgao.music_module.music.view_model.MusicViewModel;
+import com.lcgao.music_module.util.LocalMusicHelper;
 import com.lcgao.music_module.util.LogUtil;
 
 import java.io.File;
@@ -60,9 +62,6 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
     @BindView(R.id.toolbar_play)
     Toolbar mToolbar;
 
-    @BindView(R.id.siv_act_music_album)
-    ShapedImageView mSivAlbum;
-
     @BindView(R.id.iv_layout_play_panel_play)
     ImageView mIvPlay;
 
@@ -77,6 +76,9 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
 
     @BindView(R.id.sb_layout_play_panel_progress)
     SeekBar mSbProgress;
+
+    @BindView(R.id.siv_act_music_album)
+    ShapedImageView mSivAlbumCover;
 
     private PlayMusicInfo mPlayMusicInfo;
 
@@ -127,15 +129,33 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
 
     @Override
     public void initView() {
-        mTvTitle.setText(mPlayMusicInfo.getMusic().getTitle());
+        Music music = mPlayMusicInfo.getPlayList().get(mPlayMusicInfo.getCurrentPosition());
+        mTvTitle.setText(music.getTitle());
+        Bitmap bitmap = LocalMusicHelper.getAlbumCover(getApplicationContext(), music.getAlbumId());
+        mSivAlbumCover.setImageBitmap(bitmap);
         mIvPlay.setImageResource(mPlayMusicInfo.isPause() ? R.drawable.ic_play_btn_play : R.drawable.ic_play_btn_pause);
-        mTvTotalTime.setText(new SimpleDateFormat("mm:ss").format(mPlayMusicInfo.getMusic().getDuration()));
-        mSbProgress.setMax(Integer.parseInt(mPlayMusicInfo.getMusic().getDuration() + ""));
+        mTvTotalTime.setText(new SimpleDateFormat("mm:ss").format(music.getDuration()));
+        mSbProgress.setMax(Integer.parseInt(music.getDuration() + ""));
+        mSbProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                mTvCurrentTime.setText(new SimpleDateFormat("mm:ss").format(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                mPlayMusicService.seekTo(seekBar.getProgress());
+            }
+        });
         if (!mPlayMusicInfo.isPause()) {
-            rotate(mSivAlbum);
+            rotate(mSivAlbumCover);
         }
-        mToolbar.setTitle(mPlayMusicInfo.getMusic().getTitle());
-        mToolbar.setSubtitle(mPlayMusicInfo.getMusic().getArtist());
+        mToolbar.setTitle(music.getTitle());
+        mToolbar.setSubtitle(music.getArtist());
         mToolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
         mToolbar.setTitleTextAppearance(this, R.style.ToolbarTitle);
         mToolbar.setSubtitleTextAppearance(this, R.style.SubToolbarTitle);
@@ -151,6 +171,9 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (mCompositionDis != null) {
+            mCompositionDis.clear();
+        }
     }
 
     @Override
@@ -170,7 +193,7 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
     /**
      * 不停顿地旋转
      *
-     * @param view
+     * @param view 要旋转的view
      */
     private void rotate(View view) {
         if (view == null) {
@@ -186,8 +209,20 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
 
     @OnClick(R.id.iv_layout_play_panel_play)
     public void onClickPlay() {
-        rotate(mSivAlbum);
+        rotate(mSivAlbumCover);
         mPlayMusicService.playOrPause();
+    }
+
+    @OnClick(R.id.iv_layout_play_panel_prev)
+    public void onClickPrev() {
+        rotate(mSivAlbumCover);
+        mPlayMusicService.pre();
+    }
+
+    @OnClick(R.id.iv_layout_play_panel_next)
+    public void onClickNext() {
+        rotate(mSivAlbumCover);
+        mPlayMusicService.next();
     }
 
     @Override
@@ -213,7 +248,14 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
                     @Override
                     public void accept(PlayMusicEvent playMusicEvent) throws Exception {
                         mPlayMusicInfo = playMusicEvent.mPlayMusicInfo;
-                        mTvTitle.setText(mPlayMusicInfo.getMusic().getTitle());
+                        Music music = mPlayMusicInfo.getPlayList().get(mPlayMusicInfo.getCurrentPosition());
+                        mTvTitle.setText(music.getTitle());
+                        mToolbar.setTitle(music.getTitle());
+                        mToolbar.setSubtitle(music.getArtist());
+                        mTvCurrentTime.setText(new SimpleDateFormat("mm:ss").format(mPlayMusicInfo.getCurrentTime()));
+                        mTvTotalTime.setText(new SimpleDateFormat("mm:ss").format(music.getDuration()));
+                        Bitmap bitmap = LocalMusicHelper.getAlbumCover(getApplicationContext(), music.getAlbumId());
+                        mSivAlbumCover.setImageBitmap(bitmap);
                         mIvPlay.setImageResource(mPlayMusicInfo.isPause() ? R.drawable.ic_play_btn_play : R.drawable.ic_play_btn_pause);
                     }
                 });
@@ -225,8 +267,7 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
                     public void accept(UpdateProgressEvent updateProgressEvent) throws Exception {
                         LogUtil.d(TAG + "registerRxBus() --> " + updateProgressEvent.mCurrentTime);
                         mPlayMusicInfo.setCurrentTime(updateProgressEvent.mCurrentTime);
-                        mTvCurrentTime.setText(new SimpleDateFormat("mm:ss").format(mPlayMusicInfo.getCurrentTime()));
-                        LogUtil.d(TAG + (updateProgressEvent.mCurrentTime * 1.0 / mPlayMusicInfo.getMusic().getDuration())*100 + "");
+//                        mTvCurrentTime.setText(new SimpleDateFormat("mm:ss").format(mPlayMusicInfo.getCurrentTime()));
                         mSbProgress.setProgress(Integer.parseInt(updateProgressEvent.mCurrentTime + ""));
                     }
                 });

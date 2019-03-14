@@ -7,28 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayMusicInfo implements Parcelable {
-    private Music music;
     private List<Music> playList;
     private boolean isPause;
     private long currentTime;
+    private int currentPosition;
 
     public PlayMusicInfo() {
     }
 
-    public PlayMusicInfo(Music music, List<Music> playList, boolean isPause, long currentTime) {
-        this.music = music;
+    public PlayMusicInfo(List<Music> playList,int currentPosition, boolean isPause, long currentTime) {
         this.playList = playList;
+        this.currentPosition = currentPosition;
         this.isPause = isPause;
         this.currentTime = currentTime;
     }
 
-    public Music getMusic() {
-        return music;
-    }
-
-    public void setMusic(Music music) {
-        this.music = music;
-    }
 
     public List<Music> getPlayList() {
         return playList;
@@ -36,6 +29,14 @@ public class PlayMusicInfo implements Parcelable {
 
     public void setPlayList(List<Music> playList) {
         this.playList = playList;
+    }
+
+    public int getCurrentPosition() {
+        return currentPosition;
+    }
+
+    public void setCurrentPosition(int currentPosition) {
+        this.currentPosition = currentPosition;
     }
 
     public boolean isPause() {
@@ -57,10 +58,10 @@ public class PlayMusicInfo implements Parcelable {
     @Override
     public String toString() {
         return "PlayMusicInfo{" +
-                "music=" + music +
-                ", playList=" + playList +
+                "playList=" + playList +
                 ", isPause=" + isPause +
                 ", currentTime=" + currentTime +
+                ", currentPosition=" + currentPosition +
                 '}';
     }
 
@@ -71,8 +72,8 @@ public class PlayMusicInfo implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(music, 0);
         dest.writeTypedList(playList);
+        dest.writeInt(currentPosition);
         dest.writeInt(isPause ? 1 : 0);
         dest.writeLong(currentTime);
     }
@@ -91,11 +92,11 @@ public class PlayMusicInfo implements Parcelable {
     };
 
     private PlayMusicInfo(Parcel in) {
-        music = in.readParcelable(Thread.currentThread().getContextClassLoader());
         if(playList == null){
             playList = new ArrayList<>();
         }
         in.readTypedList(playList, Music.CREATOR);
+        currentPosition = in.readInt();
         isPause = in.readInt() == 1;
         currentTime = in.readLong();
     }

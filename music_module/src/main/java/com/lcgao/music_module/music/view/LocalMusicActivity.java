@@ -103,12 +103,13 @@ public class LocalMusicActivity extends BaseActivity implements MusicsContract.V
         mAdapter = new CommonAdapter<Music>(this, R.layout.item_music_list, mMusicList) {
             @Override
             public void convert(ViewHolder holder, final Music music) {
+                final int position = holder.getAdapterPosition();
                 holder.setText(R.id.tv_item_music_list_name, music.getTitle());
                 holder.setText(R.id.tv_item_music_list_singer, music.getArtist() + " - " + music.getAlbum());
                 holder.setOnClickListener(R.id.ll_item_music_list, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        PlayMusicInfo playMusicInfo = new PlayMusicInfo(music, mMusicList, false, 0);
+                        PlayMusicInfo playMusicInfo = new PlayMusicInfo(mMusicList, position, false, 0);
                         Intent intentToService = new Intent(LocalMusicActivity.this, PlayMusicService.class);
                         intentToService.putExtra(PlayMusicService.EXTRA_PLAY_MUSIC_INFO, playMusicInfo);
                         startService(intentToService);

@@ -38,7 +38,7 @@
                 android:layout_width="240dp"
                 android:layout_height="240dp"
                 android:elevation="2dp"
-                android:src="@mipmap/wfzd"
+                android:src="@drawable/ic_default_album_cover"
                 app:stroke_color="@color/theme_divider"
                 android:alpha="22"
                 app:stroke_width="10dp"
