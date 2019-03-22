@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,7 @@ import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.personal.favourite.FavouriteFragment;
 import com.lcgao.personal.home.HomeFragment;
 import com.lcgao.personal.profile.ProfileFragment;
+import com.lcgao.personal.util.IMMLeaks;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -268,4 +270,10 @@ public class MainActivity extends BaseActivity {
 //        return true;
 //    }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        IMMLeaks.fixFocusedViewLeak(getApplication());
+    }
 }

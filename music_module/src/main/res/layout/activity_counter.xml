@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_act_counter_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="count：" />
+
+        <TextView
+            android:id="@+id/tv_act_counter_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_act_counter_start_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Count"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_act_counter_stop_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stop Count"
+        android:textAllCaps="false" />
+
+    <com.lcgao.music_module.widget.NumberProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:progress_current="66"
+        app:progress_max="100" />
+
+
+</LinearLayout>

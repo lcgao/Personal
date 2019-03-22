@@ -17,6 +17,7 @@ import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.music_module.R;
 import com.lcgao.music_module.adapter.CommonAdapter;
 import com.lcgao.music_module.adapter.ViewHolder;
+import com.lcgao.music_module.demo.CounterActivity;
 import com.lcgao.music_module.music.MusicsContract;
 import com.lcgao.music_module.music.MusicsPresenter;
 import com.lcgao.music_module.music.PlayMusicService;
@@ -149,7 +150,7 @@ public class LocalMusicActivity extends BaseActivity implements MusicsContract.V
         int id = item.getItemId();
 
         if (id == R.id.item_menu_local_music_scan) {
-            startActivity(new Intent(LocalMusicActivity.this, ScanLocalMusicActivity.class));
+            startActivity(new Intent(LocalMusicActivity.this, CounterActivity.class));
             return true;
         }
 

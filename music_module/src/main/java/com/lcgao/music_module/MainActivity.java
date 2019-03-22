@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity
     /**
      * 不停顿地旋转
      *
-     * @param view
+     * @param view 要旋转的view
      */
     private void rotate(View view) {
         if (view == null) {

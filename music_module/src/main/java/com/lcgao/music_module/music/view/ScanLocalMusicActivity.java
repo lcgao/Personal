@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
 import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.common_library.util.RuntimePermissionUtil;
+import com.lcgao.music_module.LeakCanaryTest;
 import com.lcgao.music_module.R;
 import com.lcgao.music_module.music.data.model.Music;
 import com.lcgao.music_module.util.LocalMusicHelper;
@@ -55,12 +57,16 @@ public class ScanLocalMusicActivity extends BaseActivity {
 
     @OnClick(R.id.btn_act_scan_local_music_scan_all)
     public void onClickScanAll() {
-        if(!RuntimePermissionUtil.getStoragePermission(this)){
-            return;
-        }
-        List<Music> musicList = new ArrayList<>();
-        LocalMusicHelper.scanLocalMusic(this, musicList);
-        LogUtil.d(TAG + musicList);
+//        if(!RuntimePermissionUtil.getStoragePermission(this)){
+//            return;
+//        }
+//        List<Music> musicList = new ArrayList<>();
+//        LocalMusicHelper.scanLocalMusic(this, musicList);
+//        LogUtil.d(TAG + musicList);
+        Button btn = findViewById(R.id.btn_act_scan_local_music_scan_all);
+//        LeakCanaryTest.getInstance(this).setText(btn);  // 内存泄漏示例！！
+        LeakCanaryTest.getInstance(this.getApplicationContext()).setText(btn);  // 内存泄漏示例！！
+
     }
 
     @Override
@@ -72,5 +78,11 @@ public class ScanLocalMusicActivity extends BaseActivity {
                 onClickScanAll();
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LeakCanaryTest.getInstance(this.getApplicationContext()).removeTextView();
     }
 }

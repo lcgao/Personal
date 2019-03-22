@@ -5,6 +5,7 @@ import android.app.Application;
 import com.lcgao.music_module.music.data.model.DaoMaster;
 import com.lcgao.music_module.music.data.model.DaoSession;
 import com.lcgao.music_module.music.data.source.local.MusicsDbHelper;
+import com.squareup.leakcanary.LeakCanary;
 
 public class MyApplication extends Application {
 
@@ -22,6 +23,10 @@ public class MyApplication extends Application {
 //        if(mDaoSession.getMusicDao().loadAll().size() == 0){
 //            mDaoSession.getMusicDao().insert(new Music());
 //        }
+        if(LeakCanary.isInAnalyzerProcess(this)){
+            return;
+        }
+        LeakCanary.install(this);
     }
 
     public static MyApplication getInstance(){

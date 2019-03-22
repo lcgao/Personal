@@ -16,9 +16,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:allowBackup, android:theme, android:label">
+        <activity android:name=".demo.CounterActivity"
+            android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar"
+            />
+
+        <service
+            android:name=".demo.CounterService"
+            android:enabled="true"
+            android:exported="false" />
         <service
             android:name=".music.PlayMusicIntentService"
-            android:exported="false"></service>
+            android:exported="false" />
         <service
             android:name=".music.PlayMusicService"
             android:enabled="true"
