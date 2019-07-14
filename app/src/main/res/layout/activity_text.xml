@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,34 +18,51 @@
             android:background="@color/themecolor"
             android:paddingTop="25dp"
             app:popupTheme="@style/AppTheme.PopupOverlay">
+
             <TextView
                 android:id="@+id/tv_activity_text_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:maxLines="1"
                 android:ellipsize="end"
-                android:textColor="@color/white"
+                android:maxLines="1"
                 android:paddingRight="50dp"
-                />
+                android:textColor="@color/white"
+                android:textSize="18sp" />
 
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
 
-        <TextView
-            android:id="@+id/tv_act_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:textSize="17sp"
-            android:textIsSelectable="true"
-            android:lineSpacingMultiplier="1.4"
-            android:textColor="#c0000000" />
-    </ScrollView>
+    <TextView
+        android:id="@+id/tv_act_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="true"
+        android:lineSpacingMultiplier="1.4"
+        android:padding="20dp"
+        android:textColor="#c0000000"
+        android:textIsSelectable="true"
+        android:textSize="17sp"
+        tools:text="巴伐洛堤当然是个伟大的男高音，他的声音圆润宏亮，轻轻松松地就能从脚底把一股力量提上来，在高音的领域里潇洒无比地游走飞翔。然而他的成功，至少有一半是现代音乐工业里公关炒作的功劳。永远都在宣称古典音乐已死的「末日派」乐评家诺曼．莱布列希(Norman Lebrecht)，就曾在其名著《谁杀了古典音乐》里头无情地揭露了巴氏的经理人如何费尽心思地包装他、宣传他。
+
+七十年代，巴伐洛堤曾经在一次演出里唱出了唐尼采第《军中女郎》第二幕中难度极高的九个连续的高音C，成为一时佳话。坦白讲，虽然不容易，但这也绝非其他男高音做不到的事；巴伐洛堤真正厉害的地方不在于他做得到，而在于他做得妙，一气呵成，飘逸且精准，彷佛呼吸般容易。
+
+于是他的经理人就为他取了一个非常俗气却又很能吓到外行人的封号：「高音C之王」。久而久之，以讹传讹，如今有些媒体竟以为这是巴伐洛堤的专利，似乎除他之外，世上便没有第二个男人能唱到这么高了。
+
+对于没有多少歌剧经验的群众来讲，甚么叫做唱得轻松唱得准，他们未必知道；但甚么叫做音域宽广，他们却是晓得的。
+
+所以巴伐洛堤就变成了一个用歌喉玩杂技的艺人，不管他唱甚么，也不管他的唱法变得有多油腔滑调，更不管他有没有使用麦克风犯了正统声乐的大忌，大家还是喜欢他崇拜他。一个人可以从来没听过歌剧，但照样花高价去捧他的场；一个人也可以毫不认识歌唱的艺术，但照样人云亦云地称巴氏为歌王。
+
+「真正」乐迷透过贬视巴伐洛堤的晚年演出证明自己内行，一般听众则透过参加巴德那些越趋流行的「popera」演唱会(也就是以唱歌剧的方法去唱流行歌曲)去显示自己也有品味，这其实是同一块硬币的两面。为甚么是巴伐洛堤这么一位男高音，而非一个钢琴家或者指挥家，成了最富有最受欢迎的古典音乐演绎者呢？答案系于歌剧的性质。
+
+歌剧本来就是一种十分布尔乔亚的艺术，比起一般的纯器乐，它有通俗易懂的剧情，华贵的舞台，盛大的阵容，极尽视听之娱。
+
+所以从一开始，它就被许多严肃的学者和教士贬斥，视之为堕落的艺术。巧的是，歌剧史上也真不乏诱惑者的角色，从唐乔望尼、夜后、美狄亚、杜兰朵、卡门、露露一直到莎乐美，歌剧从来就有一种独特的诱惑，仿如海妖赛伦的歌声，把绅士淑女和想当绅士淑女的人一一吸引到剧院里去。
+
+歌剧院不只是一个城市夸耀财富和权势的地标，还是上流社会的交际场所。可是要入其门，却又不甚困难，难怪听歌剧成了身份的象征，彰显品味的途径。
+
+或许歌剧今天式微了，不过能和它沾上边还是好的。在许多人看来，同样是听流行悦耳的曲子，与其看普通一位流行歌星去唱经典金曲，何不欣赏穿燕尾服的男高音那种很「艺术」的版本呢？
+
+这也恰好说明了为甚么那些样貌不错、名字带点拉丁味而歌喉明显受过训练的小伙子现在会大受欢迎，他们装腔作势的流行曲就等于是十九世纪末的意大利歌剧，同是文化品味的符号。在这股浪潮之前，自然会有一批乐迷跑出来拨乱反正，在「假品味」中间坚持真正的「艺术」。" />
 </LinearLayout>
