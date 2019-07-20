@@ -3,9 +3,8 @@ package com.lcgao.music_module.music.data.source.local;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.Nullable;
 
-import com.lcgao.music_module.music.data.model.Music;
+import androidx.annotation.Nullable;
 
 public class MusicsDbHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
@@ -22,7 +21,7 @@ public class MusicsDbHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + MusicsPersistenceContract.MusicEntry.TABLE_NAME + " (" +
-                    MusicsPersistenceContract.MusicEntry.COLUMN_NAME_ENTRY_ID + INT_TYPE + " PRIMARY KEY,"+
+                    MusicsPersistenceContract.MusicEntry.COLUMN_NAME_ENTRY_ID + INT_TYPE + " PRIMARY KEY," +
                     MusicsPersistenceContract.MusicEntry.COLUMN_NAME_TITLE + TEXT_TYPE + COMMA_SEP +
                     MusicsPersistenceContract.MusicEntry.COLUMN_NAME_ARTIST + TEXT_TYPE + COMMA_SEP +
                     MusicsPersistenceContract.MusicEntry.COLUMN_NAME_ALBUM + TEXT_TYPE + COMMA_SEP +

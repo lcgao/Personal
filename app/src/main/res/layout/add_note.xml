@@ -3,9 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical"
-
     android:paddingBottom="8dp">
 
     <LinearLayout
@@ -17,22 +15,22 @@
         android:focusableInTouchMode="true"
         android:orientation="horizontal" />
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:elevation="1dp"
         android:paddingLeft="8dp"
-        android:paddingRight="8dp"
         android:paddingTop="16dp"
+        android:paddingRight="8dp"
         android:textColorHint="@color/themecolor">
 
-        <android.support.design.widget.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="请输入标题"
             android:textSize="16sp" />
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,21 +54,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:padding="5dp"
             android:background="@drawable/shape_tv_tag"
+            android:padding="5dp"
             android:text="Android  |  x"
-            android:textAllCaps="false"
-             />
+            android:textAllCaps="false" />
 
         <TextView
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Java  |  x"
             android:background="@drawable/shape_tv_tag"
-            android:textAllCaps="false"
             android:padding="5dp"
-            android:id="@+id/textView4" />
+            android:text="Java  |  x"
+            android:textAllCaps="false" />
 
     </LinearLayout>
 
@@ -81,13 +78,13 @@
         android:layout_marginTop="8dp"
         android:background="@color/white"
         android:gravity="top"
-        android:lineSpacingMultiplier="1.2"
-        android:textColor="#3f3f3f"
-        android:padding="8dp"
-        android:textSize="16sp"
         android:hint="写下此刻的想法..."
+        android:lineSpacingMultiplier="1.2"
+        android:padding="8dp"
         android:text="  Handler发送消息后添加消息到消息队列，然后消息在恰当时候出列，都是由Handler来执行，那么是如何完成跨线程通信的？这里就牵涉到了Linux系统的跨线程通信的知识，Android中采用的是Linux中的管道通信。
   Looper是通过管道(pipe)实现的。关于管道，简单来说，管道就是一个文件。在管道的两端，分别是两个打开文件文件描述符，这两个打开文件描述符都是对应同一个文件，其中一个是用来读的，别一个是用来写的。
-一般的使用方式就是，一个线程通过读文件描述符中来读管道的内容，当管道没有内容时，这个线程就会进入等待状态，而另外一个线程通过写文件描述符来向管道中写入内容，写入内容的时候，如果另一端正有线程正在等待管道中的内容，那么这个线程就会被唤醒。这个等待和唤醒的操作是如何进行的呢，这就要借助Linux系统中的epoll机制了。 Linux系统中的epoll机制为处理大批量句柄而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著减少程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。" />
+一般的使用方式就是，一个线程通过读文件描述符中来读管道的内容，当管道没有内容时，这个线程就会进入等待状态，而另外一个线程通过写文件描述符来向管道中写入内容，写入内容的时候，如果另一端正有线程正在等待管道中的内容，那么这个线程就会被唤醒。这个等待和唤醒的操作是如何进行的呢，这就要借助Linux系统中的epoll机制了。 Linux系统中的epoll机制为处理大批量句柄而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著减少程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。"
+        android:textColor="#3f3f3f"
+        android:textSize="16sp" />
 
 </LinearLayout>

@@ -6,12 +6,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import com.lcgao.personal.R;
-import com.lcgao.personal.util.LogUtil;
 
 /**
  * Created by lcgao on 2018/2/28.

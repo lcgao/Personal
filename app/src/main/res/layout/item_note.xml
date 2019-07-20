@@ -2,15 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="100dp"
+    android:layout_marginBottom="8dp"
     android:background="@android:color/white"
     android:elevation="1dp"
     android:orientation="horizontal"
-    android:paddingTop="12dp"
     android:paddingLeft="12dp"
-    android:paddingBottom="5dp"
+    android:paddingTop="12dp"
     android:paddingRight="12dp"
-    android:layout_marginBottom="8dp"
-    >
+    android:paddingBottom="5dp">
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -22,29 +21,31 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:orientation="vertical">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/tv_title_item_note"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:text="RxJava 详解"
-                android:textColor="@android:color/black"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:textStyle="bold"
-                android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_title_item_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="RxJava 详解"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
                 <ImageView
                     android:id="@+id/iv_image_item_note"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_picture"
                     android:layout_alignParentRight="true"
-                    android:visibility="gone"
                     android:backgroundTint="@android:color/darker_gray"
-                    />
+                    android:src="@drawable/ic_picture"
+                    android:visibility="gone" />
 
             </RelativeLayout>
 
@@ -52,11 +53,11 @@
                 android:id="@+id/tv_content_item_note"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#3f3f3f"
                 android:layout_marginTop="3dp"
-                android:maxLines="2"
                 android:ellipsize="end"
+                android:maxLines="2"
                 android:text="RxJava 在 GitHub 主页上的自我介绍是 a library for composing asynchronous and event-based programs using observable sequences for the Java VM（一个在 Java VM 上使用可观测的序列来组成异步的、基于事件的程序的库）。这就是 RxJava ，概括得非常精准。"
+                android:textColor="#3f3f3f"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -74,10 +75,10 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/imageView3"
                     android:layout_width="13dp"
                     android:layout_height="13dp"
-                    android:src="@drawable/ic_clock"
-                    android:id="@+id/imageView3" />
+                    android:src="@drawable/ic_clock" />
 
                 <TextView
                     android:id="@+id/tv_time_item_note"
@@ -115,11 +116,4 @@
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
-<!--RelativeLayout-->
-    <!--<ImageView-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_weight="2"-->
-        <!--android:src="@drawable/bg_top"-->
-        <!--android:id="@+id/imageView4" />-->
 </LinearLayout>

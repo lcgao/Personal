@@ -4,22 +4,20 @@
     android:id="@+id/ll_item_news"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clickable="true"
-    android:elevation="1dp"
     android:layout_marginBottom="8dp"
-
-    android:background="@color/white">
+    android:background="@color/white"
+    android:clickable="true"
+    android:elevation="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
-
         android:orientation="vertical"
-        android:paddingBottom="12dp"
         android:paddingLeft="12dp"
+        android:paddingTop="12dp"
         android:paddingRight="12dp"
-        android:paddingTop="12dp">
+        android:paddingBottom="12dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -61,11 +59,11 @@
                 android:id="@+id/iv_image_item_news"
                 android:layout_width="wrap_content"
                 android:layout_height="75dp"
-                android:maxWidth="130dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:adjustViewBounds="true"
+                android:maxWidth="130dp"
                 android:src="@drawable/bg_top"
                 android:visibility="gone"
                 app:round_radius="5dp"
@@ -86,8 +84,8 @@
                 android:id="@+id/layout_item_news_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:layout_marginRight="20dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -182,12 +180,5 @@
 
             </LinearLayout>
         </LinearLayout>
-        <!--RelativeLayout-->
-        <!--<ImageView-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_weight="2"-->
-        <!--android:src="@drawable/bg_top"-->
-        <!--android:id="@+id/imageView4" />-->
     </LinearLayout>
 </LinearLayout>

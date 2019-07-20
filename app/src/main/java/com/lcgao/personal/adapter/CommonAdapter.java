@@ -1,12 +1,10 @@
 package com.lcgao.personal.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.lcgao.personal.R;
-import com.lcgao.personal.util.LogUtil;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 

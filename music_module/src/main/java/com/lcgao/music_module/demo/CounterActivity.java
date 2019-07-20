@@ -6,14 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ContentFrameLayout;
+import android.os.IBinder;
 import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.lcgao.music_module.R;
 import com.lcgao.music_module.util.LogUtil;
@@ -39,7 +39,7 @@ public class CounterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counter);
-        ViewParent viewParent = ((LinearLayout)findViewById(R.id.ll_act_counter_main)).getParent();
+        ViewParent viewParent = ((LinearLayout) findViewById(R.id.ll_act_counter_main)).getParent();
         LogUtil.d("the parent of mainLayout is " + viewParent);
         ButterKnife.bind(this);
         Intent intent = new Intent(CounterActivity.this, CounterService.class);
@@ -87,24 +87,24 @@ public class CounterActivity extends AppCompatActivity {
     };
 
     @OnClick(R.id.btn_act_counter_start_count)
-    public void onClickStartCount(){
-        if(counterService != null){
+    public void onClickStartCount() {
+        if (counterService != null) {
             counterService.startCount();
             btnStart.setEnabled(false);
             btnStop.setEnabled(true);
-        }else {
+        } else {
             btnStart.setEnabled(false);
             btnStop.setEnabled(false);
         }
     }
 
     @OnClick(R.id.btn_act_counter_stop_count)
-    public void onClickStopCount(){
-        if(counterService != null){
+    public void onClickStopCount() {
+        if (counterService != null) {
             counterService.stopCount();
             btnStart.setEnabled(true);
             btnStop.setEnabled(false);
-        }else {
+        } else {
             btnStart.setEnabled(false);
             btnStop.setEnabled(false);
         }

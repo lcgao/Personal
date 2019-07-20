@@ -1,37 +1,28 @@
 package com.lcgao.music_module.music.view;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Bitmap;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PersistableBundle;
-import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.music_module.R;
 import com.lcgao.music_module.event.PlayMusicEvent;
 import com.lcgao.music_module.event.RxBus;
 import com.lcgao.music_module.event.UpdateProgressEvent;
-import com.lcgao.music_module.music.MediaManager;
 import com.lcgao.music_module.music.PlayMusicContract;
 import com.lcgao.music_module.music.PlayMusicService;
 import com.lcgao.music_module.music.data.model.Music;
@@ -39,9 +30,7 @@ import com.lcgao.music_module.music.data.model.PlayMusicInfo;
 import com.lcgao.music_module.util.LocalMusicHelper;
 import com.lcgao.music_module.util.LogUtil;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -155,7 +144,7 @@ public class PlayMusicActivity extends BaseActivity implements PlayMusicContract
         }
         mToolbar.setTitle(music.getTitle());
         mToolbar.setSubtitle(music.getArtist());
-        mToolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
+        mToolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
         mToolbar.setTitleTextAppearance(this, R.style.ToolbarTitle);
         mToolbar.setSubtitleTextAppearance(this, R.style.SubToolbarTitle);
         setSupportActionBar(mToolbar);

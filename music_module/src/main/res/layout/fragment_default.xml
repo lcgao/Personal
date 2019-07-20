@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srl_fragment_main_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,12 +13,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_fragment_main"
                 android:layout_width="match_parent"
-                android:background="@color/WhiteSmoke"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@color/WhiteSmoke" />
+
             <include layout="@layout/nothing" />
         </FrameLayout>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

@@ -2,14 +2,14 @@ package com.lcgao.music_module.recommend.model;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.lcgao.music_module.HomeActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.lcgao.music_module.R;
 import com.squareup.picasso.Picasso;
 import com.zhouwei.mzbanner.MZBannerView;
@@ -30,6 +30,7 @@ import butterknife.ButterKnife;
 public class RecommendFragment extends Fragment {
     @BindView(R.id.banner)
     MZBannerView<String> mMZBannerView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

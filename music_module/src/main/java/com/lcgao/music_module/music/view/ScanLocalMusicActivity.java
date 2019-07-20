@@ -3,21 +3,16 @@ package com.lcgao.music_module.music.view;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
+
 import com.lcgao.common_library.base.BaseActivity;
-import com.lcgao.common_library.util.RuntimePermissionUtil;
 import com.lcgao.music_module.LeakCanaryTest;
 import com.lcgao.music_module.R;
-import com.lcgao.music_module.music.data.model.Music;
-import com.lcgao.music_module.util.LocalMusicHelper;
 import com.lcgao.music_module.util.LogUtil;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,7 +40,7 @@ public class ScanLocalMusicActivity extends BaseActivity {
     @Override
     public void initView() {
         toolbar.setTitle("扫描音乐");
-        toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

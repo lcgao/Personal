@@ -182,13 +182,6 @@ public class PlayMusicService extends Service {
         mPlayMusicInfo.setPause(false);
         mPlayMusicInfo.setCurrentPosition(mCurrentPosition);
         startPlayMusic(mPlayMusicInfo.getPlayList().get(mCurrentPosition));
-//        RxBus.getDefault().post(new PlayMusicEvent(mPlayMusicInfo));
-//        MediaManager.playMusic(mMusics.get(mCurrentPosition).getPath(), new MediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(MediaPlayer mp) {
-//
-//            }
-//        });
     }
 
     /**

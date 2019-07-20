@@ -1,12 +1,18 @@
 package com.lcgao.music_module.util;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.BaseColumns;
 import android.provider.MediaStore;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.lcgao.music_module.R;
 import com.lcgao.music_module.music.data.model.Music;
@@ -84,5 +90,18 @@ public class LocalMusicHelper {
             bm = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_default_album_cover);
         }
         return bm;
+    }
+
+    public static boolean requestPermission(Context context) {
+        if (ContextCompat.checkSelfPermission(context,
+                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat
+                    .requestPermissions((Activity) context,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            1);
+            return false;
+        }else {
+            return true;
+        }
     }
 }

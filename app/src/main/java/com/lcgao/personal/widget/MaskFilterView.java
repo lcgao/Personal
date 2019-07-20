@@ -3,16 +3,13 @@ package com.lcgao.personal.widget;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.BitmapShader;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
-import android.graphics.ComposeShader;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.Shader;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 import com.lcgao.personal.R;
 

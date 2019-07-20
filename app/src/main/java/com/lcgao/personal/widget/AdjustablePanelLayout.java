@@ -1,11 +1,12 @@
 package com.lcgao.personal.widget;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatSeekBar;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+
+import androidx.appcompat.widget.AppCompatSeekBar;
 
 import com.lcgao.personal.R;
 import com.lcgao.personal.util.DpPixelUtil;

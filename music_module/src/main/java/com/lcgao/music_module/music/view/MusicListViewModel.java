@@ -1,8 +1,9 @@
 package com.lcgao.music_module.music.view;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.lcgao.music_module.music.data.model.MusicListRepository;
 import com.lcgao.music_module.music.data.model.SongInfo;

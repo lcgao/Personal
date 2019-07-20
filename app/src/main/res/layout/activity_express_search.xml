@@ -7,12 +7,12 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,16 +20,16 @@
             android:paddingTop="25dp"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp">
 
         <EditText
             android:id="@+id/et_act_express_search_express_type"
@@ -43,15 +43,14 @@
             android:text="京东快递"
             android:textSize="15sp" />
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        >
+        android:layout_marginRight="10dp">
 
         <com.lcgao.personal.widget.EditTextClear
             android:id="@+id/et_act_express_search_express_id"
@@ -63,17 +62,17 @@
             android:textColorHint="@color/LightGrey"
             android:textSize="15sp" />
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_act_express_search"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/shape_btn"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:text="查  询"
         android:textColor="@color/white" />
 
@@ -82,11 +81,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
+        android:background="@color/white"
         android:paddingLeft="5dp"
         android:paddingRight="10dp"
-        android:background="@color/white"
-        app:highDotColor="@color/themecolor"
         app:dotPosition="top"
+        app:highDotColor="@color/themecolor"
         app:lineColor="#eee"
         app:lineWidth="1dp"
         app:radius="5dp" />

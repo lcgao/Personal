@@ -1,12 +1,13 @@
 package com.lcgao.personal.favourite.news;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.personal.R;
 import com.lcgao.personal.adapter.FragmentAdapter;
@@ -50,7 +51,7 @@ public class NewsActivity extends BaseActivity {
                 finish();
             }
         });
-        toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
         List<String> titles = new ArrayList<>();
         titles.add("热点");
 //        titles.add("视频");

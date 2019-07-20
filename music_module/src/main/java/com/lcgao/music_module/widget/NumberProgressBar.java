@@ -6,14 +6,13 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import com.lcgao.music_module.R;
 import com.lcgao.music_module.util.LogUtil;
-
-import java.util.concurrent.atomic.AtomicMarkableReference;
 
 import static com.lcgao.music_module.widget.NumberProgressBar.ProgressTextVisibility.Visible;
 
