@@ -3,20 +3,18 @@ package com.lcgao.personal.ipc.messenger;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.style.LeadingMarginSpan;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.lcgao.personal.R;
 import com.lcgao.personal.util.LogUtil;
-
-import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

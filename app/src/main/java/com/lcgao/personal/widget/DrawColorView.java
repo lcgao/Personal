@@ -3,11 +3,11 @@ package com.lcgao.personal.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.lcgao.personal.R;
+import androidx.annotation.Nullable;
+
 import com.lcgao.personal.util.LogUtil;
 
 /**

@@ -2,10 +2,6 @@ package com.lcgao.personal.favourite;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,15 +9,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.lcgao.common_library.util.RouterUtil;
 import com.lcgao.personal.R;
 import com.lcgao.personal.favourite.express.ExpressSearchActivity;
 import com.lcgao.personal.favourite.news.NewsActivity;
-import com.lcgao.personal.favourite.practice_custom_view.PracticeActivity;
-import com.lcgao.personal.ipc.aidl.BookManagerActivity;
-import com.lcgao.personal.ipc.messenger.MessengerActivity;
-import com.lcgao.personal.ipc.provider.ProviderActivity;
 import com.lcgao.personal.ipc.socket.TCPClientActivity;
 import com.lcgao.personal.util.ToastUtil;
 
@@ -33,7 +30,7 @@ import butterknife.OnClick;
  * Created by lcgao on 2017/12/27.
  */
 
-public class FavouriteFragment extends Fragment{
+public class FavouriteFragment extends Fragment {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 

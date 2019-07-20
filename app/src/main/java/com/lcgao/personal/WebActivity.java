@@ -2,14 +2,15 @@ package com.lcgao.personal;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -60,7 +61,7 @@ public class WebActivity extends BaseActivity {
                 finish();
             }
         });
-        toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
 
         srl_refresh.setColorSchemeColors(getResources().getColor(R.color.themecolor)
                 , getResources().getColor(R.color.colorAccent));

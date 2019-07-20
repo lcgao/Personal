@@ -2,10 +2,11 @@ package com.lcgao.personal.profile.setting;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 
 import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.personal.R;
@@ -45,7 +46,7 @@ public class SettingActivity extends BaseActivity {
                 finish();
             }
         });
-        toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
         showCacheSize();
     }
 

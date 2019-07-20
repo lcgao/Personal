@@ -5,12 +5,11 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import java.io.PrintWriter;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewDecoration extends RecyclerView.ItemDecoration {
 
@@ -22,6 +21,7 @@ public class RecyclerViewDecoration extends RecyclerView.ItemDecoration {
     private int mOrientation;
     private int mMarginStart;
     private int mMarginEnd;
+
     public RecyclerViewDecoration(Context context, int orientation, int marginStart, int marginEnd) {
         final TypedArray a = context.obtainStyledAttributes(ATTRS);
         mDivider = a.getDrawable(0);
@@ -52,7 +52,7 @@ public class RecyclerViewDecoration extends RecyclerView.ItemDecoration {
         final int left = parent.getPaddingLeft() + marginStart;
         final int right = parent.getWidth() - parent.getPaddingRight();
         final int childCount = parent.getChildCount();
-        for(int i=0;i<childCount;i++){
+        for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int top = child.getBottom() + params.bottomMargin;
@@ -66,7 +66,7 @@ public class RecyclerViewDecoration extends RecyclerView.ItemDecoration {
         final int top = parent.getPaddingTop();
         final int bottom = parent.getHeight() - parent.getPaddingLeft();
         final int childCount = parent.getChildCount();
-        for(int i=0;i<childCount;i++){
+        for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int left = child.getRight() + params.rightMargin;
@@ -79,9 +79,9 @@ public class RecyclerViewDecoration extends RecyclerView.ItemDecoration {
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-        if(mOrientation == VERTICAL_LIST){
+        if (mOrientation == VERTICAL_LIST) {
             outRect.set(0, 0, 0, mDivider.getIntrinsicHeight());
-        }else {
+        } else {
             outRect.set(0, 0, mDivider.getIntrinsicWidth(), 0);
         }
     }

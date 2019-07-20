@@ -7,12 +7,12 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
             android:paddingTop="25dp"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <View
         android:layout_width="wrap_content"
@@ -60,18 +60,6 @@
             android:gravity="right"
             android:text="0B" />
 
-        <!--<ImageView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:srcCompat="@drawable/ic_right"-->
-        <!--android:tint="@color/gray"-->
-        <!--/>-->
-
     </LinearLayout>
-
-    <!--<View-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="0.5dp"-->
-    <!--android:background="@color/theme_divider" />-->
 
 </LinearLayout>

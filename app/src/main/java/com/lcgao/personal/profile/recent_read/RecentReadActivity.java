@@ -3,16 +3,17 @@ package com.lcgao.personal.profile.recent_read;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.personal.R;
@@ -62,9 +63,9 @@ public class RecentReadActivity extends BaseActivity {
                 finish();
             }
         });
-        toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(RecentReadActivity.this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.getItemAnimator().setChangeDuration(0);

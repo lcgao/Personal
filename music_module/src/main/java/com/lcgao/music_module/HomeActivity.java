@@ -2,14 +2,11 @@ package com.lcgao.music_module;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lcgao.common_library.base.BaseActivity;
-import com.lcgao.common_library.util.RouterUtil;
 import com.squareup.picasso.Picasso;
 import com.zhouwei.mzbanner.MZBannerView;
 import com.zhouwei.mzbanner.holder.MZHolderCreator;

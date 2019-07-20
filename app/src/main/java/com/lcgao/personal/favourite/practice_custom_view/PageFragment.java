@@ -1,13 +1,14 @@
 package com.lcgao.personal.favourite.practice_custom_view;
 
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.lcgao.personal.R;
 
@@ -15,7 +16,7 @@ import com.lcgao.personal.R;
  * Created by lcgao on 2018/2/28.
  */
 
-public class PageFragment extends Fragment{
+public class PageFragment extends Fragment {
 
 //    @LayoutRes int sampleLayoutRes;
     @LayoutRes int practiceLayoutRes;

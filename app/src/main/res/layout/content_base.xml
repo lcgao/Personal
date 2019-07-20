@@ -5,11 +5,9 @@
     android:id="@+id/content_base"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".BaseActivity"
     tools:showIn="@layout/activity_base">
 
-    <include layout="@layout/add_note"/>
+    <include layout="@layout/add_note" />
 
 </RelativeLayout>

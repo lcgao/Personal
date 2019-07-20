@@ -2,16 +2,17 @@ package com.lcgao.music_module.music.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.lcgao.common_library.base.BaseActivity;
 import com.lcgao.music_module.R;
@@ -66,7 +67,7 @@ public class LocalMusicActivity extends BaseActivity implements MusicsContract.V
     @Override
     protected void onResume() {
         super.onResume();
-        if(mPresenter != null){
+        if (mPresenter != null) {
             mPresenter.subscribe();
         }
     }
@@ -74,7 +75,7 @@ public class LocalMusicActivity extends BaseActivity implements MusicsContract.V
     @Override
     protected void onPause() {
         super.onPause();
-        if(mPresenter != null){
+        if (mPresenter != null) {
             mPresenter.unsubscribe();
         }
     }
@@ -87,7 +88,7 @@ public class LocalMusicActivity extends BaseActivity implements MusicsContract.V
     @Override
     public void initView() {
         mToolbar.setTitle("本地音乐");
-        mToolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
+        mToolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +97,7 @@ public class LocalMusicActivity extends BaseActivity implements MusicsContract.V
             }
         });
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
         mRvMusicList.setLayoutManager(layoutManager);
         mRvMusicList.setHasFixedSize(true);
         mRvMusicList.getItemAnimator().setChangeDuration(0);
@@ -124,12 +125,7 @@ public class LocalMusicActivity extends BaseActivity implements MusicsContract.V
         mRvMusicList.setAdapter(mAdapter);
         mRvMusicList.addItemDecoration(new RecyclerViewDecoration(this, RecyclerViewDecoration.VERTICAL_LIST, 20, 10));
         mSrlRefresh.setColorSchemeColors(getResources().getColor(R.color.themecolor));
-        mSrlRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mPresenter.loadMusics(true);
-            }
-        });
+        mSrlRefresh.setOnRefreshListener(() -> mPresenter.loadMusics(true));
     }
 
     public void setData(List<Music> musicList) {
@@ -180,8 +176,8 @@ public class LocalMusicActivity extends BaseActivity implements MusicsContract.V
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK){
-            if(mSrlRefresh.isRefreshing()){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (mSrlRefresh.isRefreshing()) {
                 mSrlRefresh.setRefreshing(false);
                 return true;
             }

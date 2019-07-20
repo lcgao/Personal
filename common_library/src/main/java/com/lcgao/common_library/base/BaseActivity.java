@@ -4,11 +4,12 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by lcgao on 2017/7/27.
@@ -32,14 +33,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try{
+        try {
             Bundle bundle = getIntent().getExtras();
-            if(mAllowFullScreen){
+            if (mAllowFullScreen) {
                 this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                         WindowManager.LayoutParams.FLAG_FULLSCREEN);
                 requestWindowFeature(Window.FEATURE_NO_TITLE);
             }
-            if(isSetStatusBar){
+            if (isSetStatusBar) {
                 steepStatusBar();
             }
 //            if(isAllowScreenRotate){
@@ -47,7 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 //            }else {
 //                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 //            }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -55,7 +56,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 沉浸式状态栏
      */
-    private void steepStatusBar(){
+    private void steepStatusBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //5.0及以上
             View decorView = getWindow().getDecorView();
@@ -72,6 +73,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 是否设置沉浸式状态栏
+     *
      * @param setStatusBar
      */
     public void setSetStatusBar(boolean setStatusBar) {
@@ -80,6 +82,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 是否允许全屏
+     *
      * @param mAllowFullScreen
      */
     public void setmAllowFullScreen(boolean mAllowFullScreen) {
@@ -88,19 +91,21 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 是否允许旋转屏幕
+     *
      * @param allowScreenRotate
      */
     public void setAllowScreenRotate(boolean allowScreenRotate) {
         isAllowScreenRotate = allowScreenRotate;
-        if(isAllowScreenRotate){
+        if (isAllowScreenRotate) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }else {
+        } else {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
     }
 
     /**
      * 当前activity渲染的视图View
+     *
      * @param mContextView
      */
     public void setmContextView(View mContextView) {

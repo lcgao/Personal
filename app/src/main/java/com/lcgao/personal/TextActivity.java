@@ -1,11 +1,12 @@
 package com.lcgao.personal;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.lcgao.common_library.base.BaseActivity;
 
@@ -53,7 +54,7 @@ public class TextActivity extends BaseActivity {
                 finish();
             }
         });
-        toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
         mTitle.setText(title);
         if (isHtml) {
             textView.setText(Html.fromHtml(content));

@@ -2,11 +2,12 @@ package com.lcgao.personal.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.lcgao.personal.R;
 import com.lcgao.personal.profile.recent_read.RecentReadActivity;
@@ -19,7 +20,7 @@ import butterknife.OnClick;
  * Created by lcgao on 2017/12/27.
  */
 
-public class ProfileFragment extends Fragment{
+public class ProfileFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

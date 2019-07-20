@@ -1,6 +1,6 @@
 package com.lcgao.music_module.music;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.lcgao.music_module.music.data.MusicsRepository;
 import com.lcgao.music_module.music.data.model.Music;
@@ -11,8 +11,6 @@ import java.util.List;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 public class MusicsPresenter implements MusicsContract.Presenter {
@@ -45,10 +43,10 @@ public class MusicsPresenter implements MusicsContract.Presenter {
     }
 
     private void loadMusics(final boolean forceUpdate, final boolean showLoadingUI) {
-        if(showLoadingUI){
+        if (showLoadingUI) {
             mMusicsView.setLoadingIndicator(true);
         }
-        if(forceUpdate){
+        if (forceUpdate) {
             mMusicsRepository.refreshMusics();
         }
 
@@ -57,26 +55,18 @@ public class MusicsPresenter implements MusicsContract.Presenter {
                 .getMusics()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doFinally(new Action() {
-                    @Override
-                    public void run() {
-                        LogUtil.d(TAG + "getMusics()->RxJava->doFinally->run()");
-                    }
-                })
-                .subscribe(new Consumer<List<Music>>() {
-                    @Override
-                    public void accept(List<Music> musics) {
-                        processMusics(musics);
-                        mMusicsView.setLoadingIndicator(false);
-                    }
+                .doFinally(() -> LogUtil.d(TAG + "getMusics()->RxJava->doFinally->run()"))
+                .subscribe(musics -> {
+                    processMusics(musics);
+                    mMusicsView.setLoadingIndicator(false);
                 });
         mCompositeDisposable.add(disposable);
     }
 
     private void processMusics(@NonNull List<Music> musics) {
-        if(musics.isEmpty()){
+        if (musics.isEmpty()) {
             mMusicsView.showNoMusics();
-        }else{
+        } else {
             mMusicsView.showMusics(musics);
         }
     }

@@ -1,6 +1,6 @@
 package com.lcgao.music_module.music.data.source.local;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.google.common.base.Optional;
 import com.lcgao.music_module.MyApplication;

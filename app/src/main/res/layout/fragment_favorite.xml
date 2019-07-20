@@ -4,17 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/WhiteSmoke"
-
     android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
         android:visibility="visible"
         app:elevation="0dp">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,22 +21,24 @@
             android:paddingTop="25dp"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:text="生活"
             android:background="@color/WhiteSmoke"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="生活"
             android:textSize="12sp" />
+
         <LinearLayout
             android:id="@+id/layout_express"
             android:layout_width="match_parent"
@@ -46,12 +47,13 @@
             android:clickable="true"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingBottom="10dp"
             android:paddingLeft="16dp"
-            android:paddingRight="20dp"
             android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
 
             >
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,20 +65,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:text="快递查询"
-                android:textSize="15sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:text="放松"
             android:background="@color/WhiteSmoke"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="放松"
             android:textSize="12sp" />
+
         <LinearLayout
             android:id="@+id/layout_music"
             android:layout_width="match_parent"
@@ -85,12 +88,13 @@
             android:clickable="true"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingBottom="10dp"
             android:paddingLeft="16dp"
-            android:paddingRight="20dp"
             android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
 
             >
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -103,16 +107,16 @@
                 android:layout_marginLeft="16dp"
                 android:text="音乐"
                 android:textColor="@color/black"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginLeft="56dp"
-            android:background="@color/theme_divider"
-            />
+            android:background="@color/theme_divider" />
+
         <LinearLayout
             android:id="@+id/layout_weibo"
             android:layout_width="match_parent"
@@ -121,12 +125,13 @@
             android:clickable="true"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingBottom="10dp"
             android:paddingLeft="16dp"
-            android:paddingRight="20dp"
             android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
 
             >
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,19 +144,20 @@
                 android:layout_marginLeft="16dp"
                 android:text="微博"
                 android:textColor="@color/black"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
         </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:text="资讯"
             android:background="@color/WhiteSmoke"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="资讯"
             android:textSize="12sp" />
+
         <LinearLayout
             android:id="@+id/layout_news"
             android:layout_width="match_parent"
@@ -160,12 +166,13 @@
             android:clickable="true"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingBottom="10dp"
             android:paddingLeft="16dp"
-            android:paddingRight="20dp"
             android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
 
             >
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -178,19 +185,20 @@
                 android:layout_marginLeft="16dp"
                 android:text="头条新闻"
                 android:textColor="@color/black"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
         </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:text="练习"
             android:background="@color/WhiteSmoke"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="练习"
             android:textSize="12sp" />
+
         <LinearLayout
             android:id="@+id/layout_practice"
             android:layout_width="match_parent"
@@ -199,12 +207,13 @@
             android:clickable="true"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingBottom="10dp"
             android:paddingLeft="16dp"
-            android:paddingRight="20dp"
             android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
 
             >
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -217,8 +226,7 @@
                 android:layout_marginLeft="16dp"
                 android:text="测试入口"
                 android:textColor="@color/black"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
         </LinearLayout>
 

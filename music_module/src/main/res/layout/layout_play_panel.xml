@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    >
+    tools:showIn="@layout/activity_music">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,9 +19,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00:00"
-            android:textStyle="bold"
             android:textColor="@color/theme_divider"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
         <SeekBar
             android:id="@+id/sb_layout_play_panel_progress"
@@ -37,9 +38,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00:00"
-            android:textStyle="bold"
             android:textColor="@color/theme_divider"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <RelativeLayout
@@ -51,8 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:tint="@color/themecolor"
-            android:src="@drawable/list_play_mode_level" />
+            android:src="@drawable/list_play_mode_level"
+            android:tint="@color/themecolor" />
 
         <ImageView
             android:id="@+id/iv_layout_play_panel_prev"
@@ -60,16 +61,16 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/iv_layout_play_panel_play"
-            android:tint="@color/themecolor"
-            android:src="@drawable/selector_play_btn_prev" />
+            android:src="@drawable/selector_play_btn_prev"
+            android:tint="@color/themecolor" />
 
         <ImageView
             android:id="@+id/iv_layout_play_panel_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:tint="@color/themecolor"
-            android:src="@drawable/selector_play_btn_play_pause" />
+            android:src="@drawable/selector_play_btn_play_pause"
+            android:tint="@color/themecolor" />
 
         <ImageView
             android:id="@+id/iv_layout_play_panel_next"
@@ -77,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/iv_layout_play_panel_play"
-            android:tint="@color/themecolor"
-            android:src="@drawable/selector_play_btn_next" />
+            android:src="@drawable/selector_play_btn_next"
+            android:tint="@color/themecolor" />
     </RelativeLayout>
 </LinearLayout>

@@ -1,7 +1,7 @@
 package com.lcgao.music_module.music.data;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.common.base.Optional;
 import com.lcgao.music_module.music.data.model.Music;
@@ -65,12 +65,7 @@ public class MusicsRepository implements MusicsDataSource {
         } else {
             Flowable<List<Music>> localMusics = getAndCacheLocalMusics();
             return Flowable.concat(localMusics, remoteMusics)
-                    .filter(new Predicate<List<Music>>() {
-                        @Override
-                        public boolean test(List<Music> musics) {
-                            return !musics.isEmpty();
-                        }
-                    })
+                    .filter(musics -> !musics.isEmpty())
                     .firstOrError()
                     .toFlowable();
         }

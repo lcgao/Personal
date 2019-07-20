@@ -1,15 +1,17 @@
 package com.lcgao.personal.widget;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 
 /**
  * Created by lcgao on 2018/3/4.
  */
 
-public class SquareImageView extends android.support.v7.widget.AppCompatImageView {
+public class SquareImageView extends AppCompatImageView {
     public SquareImageView(Context context) {
         super(context);
     }
