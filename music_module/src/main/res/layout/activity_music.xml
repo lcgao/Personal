@@ -54,5 +54,7 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
+        <include layout="@layout/layout_play_panel" />
+
     </LinearLayout>
 </FrameLayout>
